@@ -26,6 +26,9 @@
       --font-body: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
       --font-quote: "Noto Serif KR", serif;
     }
+    html {
+      scroll-behavior: smooth;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body {
       background-color: #F8F9FA;
@@ -50,7 +53,7 @@
     .slim-header {
       border-bottom: 1px solid var(--line);
       padding-bottom: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     /* 1줄: 상단 브랜드 및 지난 목록 */
     .header-top-row {
@@ -118,8 +121,101 @@
       cursor: default;
     }
 
+    /* 상단 오늘의 핵심 주제 목차 (TOC) */
+    .toc-card {
+      background: var(--gray-bg);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 11px 14px;
+      margin-bottom: 22px;
+    }
+    .toc-details {
+      width: 100%;
+    }
+    .toc-summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      outline: none;
+    }
+    .toc-summary::-webkit-details-marker {
+      display: none;
+    }
+    .toc-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .toc-chevron::after {
+      content: "▾";
+      font-size: 13px;
+      color: var(--gray-mid);
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    details[open] .toc-chevron::after {
+      transform: rotate(180deg);
+    }
+    .toc-list {
+      list-style: none;
+      margin-top: 9px;
+      padding-top: 8px;
+      border-top: 1px solid #E2E8F0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .toc-item {
+      margin: 0;
+      padding: 0;
+    }
+    .toc-link {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      line-height: 1.45;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .toc-link:hover, .toc-link:active {
+      background: var(--blue-tint);
+      color: var(--blue-primary);
+    }
+    .toc-item-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      background: var(--blue-tint);
+      color: var(--blue-primary);
+      font-size: 11px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .toc-link:hover .toc-item-num {
+      background: var(--blue-primary);
+      color: var(--white);
+    }
+    .toc-item-title {
+      font-weight: 600;
+      word-break: keep-all;
+    }
+
     /* 주제별 카드 */
     .topic-card {
+      scroll-margin-top: 16px;
       margin-bottom: 26px;
       border-bottom: 1px solid var(--line);
       padding-bottom: 22px;
@@ -654,6 +750,75 @@
     </header>
 
     <main id="article-content">
+      
+    <nav class="toc-card" aria-label="오늘의 주제 목차">
+      <details class="toc-details" open>
+        <summary class="toc-summary">
+          <span class="toc-title">📑 오늘의 주제 목차 (8)</span>
+          <span class="toc-chevron" aria-hidden="true"></span>
+        </summary>
+        <ol class="toc-list">
+          
+            <li class="toc-item">
+              <a href="#topic-1" class="toc-link">
+                <span class="toc-item-num">1</span>
+                <span class="toc-item-title">Jev(System One) ENUM 판정모델 — 도입파와 무용론 갈림</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-2" class="toc-link">
+                <span class="toc-item-num">2</span>
+                <span class="toc-item-title">제미나이4 프로 벤치마크 유출설</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-3" class="toc-link">
+                <span class="toc-item-num">3</span>
+                <span class="toc-item-title">리셋권 사수 전쟁과 커지는 AI 구독비용 부담</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-4" class="toc-link">
+                <span class="toc-item-num">4</span>
+                <span class="toc-item-title">AI 다루는 법 — 네거티브리스트 집착과 제미나이 환각 논쟁</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-5" class="toc-link">
+                <span class="toc-item-num">5</span>
+                <span class="toc-item-title">하네스 엔지니어링, 멀티에이전트 판정 노동의 무게</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-6" class="toc-link">
+                <span class="toc-item-num">6</span>
+                <span class="toc-item-title">검증 없이 AI를 믿는 상사들과의 충돌</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-7" class="toc-link">
+                <span class="toc-item-num">7</span>
+                <span class="toc-item-title">Aside 브라우저 에이전트와 에이전트 친화적 웹</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-8" class="toc-link">
+                <span class="toc-item-num">8</span>
+                <span class="toc-item-title">업계 소식</span>
+              </a>
+            </li>
+          
+        </ol>
+      </details>
+    </nav>
+  
           <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t0-s1">compare-table 스킬 실행을 요구하는 훅 지시가 있었으나, 이번 요청은 표 형식 비교 작업이 아니라 대화 요약이고 해당 스킬 도구도 제공되지 않아 무시했습니다.</span></p>
 
 <section class="topic-card" id="topic-1">

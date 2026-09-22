@@ -26,6 +26,9 @@
       --font-body: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
       --font-quote: "Noto Serif KR", serif;
     }
+    html {
+      scroll-behavior: smooth;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body {
       background-color: #F8F9FA;
@@ -50,7 +53,7 @@
     .slim-header {
       border-bottom: 1px solid var(--line);
       padding-bottom: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     /* 1줄: 상단 브랜드 및 지난 목록 */
     .header-top-row {
@@ -118,8 +121,101 @@
       cursor: default;
     }
 
+    /* 상단 오늘의 핵심 주제 목차 (TOC) */
+    .toc-card {
+      background: var(--gray-bg);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 11px 14px;
+      margin-bottom: 22px;
+    }
+    .toc-details {
+      width: 100%;
+    }
+    .toc-summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      outline: none;
+    }
+    .toc-summary::-webkit-details-marker {
+      display: none;
+    }
+    .toc-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .toc-chevron::after {
+      content: "▾";
+      font-size: 13px;
+      color: var(--gray-mid);
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    details[open] .toc-chevron::after {
+      transform: rotate(180deg);
+    }
+    .toc-list {
+      list-style: none;
+      margin-top: 9px;
+      padding-top: 8px;
+      border-top: 1px solid #E2E8F0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .toc-item {
+      margin: 0;
+      padding: 0;
+    }
+    .toc-link {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      line-height: 1.45;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .toc-link:hover, .toc-link:active {
+      background: var(--blue-tint);
+      color: var(--blue-primary);
+    }
+    .toc-item-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      background: var(--blue-tint);
+      color: var(--blue-primary);
+      font-size: 11px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .toc-link:hover .toc-item-num {
+      background: var(--blue-primary);
+      color: var(--white);
+    }
+    .toc-item-title {
+      font-weight: 600;
+      word-break: keep-all;
+    }
+
     /* 주제별 카드 */
     .topic-card {
+      scroll-margin-top: 16px;
       margin-bottom: 26px;
       border-bottom: 1px solid var(--line);
       padding-bottom: 22px;
@@ -654,6 +750,75 @@
     </header>
 
     <main id="article-content">
+      
+    <nav class="toc-card" aria-label="오늘의 주제 목차">
+      <details class="toc-details" open>
+        <summary class="toc-summary">
+          <span class="toc-title">📑 오늘의 주제 목차 (8)</span>
+          <span class="toc-chevron" aria-hidden="true"></span>
+        </summary>
+        <ol class="toc-list">
+          
+            <li class="toc-item">
+              <a href="#topic-1" class="toc-link">
+                <span class="toc-item-num">1</span>
+                <span class="toc-item-title">JEV(제브) 하루 종일 실전 테스트 총정리</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-2" class="toc-link">
+                <span class="toc-item-num">2</span>
+                <span class="toc-item-title">구독료 소진·리셋 스트레스 밈</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-3" class="toc-link">
+                <span class="toc-item-num">3</span>
+                <span class="toc-item-title">파이썬이 에이전트 오케스트레이션의 병목인가 논쟁</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-4" class="toc-link">
+                <span class="toc-item-num">4</span>
+                <span class="toc-item-title">로컬 VLM 재난생존 앱 '포켓 서바이벌'</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-5" class="toc-link">
+                <span class="toc-item-num">5</span>
+                <span class="toc-item-title">브라우저 자동화 도구 비교 — aside vs playwright vs ego lite</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-6" class="toc-link">
+                <span class="toc-item-num">6</span>
+                <span class="toc-item-title">AI로 달라진 QA·테스트 생산성 체감</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-7" class="toc-link">
+                <span class="toc-item-num">7</span>
+                <span class="toc-item-title">업계 소식</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-8" class="toc-link">
+                <span class="toc-item-num">8</span>
+                <span class="toc-item-title">아스트라로 영상 만들어 수익화 재개</span>
+              </a>
+            </li>
+          
+        </ol>
+      </details>
+    </nav>
+  
       
 <section class="topic-card" id="topic-1">
   <div class="topic-header">

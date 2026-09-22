@@ -26,6 +26,9 @@
       --font-body: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
       --font-quote: "Noto Serif KR", serif;
     }
+    html {
+      scroll-behavior: smooth;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body {
       background-color: #F8F9FA;
@@ -50,7 +53,7 @@
     .slim-header {
       border-bottom: 1px solid var(--line);
       padding-bottom: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     /* 1줄: 상단 브랜드 및 지난 목록 */
     .header-top-row {
@@ -118,8 +121,101 @@
       cursor: default;
     }
 
+    /* 상단 오늘의 핵심 주제 목차 (TOC) */
+    .toc-card {
+      background: var(--gray-bg);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 11px 14px;
+      margin-bottom: 22px;
+    }
+    .toc-details {
+      width: 100%;
+    }
+    .toc-summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      outline: none;
+    }
+    .toc-summary::-webkit-details-marker {
+      display: none;
+    }
+    .toc-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .toc-chevron::after {
+      content: "▾";
+      font-size: 13px;
+      color: var(--gray-mid);
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    details[open] .toc-chevron::after {
+      transform: rotate(180deg);
+    }
+    .toc-list {
+      list-style: none;
+      margin-top: 9px;
+      padding-top: 8px;
+      border-top: 1px solid #E2E8F0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .toc-item {
+      margin: 0;
+      padding: 0;
+    }
+    .toc-link {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      line-height: 1.45;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .toc-link:hover, .toc-link:active {
+      background: var(--blue-tint);
+      color: var(--blue-primary);
+    }
+    .toc-item-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      background: var(--blue-tint);
+      color: var(--blue-primary);
+      font-size: 11px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .toc-link:hover .toc-item-num {
+      background: var(--blue-primary);
+      color: var(--white);
+    }
+    .toc-item-title {
+      font-weight: 600;
+      word-break: keep-all;
+    }
+
     /* 주제별 카드 */
     .topic-card {
+      scroll-margin-top: 16px;
       margin-bottom: 26px;
       border-bottom: 1px solid var(--line);
       padding-bottom: 22px;
@@ -654,6 +750,75 @@
     </header>
 
     <main id="article-content">
+      
+    <nav class="toc-card" aria-label="오늘의 주제 목차">
+      <details class="toc-details" open>
+        <summary class="toc-summary">
+          <span class="toc-title">📑 오늘의 주제 목차 (8)</span>
+          <span class="toc-chevron" aria-hidden="true"></span>
+        </summary>
+        <ol class="toc-list">
+          
+            <li class="toc-item">
+              <a href="#topic-1" class="toc-link">
+                <span class="toc-item-num">1</span>
+                <span class="toc-item-title">GPT-6 Sol 출시설과 아스트라·루나·솔 넘버링 혼란</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-2" class="toc-link">
+                <span class="toc-item-num">2</span>
+                <span class="toc-item-title">AI 토큰 예산과 사용량 한도 신경전</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-3" class="toc-link">
+                <span class="toc-item-num">3</span>
+                <span class="toc-item-title">로컬 LLM 180B 자작과 오픈라우터 실측 리더보드</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-4" class="toc-link">
+                <span class="toc-item-num">4</span>
+                <span class="toc-item-title">aside와 코덱스 브라우저 자동화 비교</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-5" class="toc-link">
+                <span class="toc-item-num">5</span>
+                <span class="toc-item-title">코덱스 429 에러와 리셋 갈망</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-6" class="toc-link">
+                <span class="toc-item-num">6</span>
+                <span class="toc-item-title">STT 정확도(CER) 개선과 화자분리 파이프라인</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-7" class="toc-link">
+                <span class="toc-item-num">7</span>
+                <span class="toc-item-title">Jev — 확률 기반 AI 모델</span>
+              </a>
+            </li>
+          
+            <li class="toc-item">
+              <a href="#topic-8" class="toc-link">
+                <span class="toc-item-num">8</span>
+                <span class="toc-item-title">업계 소식</span>
+              </a>
+            </li>
+          
+        </ol>
+      </details>
+    </nav>
+  
       
 <section class="topic-card" id="topic-1">
   <div class="topic-header">
