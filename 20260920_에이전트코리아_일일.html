@@ -46,18 +46,51 @@
       border: 1px solid var(--line);
     }
     
-    /* 슬림 2줄 통합 네비게이션 헤더 (제안 A: 상단 건수 제거 및 슬림화) */
+    /* 상단 슬림 2줄 네비게이션 헤더 */
     .slim-header {
       border-bottom: 1px solid var(--line);
       padding-bottom: 12px;
       margin-bottom: 20px;
     }
+    /* 1줄: 상단 브랜드 및 지난 목록 */
+    .header-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .header-brand-badge {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue-primary);
+      background: var(--blue-tint);
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: -0.2px;
+    }
+    .archive-toggle-btn {
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.15s;
+    }
+    .archive-toggle-btn:hover {
+      background: var(--gray-bg);
+    }
+    /* 2줄: 날짜 네비게이션 (캘린더 이모지 제거, 순수 타이포그래피) */
     .header-nav-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
-      margin-bottom: 8px;
     }
     .header-date-title {
       font-family: var(--font-display);
@@ -83,36 +116,6 @@
       color: var(--gray-light);
       background: var(--gray-bg);
       cursor: default;
-    }
-    .header-sub-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .header-brand-badge {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--blue-primary);
-      background: var(--blue-tint);
-      padding: 3px 8px;
-      border-radius: 4px;
-    }
-    .archive-toggle-btn {
-      border: 1px solid var(--line);
-      background: var(--white);
-      color: var(--ink);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 20px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: background 0.15s;
-    }
-    .archive-toggle-btn:hover {
-      background: var(--gray-bg);
     }
 
     /* 주제별 카드 */
@@ -159,7 +162,7 @@
       margin-bottom: 14px;
       text-align: justify;
       word-break: keep-all;
-      transition: background-color 0.2s ease, border 0.2s ease;
+      line-height: 1.7;
     }
     .quote-item {
       background: var(--gray-bg);
@@ -167,7 +170,6 @@
       padding: 10px 12px;
       border-radius: 0 8px 8px 0;
       margin-bottom: 8px;
-      transition: background-color 0.2s ease, border 0.2s ease;
     }
     .quote-meta {
       font-size: 12px;
@@ -191,7 +193,6 @@
       border-radius: 8px;
       padding: 12px 14px;
       margin-top: 14px;
-      transition: background-color 0.2s ease, border 0.2s ease;
     }
     .idea-label {
       font-size: 12px;
@@ -207,20 +208,16 @@
       word-break: keep-all;
     }
 
-    /* 하이라이트 활성화 스타일 (DOM 반영) */
-    .summary-text.user-hl-active {
+    /* 문장 단위 형광펜 활성화 스타일 (디테일 선택) */
+    .hl-sent {
+      display: inline;
+      border-radius: 3px;
+      padding: 1px 2px;
+      transition: background-color 0.15s ease;
+    }
+    .hl-sent.user-hl-active {
       background-color: var(--hl-bg);
-      border-left: 3px solid var(--hl-border);
-      padding: 6px 10px;
-      border-radius: 4px;
-    }
-    .quote-item.user-hl-active {
-      background-color: #FEF9C3;
-      border-left: 4px solid var(--hl-border);
-    }
-    .idea-card.user-hl-active {
-      background-color: #FEF08A;
-      border-color: var(--hl-border);
+      border-bottom: 2px solid var(--hl-border);
     }
     mark.user-hl {
       background-color: var(--hl-bg);
@@ -231,12 +228,13 @@
     }
 
     /* 형광펜 모드 ON 일 때 타깃 스타일 */
-    body.hl-mode-active .hl-target {
+    body.hl-mode-active .hl-sent.hl-target {
       cursor: pointer;
     }
-    body.hl-mode-active .hl-target:hover {
-      outline: 2px dashed #EAB308;
-      outline-offset: 2px;
+    body.hl-mode-active .hl-sent.hl-target:hover {
+      background-color: #FEF9C3;
+      outline: 1px dashed #EAB308;
+      outline-offset: 1px;
     }
 
     /* 하단 플로팅 컨트롤 바 (항상 노출) */
@@ -436,7 +434,7 @@
       align-items: center;
       justify-content: space-between;
     }
-    .drawer-title { font-size: 17px; font-weight: 800; }
+    .drawer-title { font-size: 16.5px; font-weight: 800; color: var(--ink); }
     .drawer-close {
       background: none;
       border: none;
@@ -499,7 +497,7 @@
       cursor: pointer;
     }
 
-    /* 아카이브 목록 모달 */
+    /* 아카이브 목록 모달 (캘린더 이모지 제거, 블루 도트 적용) */
     .archive-modal {
       position: fixed;
       inset: 0;
@@ -521,9 +519,10 @@
       flex-direction: column;
     }
     .archive-dialog h3 {
-      font-size: 17px;
+      font-size: 16.5px;
       margin-bottom: 14px;
       font-weight: 800;
+      color: var(--ink);
     }
     .archive-ul {
       list-style: none;
@@ -554,6 +553,18 @@
       justify-content: space-between;
       margin-bottom: 6px;
     }
+    .arch-date-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .arch-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue-primary);
+      display: inline-block;
+    }
     .arch-date {
       font-size: 15px;
       font-weight: 700;
@@ -572,7 +583,7 @@
     }
     .arch-topic-list {
       list-style: none;
-      padding-left: 4px;
+      padding-left: 12px;
     }
     .arch-topic-list li {
       border: none !important;
@@ -618,16 +629,16 @@
 </head>
 <body>
   <div class="container">
-    <!-- 슬림 2줄 통합 네비게이션 헤더 (제안 A: 상단 건수 제거 및 슬림화) -->
+    <!-- 상단 2줄 헤더: 1줄(브랜드 + 지난 목록) / 2줄(이전 · 날짜 · 다음) -->
     <header class="slim-header">
+      <div class="header-top-row">
+        <span class="header-brand-badge">에이전트코리아 단톡방 랩업</span>
+        <button class="archive-toggle-btn" id="btn-open-archive">지난 목록 (6)</button>
+      </div>
       <div class="header-nav-row">
         <a href="20260919_에이전트코리아_일일.html" class="nav-btn" title="2026-09-19">◀ 09-19</a>
-        <h1 class="header-date-title">📅 2026-09-20 (일)</h1>
+        <h1 class="header-date-title">2026-09-20 (일)</h1>
         <a href="20260921_에이전트코리아_일일.html" class="nav-btn" title="2026-09-21">09-21 ▶</a>
-      </div>
-      <div class="header-sub-row">
-        <span class="header-brand-badge">에이전트코리아 단톡방 랩업</span>
-        <button class="archive-toggle-btn" id="btn-open-archive">📚 지난 목록 (6)</button>
       </div>
     </header>
 
@@ -639,43 +650,43 @@
     <h3 class="topic-title">JEV 화제: OCR 평가·저렴한 가격, 그리고 직접 따라 만든 재현 실험</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text hl-target" data-hl-id="t1-p1">JEV(TypeSafe AI)는 초대 대기와 함께 OCR 평가가 오갔고, 표 정확도는 아쉽다는 반응이 있었다. 저렴한 가격을 두고는 따라 만들기 쉬운 모델이라서 싸게 책정했다는 추측도 나왔다. P016은 GLM·Qwen을 개조한 모델의 정답률이 96%로 JEV(94%)를 넘었다고 공유했고, JEV가 더 싸고 빠르다는 점은 함정이라고 덧붙였다. Aside에 JEV를 연동해 본 사람도 있었지만 활용법은 더 고민 중이라고 했다.</p>
+    <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t1-s1">JEV(TypeSafe AI)는 초대 대기와 함께 OCR 평가가 오갔고, 표 정확도는 아쉽다는 반응이 있었다.</span> <span class="hl-sent hl-target" data-hl-id="t1-s2">저렴한 가격을 두고는 따라 만들기 쉬운 모델이라서 싸게 책정했다는 추측도 나왔다.</span> <span class="hl-sent hl-target" data-hl-id="t1-s3">P016은 GLM·Qwen을 개조한 모델의 정답률이 96%로 JEV(94%)를 넘었다고 공유했고, JEV가 더 싸고 빠르다는 점은 함정이라고 덧붙였다.</span> <span class="hl-sent hl-target" data-hl-id="t1-s4">Aside에 JEV를 연동해 본 사람도 있었지만 활용법은 더 고민 중이라고 했다.</span></p>
 
-    <div class="quote-item hl-target" data-hl-id="t1-q1">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P010</span>
         <span class="quote-time">09-19 09:36</span>
       </div>
-      <blockquote class="quote-text">"표 쪽 정확도만 살짝 아쉽고"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t1-s5">"표 쪽 정확도만 살짝 아쉽고"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t1-q2">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P016</span>
         <span class="quote-time">09-19 10:32</span>
       </div>
-      <blockquote class="quote-text">"정답율은 jev 94퍼 glm 마개조 96퍼"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t1-s6">"정답율은 jev 94퍼 glm 마개조 96퍼"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t1-q3">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P017</span>
         <span class="quote-time">09-19 10:33</span>
       </div>
-      <blockquote class="quote-text">"따라 만들기 쉬운 모델"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t1-s7">"따라 만들기 쉬운 모델"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t1-q4">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P017</span>
         <span class="quote-time">09-19 12:32</span>
       </div>
-      <blockquote class="quote-text">"MCP라우터로 API 묶었어요"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t1-s8">"MCP라우터로 API 묶었어요"</span></blockquote>
     </div>
 
-    <div class="idea-card hl-target" data-hl-id="t1-i1">
+    <div class="idea-card">
       <div class="idea-label">✍️ 글감 각도</div>
-      <p class="idea-text">화제의 신모델을 며칠 만에 직접 재현·비교해 본 사람들의 실험을 통해, 모델의 가격 정책에 담긴 의도를 읽는 관점.</p>
+      <p class="idea-text"><span class="hl-sent hl-target" data-hl-id="t1-s9">화제의 신모델을 며칠 만에 직접 재현·비교해 본 사람들의 실험을 통해, 모델의 가격 정책에 담긴 의도를 읽는 관점.</span></p>
     </div>
 </div></section>
 
@@ -685,43 +696,43 @@
     <h3 class="topic-title">GPT 2.5 이후 이미지는 이미 충분한가 — 출판 현장의 AI 슬롭과 납본 악용</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text hl-target" data-hl-id="t2-p1">새 이미지 모델 루머에는 기대가 없다는 반응이 나왔고, P007은 일반인에게는 지금 수준이면 충분하다고 봤다. 이야기는 전자책 제작 도구(북포지)와 출판 비용으로 이어졌다. 이어서 AI로 책을 양산해 납본 제도를 악용하는 사례를 비판하며, 사람이 지켜야 할 선이 있다는 의견이 이어졌다. P024는 AI가 일반인 수준까지 퍼지면 윤리의식이 더 중요해질 것이라고 했다.</p>
+    <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t2-s1">새 이미지 모델 루머에는 기대가 없다는 반응이 나왔고, P007은 일반인에게는 지금 수준이면 충분하다고 봤다.</span> <span class="hl-sent hl-target" data-hl-id="t2-s2">이야기는 전자책 제작 도구(북포지)와 출판 비용으로 이어졌다.</span> <span class="hl-sent hl-target" data-hl-id="t2-s3">이어서 AI로 책을 양산해 납본 제도를 악용하는 사례를 비판하며, 사람이 지켜야 할 선이 있다는 의견이 이어졌다.</span> <span class="hl-sent hl-target" data-hl-id="t2-s4">P024는 AI가 일반인 수준까지 퍼지면 윤리의식이 더 중요해질 것이라고 했다.</span></p>
 
-    <div class="quote-item hl-target" data-hl-id="t2-q1">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P007</span>
         <span class="quote-time">09-19 21:46</span>
       </div>
-      <blockquote class="quote-text">"기대가안됨.."</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t2-s5">"기대가안됨.."</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t2-q2">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P007</span>
         <span class="quote-time">09-19 21:47</span>
       </div>
-      <blockquote class="quote-text">"딱이수준이면 끝임"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t2-s6">"딱이수준이면 끝임"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t2-q3">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P007</span>
         <span class="quote-time">09-19 21:55</span>
       </div>
-      <blockquote class="quote-text">"한권찍을때 api비용으로 대충 3천원나오거든요"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t2-s7">"한권찍을때 api비용으로 대충 3천원나오거든요"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t2-q4">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P007</span>
         <span class="quote-time">09-19 21:57</span>
       </div>
-      <blockquote class="quote-text">"사람이 지켜야하는 선이있는데"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t2-s8">"사람이 지켜야하는 선이있는데"</span></blockquote>
     </div>
 
-    <div class="idea-card hl-target" data-hl-id="t2-i1">
+    <div class="idea-card">
       <div class="idea-label">✍️ 글감 각도</div>
-      <p class="idea-text">책 한 권 제작비가 API 비용 3천 원대로 내려온 시대에, 「할 수 있는 것」과 「해선 안 되는 것」의 경계를 콘텐츠 제작자 관점에서 다루는 글.</p>
+      <p class="idea-text"><span class="hl-sent hl-target" data-hl-id="t2-s9">책 한 권 제작비가 API 비용 3천 원대로 내려온 시대에, 「할 수 있는 것」과 「해선 안 되는 것」의 경계를 콘텐츠 제작자 관점에서 다루는 글.</span></p>
     </div>
 </div></section>
 
@@ -731,43 +742,43 @@
     <h3 class="topic-title">손글씨 한글·수식 OCR: 제미나이가 틀린 답을 멋대로 고치는 문제</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text hl-target" data-hl-id="t3-p1">P022가 손글씨 한글·분수 인식률이 낮다고 묻자, OCR보다 VQA 모델을 쓰라는 답과 손글씨 대응 도구 조합 제안이 나왔다. 제미나이가 서술형 답안의 오타나 틀린 답까지 옳게 고쳐 버린다는 불만에는, 「고치지 말고 보이는 그대로 옮겨 적어라」는 프롬프트 예시가 공유됐다. 수식은 LaTeX 변환 도구(Mathpix, Pix2Text 등)를 조합하라는 제안이 있었다.</p>
+    <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t3-s1">P022가 손글씨 한글·분수 인식률이 낮다고 묻자, OCR보다 VQA 모델을 쓰라는 답과 손글씨 대응 도구 조합 제안이 나왔다.</span> <span class="hl-sent hl-target" data-hl-id="t3-s2">제미나이가 서술형 답안의 오타나 틀린 답까지 옳게 고쳐 버린다는 불만에는, 「고치지 말고 보이는 그대로 옮겨 적어라」는 프롬프트 예시가 공유됐다.</span> <span class="hl-sent hl-target" data-hl-id="t3-s3">수식은 LaTeX 변환 도구(Mathpix, Pix2Text 등)를 조합하라는 제안이 있었다.</span></p>
 
-    <div class="quote-item hl-target" data-hl-id="t3-q1">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P010</span>
         <span class="quote-time">09-19 11:21</span>
       </div>
-      <blockquote class="quote-text">"손글씨는 vqa 모델들 추천드려요"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t3-s4">"손글씨는 vqa 모델들 추천드려요"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t3-q2">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P022</span>
         <span class="quote-time">09-19 11:35</span>
       </div>
-      <blockquote class="quote-text">"답변 감사합니다! 제미나이로 인식 시켜봤을 때는 서술형 답안의 오타나 틀린 답도 지가 멋대로 옳게 고쳐놓고"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t3-s5">"답변 감사합니다! 제미나이로 인식 시켜봤을 때는 서술형 답안의 오타나 틀린 답도 지가 멋대로 옳게 고쳐놓고"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t3-q3">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P027</span>
         <span class="quote-time">09-19 11:38</span>
       </div>
-      <blockquote class="quote-text">"[역할 및 원칙] / 당신은 지능형 문제 해결사가 아닌 기계적 텍스트 복사기(Verbatim Transcriber)입니다."</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t3-s6">"[역할 및 원칙] / 당신은 지능형 문제 해결사가 아닌 기계적 텍스트 복사기(Verbatim Transcriber)입니다."</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t3-q4">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P027</span>
         <span class="quote-time">09-19 11:56</span>
       </div>
-      <blockquote class="quote-text">"제미니는 vlm이라 latex코드 인식은 잘되지만, 수식을 latex코드로 불러내면서 오류를 만들어내는거고"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t3-s7">"제미니는 vlm이라 latex코드 인식은 잘되지만, 수식을 latex코드로 불러내면서 오류를 만들어내는거고"</span></blockquote>
     </div>
 
-    <div class="idea-card hl-target" data-hl-id="t3-i1">
+    <div class="idea-card">
       <div class="idea-label">✍️ 글감 각도</div>
-      <p class="idea-text">AI가 「똑똑하게 고쳐 주는」 성질이 전사 작업에서는 오히려 결함이 되고, 프롬프트로 역할을 좁혀 해결할 수 있다는 강의용 사례.</p>
+      <p class="idea-text"><span class="hl-sent hl-target" data-hl-id="t3-s8">AI가 「똑똑하게 고쳐 주는」 성질이 전사 작업에서는 오히려 결함이 되고, 프롬프트로 역할을 좁혀 해결할 수 있다는 강의용 사례.</span></p>
     </div>
 </div></section>
 
@@ -777,43 +788,43 @@
     <h3 class="topic-title">아스트라 사용감: 한도 리셋 대기, 지시를 어기고 사과·동의만 반복</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text hl-target" data-hl-id="t4-p1">사용량 리셋 시간을 기다린다는 얘기가 여러 명에게서 나왔다. P013은 크레딧을 충전했다가 질문 한 번에 소진된 경험을 전했다. 리셋 뒤에는 아스트라가 시킨 대로 하지 않고 사과와 동의만 반복한다는 불만이 나왔다. P013은 개인 지시사항으로 사과·동의 없이 수정만 하게 했고, P041은 돌아가는 안 대신 단순한 Z안을 제안하니 바로 수긍했다고 전했다. P050은 추론 수준이 low인지 최대인지 물었고, P041과 P013은 high라고 답했다.</p>
+    <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t4-s1">사용량 리셋 시간을 기다린다는 얘기가 여러 명에게서 나왔다.</span> <span class="hl-sent hl-target" data-hl-id="t4-s2">P013은 크레딧을 충전했다가 질문 한 번에 소진된 경험을 전했다.</span> <span class="hl-sent hl-target" data-hl-id="t4-s3">리셋 뒤에는 아스트라가 시킨 대로 하지 않고 사과와 동의만 반복한다는 불만이 나왔다.</span> <span class="hl-sent hl-target" data-hl-id="t4-s4">P013은 개인 지시사항으로 사과·동의 없이 수정만 하게 했고, P041은 돌아가는 안 대신 단순한 Z안을 제안하니 바로 수긍했다고 전했다.</span> <span class="hl-sent hl-target" data-hl-id="t4-s5">P050은 추론 수준이 low인지 최대인지 물었고, P041과 P013은 high라고 답했다.</span></p>
 
-    <div class="quote-item hl-target" data-hl-id="t4-q1">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P013</span>
         <span class="quote-time">09-19 14:30</span>
       </div>
-      <blockquote class="quote-text">"질문 한방에 0%"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t4-s6">"질문 한방에 0%"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t4-q2">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P013</span>
         <span class="quote-time">09-19 20:48</span>
       </div>
-      <blockquote class="quote-text">"아스트라 갑자기 바보된 기분"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t4-s7">"아스트라 갑자기 바보된 기분"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t4-q3">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P013</span>
         <span class="quote-time">09-19 20:55</span>
       </div>
-      <blockquote class="quote-text">"사과나 동의 하지말고 수정을 하라고"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t4-s8">"사과나 동의 하지말고 수정을 하라고"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t4-q4">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P041</span>
         <span class="quote-time">09-19 21:15</span>
       </div>
-      <blockquote class="quote-text">"ㅋㅋㅋㅋㅋㅋ 전 A안 B안 C안을 주는데 다 너무 돌아가는거길래 그냥 심플하게 Z안이면 되지않아?"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t4-s9">"ㅋㅋㅋㅋㅋㅋ 전 A안 B안 C안을 주는데 다 너무 돌아가는거길래 그냥 심플하게 Z안이면 되지않아?"</span></blockquote>
     </div>
 
-    <div class="idea-card hl-target" data-hl-id="t4-i1">
+    <div class="idea-card">
       <div class="idea-label">✍️ 글감 각도</div>
-      <p class="idea-text">AI가 "맞습니다"만 반복할 때 사용자가 개인 지시사항으로 태도를 고치는 방법과 그 한계.</p>
+      <p class="idea-text"><span class="hl-sent hl-target" data-hl-id="t4-s10">AI가 "맞습니다"만 반복할 때 사용자가 개인 지시사항으로 태도를 고치는 방법과 그 한계.</span></p>
     </div>
 </div></section>
 
@@ -823,35 +834,35 @@
     <h3 class="topic-title">Claude Code, AGENTS.md 공식 지원 (v2.1.277)</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text hl-target" data-hl-id="t5-p1">P002가 Claude Code가 AGENTS.md를 공식 지원한다고 공유했다. 기본 설정은 CLAUDE.md가 있으면 CLAUDE.md만 읽으므로, 둘 다 읽으려면 설정을 바꿔야 한다는 주의점도 함께 정리했다. 기존에 CLAUDE.md와 AGENTS.md를 같이 쓰던 사람은 구조를 확인하라는 권고가 붙었다. 반응은 지금까지 안 됐다는 놀람과, 구독 지원이 끊기니 들어온 것 같다는 추측이 나왔다.</p>
+    <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t5-s1">P002가 Claude Code가 AGENTS.md를 공식 지원한다고 공유했다.</span> <span class="hl-sent hl-target" data-hl-id="t5-s2">기본 설정은 CLAUDE.md가 있으면 CLAUDE.md만 읽으므로, 둘 다 읽으려면 설정을 바꿔야 한다는 주의점도 함께 정리했다.</span> <span class="hl-sent hl-target" data-hl-id="t5-s3">기존에 CLAUDE.md와 AGENTS.md를 같이 쓰던 사람은 구조를 확인하라는 권고가 붙었다.</span> <span class="hl-sent hl-target" data-hl-id="t5-s4">반응은 지금까지 안 됐다는 놀람과, 구독 지원이 끊기니 들어온 것 같다는 추측이 나왔다.</span></p>
 
-    <div class="quote-item hl-target" data-hl-id="t5-q1">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P002</span>
         <span class="quote-time">09-19 08:08</span>
       </div>
-      <blockquote class="quote-text">"안녕하세요, AI영끌맨이에요 🙌 / 📢 Claude Code가 드디어 AGENTS.md를 공식 지원합니다."</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t5-s5">"안녕하세요, AI영끌맨이에요 🙌 / 📢 Claude Code가 드디어 AGENTS.md를 공식 지원합니다."</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t5-q2">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P003</span>
         <span class="quote-time">09-19 08:16</span>
       </div>
-      <blockquote class="quote-text">"감사합니다. 지금까지 안 됐었다니.."</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t5-s6">"감사합니다. 지금까지 안 됐었다니.."</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t5-q3">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P002</span>
         <span class="quote-time">09-19 08:18</span>
       </div>
-      <blockquote class="quote-text">"ㅠ 클로드 구독지원이 끊기니 들어왓군야"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t5-s7">"ㅠ 클로드 구독지원이 끊기니 들어왓군야"</span></blockquote>
     </div>
 
-    <div class="idea-card hl-target" data-hl-id="t5-i1">
+    <div class="idea-card">
       <div class="idea-label">✍️ 글감 각도</div>
-      <p class="idea-text">Claude Code·Codex·Cursor를 함께 쓰는 사람이 프로젝트 규칙 파일을 AGENTS.md 하나로 통일할 때 확인할 점.</p>
+      <p class="idea-text"><span class="hl-sent hl-target" data-hl-id="t5-s8">Claude Code·Codex·Cursor를 함께 쓰는 사람이 프로젝트 규칙 파일을 AGENTS.md 하나로 통일할 때 확인할 점.</span></p>
     </div>
 </div></section>
 
@@ -861,43 +872,43 @@
     <h3 class="topic-title">OpenAI 법률 특화 서비스와 주니어 일자리 논쟁</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text hl-target" data-hl-id="t6-p1">P024가 OpenAI의 법률 특화 서비스 Astra for Law 출시를 공유했다. 변호사를 대체하기보다 로펌이 사다 쓰는 보조 도구라는 반론과, 최종 책임은 사용하는 변호사 몫이라는 의견이 나왔다. P008은 상대가 쓰면 나도 안 쓸 수 없다는 경쟁 논리를 짚었다. P053은 회계·법·개발에서 주니어부터 채용이 줄고 있다고 말했다.</p>
+    <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t6-s1">P024가 OpenAI의 법률 특화 서비스 Astra for Law 출시를 공유했다.</span> <span class="hl-sent hl-target" data-hl-id="t6-s2">변호사를 대체하기보다 로펌이 사다 쓰는 보조 도구라는 반론과, 최종 책임은 사용하는 변호사 몫이라는 의견이 나왔다.</span> <span class="hl-sent hl-target" data-hl-id="t6-s3">P008은 상대가 쓰면 나도 안 쓸 수 없다는 경쟁 논리를 짚었다.</span> <span class="hl-sent hl-target" data-hl-id="t6-s4">P053은 회계·법·개발에서 주니어부터 채용이 줄고 있다고 말했다.</span></p>
 
-    <div class="quote-item hl-target" data-hl-id="t6-q1">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P024</span>
         <span class="quote-time">09-19 21:59</span>
       </div>
-      <blockquote class="quote-text">"OpenAI가 세계에서 가장 저렴하고 효과적인 변호사를 방금 출시했습니다 / Astra for Law라는 이름입니다."</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t6-s5">"OpenAI가 세계에서 가장 저렴하고 효과적인 변호사를 방금 출시했습니다 / Astra for Law라는 이름입니다."</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t6-q2">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P008</span>
         <span class="quote-time">09-19 22:08</span>
       </div>
-      <blockquote class="quote-text">"아뇨 저건 보조도구예요"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t6-s6">"아뇨 저건 보조도구예요"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t6-q3">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P053</span>
         <span class="quote-time">09-19 22:10</span>
       </div>
-      <blockquote class="quote-text">"변호사들이 쓰도록 만들었군요 최종 책임은 쓰는 사람 몫이니까"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t6-s7">"변호사들이 쓰도록 만들었군요 최종 책임은 쓰는 사람 몫이니까"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t6-q4">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P053</span>
         <span class="quote-time">09-19 22:10</span>
       </div>
-      <blockquote class="quote-text">"회계, 법, 개발 전부 주니어들부터 안뽑기 시작하던데"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t6-s8">"회계, 법, 개발 전부 주니어들부터 안뽑기 시작하던데"</span></blockquote>
     </div>
 
-    <div class="idea-card hl-target" data-hl-id="t6-i1">
+    <div class="idea-card">
       <div class="idea-label">✍️ 글감 각도</div>
-      <p class="idea-text">전문직 AI가 직업을 없애기보다 「안 쓰면 불안한」 경쟁 도구가 되는 구조와, 경력을 쌓을 자리가 줄어드는 문제를 함께 보는 시각.</p>
+      <p class="idea-text"><span class="hl-sent hl-target" data-hl-id="t6-s9">전문직 AI가 직업을 없애기보다 「안 쓰면 불안한」 경쟁 도구가 되는 구조와, 경력을 쌓을 자리가 줄어드는 문제를 함께 보는 시각.</span></p>
     </div>
 </div></section>
 
@@ -907,43 +918,43 @@
     <h3 class="topic-title">맥 단축어를 MCP로 연결: 일정·메일·사진·메모를 에이전트가 바로 접근</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text hl-target" data-hl-id="t7-p1">P018이 맥 단축어(Shortcuts)를 이용한 MCP를 공유했다. 에이전트가 컴퓨터 유즈 없이 일정·메일·사진·메모에 접근한다는 것이다. 메모 앱은 기존에 전체를 내보내서 옵시디언으로 옮겨야 했는데 이제 바로 접근된다고 했다. macOS 27 이상에서만 되고 iOS·iPadOS용은 별도 제작 중이다. 반응은 토큰이 덜 들겠다는 말과 MCP가 뭔지 모르겠다는 초심자 질문이 있었다.</p>
+    <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t7-s1">P018이 맥 단축어(Shortcuts)를 이용한 MCP를 공유했다.</span> <span class="hl-sent hl-target" data-hl-id="t7-s2">에이전트가 컴퓨터 유즈 없이 일정·메일·사진·메모에 접근한다는 것이다.</span> <span class="hl-sent hl-target" data-hl-id="t7-s3">메모 앱은 기존에 전체를 내보내서 옵시디언으로 옮겨야 했는데 이제 바로 접근된다고 했다.</span> <span class="hl-sent hl-target" data-hl-id="t7-s4">macOS 27 이상에서만 되고 iOS·iPadOS용은 별도 제작 중이다.</span> <span class="hl-sent hl-target" data-hl-id="t7-s5">반응은 토큰이 덜 들겠다는 말과 MCP가 뭔지 모르겠다는 초심자 질문이 있었다.</span></p>
 
-    <div class="quote-item hl-target" data-hl-id="t7-q1">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P018</span>
         <span class="quote-time">09-19 23:32</span>
       </div>
-      <blockquote class="quote-text">"https://github.com/Dominic-DK/mac-shortcuts-mcp / 혼자 생각하기에 기깔난거 하나 공유드립니다."</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t7-s6">"https://github.com/Dominic-DK/mac-shortcuts-mcp / 혼자 생각하기에 기깔난거 하나 공유드립니다."</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t7-q2">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P018</span>
         <span class="quote-time">09-19 23:38</span>
       </div>
-      <blockquote class="quote-text">"특히 메모앱같은거. / 인터페이스 열려있는 부분이 없어서 기존 메모 마이그레이션하려면 전체 익스포트해서 에이전트한테 던지고 옵시디언으로 다시 말아줘 이런걸 했었어야했는데 / 이제 그럴필요없이 바로 접근이 가능합니다"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t7-s7">"특히 메모앱같은거. / 인터페이스 열려있는 부분이 없어서 기존 메모 마이그레이션하려면 전체 익스포트해서 에이전트한테 던지고 옵시디언으로 다시 말아줘 이런걸 했었어야했는데 / 이제 그럴필요없이 바로 접근이 가능합니다"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t7-q3">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P053</span>
         <span class="quote-time">09-19 23:37</span>
       </div>
-      <blockquote class="quote-text">"오 토큰 엄청 적게쓰겠네요 감사합니다"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t7-s8">"오 토큰 엄청 적게쓰겠네요 감사합니다"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t7-q4">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P054</span>
         <span class="quote-time">09-19 23:37</span>
       </div>
-      <blockquote class="quote-text">"하 아직 mcp가 뭔지 모르겟어여. 써봐야 알게되는거겟져?"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t7-s9">"하 아직 mcp가 뭔지 모르겟어여. 써봐야 알게되는거겟져?"</span></blockquote>
     </div>
 
-    <div class="idea-card hl-target" data-hl-id="t7-i1">
+    <div class="idea-card">
       <div class="idea-label">✍️ 글감 각도</div>
-      <p class="idea-text">MCP를 「에이전트가 내 앱 데이터에 직접 닿는 통로」로 풀어 설명하는 입문 사례.</p>
+      <p class="idea-text"><span class="hl-sent hl-target" data-hl-id="t7-s10">MCP를 「에이전트가 내 앱 데이터에 직접 닿는 통로」로 풀어 설명하는 입문 사례.</span></p>
     </div>
 </div></section>
 
@@ -953,43 +964,43 @@
     <h3 class="topic-title">업계 소식: 앤트로픽 IPO 추진, 구글 재귀적 자기개선, 나노바나나 2.5 루머</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text hl-target" data-hl-id="t8-p1">앤트로픽이 이르면 11월 거래를 목표로 IPO를 추진한다는 뉴욕타임스 보도가 공유됐다. 기업가치는 최대 2조 달러까지 거론됐다. 구글이 AI 문제 해결에 「재귀적 자기개선」을 도입해 탐색 비용을 162배 줄였다는 기사도 올라왔다. LMArena에 나노바나나 2.5로 추정되는 모델이 보인다는 루머와 로봇 기업 Figure의 Helix 2.5 링크도 공유됐다. 반응은 대체로 「폭풍전야」 같은 짧은 코멘트였다.</p>
+    <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t8-s1">앤트로픽이 이르면 11월 거래를 목표로 IPO를 추진한다는 뉴욕타임스 보도가 공유됐다.</span> <span class="hl-sent hl-target" data-hl-id="t8-s2">기업가치는 최대 2조 달러까지 거론됐다.</span> <span class="hl-sent hl-target" data-hl-id="t8-s3">구글이 AI 문제 해결에 「재귀적 자기개선」을 도입해 탐색 비용을 162배 줄였다는 기사도 올라왔다.</span> <span class="hl-sent hl-target" data-hl-id="t8-s4">LMArena에 나노바나나 2.5로 추정되는 모델이 보인다는 루머와 로봇 기업 Figure의 Helix 2.5 링크도 공유됐다.</span> <span class="hl-sent hl-target" data-hl-id="t8-s5">반응은 대체로 「폭풍전야」 같은 짧은 코멘트였다.</span></p>
 
-    <div class="quote-item hl-target" data-hl-id="t8-q1">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P012</span>
         <span class="quote-time">09-19 10:46</span>
       </div>
-      <blockquote class="quote-text">"구글, AI 문제 해결에 ‘재귀적 자기개선’ 도입...탐색 비용 162배 절감"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t8-s6">"구글, AI 문제 해결에 ‘재귀적 자기개선’ 도입...탐색 비용 162배 절감"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t8-q2">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P024</span>
         <span class="quote-time">09-19 11:27</span>
       </div>
-      <blockquote class="quote-text">"뉴욕타임스는 소식통을 인용해, 앤트로픽이 다리오 아모데이 CEO의 AI 개발 속도 조절 요구로 안전성 논쟁이 한창인 가운데서도 역대 최대 규모가 될 수 있는 IPO를 본격 추진하고 있다고 보도함"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t8-s7">"뉴욕타임스는 소식통을 인용해, 앤트로픽이 다리오 아모데이 CEO의 AI 개발 속도 조절 요구로 안전성 논쟁이 한창인 가운데서도 역대 최대 규모가 될 수 있는 IPO를 본격 추진하고 있다고 보도함"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t8-q3">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P012</span>
         <span class="quote-time">09-19 11:31</span>
       </div>
-      <blockquote class="quote-text">"폭풍전야하니까 부랑ㄴ하네요"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t8-s8">"폭풍전야하니까 부랑ㄴ하네요"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t8-q4">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P026</span>
         <span class="quote-time">09-19 21:46</span>
       </div>
-      <blockquote class="quote-text">"루머) Lmarena 에서 나노바나나 2.5로 추정되는 모델이 있다고 하네요."</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t8-s9">"루머) Lmarena 에서 나노바나나 2.5로 추정되는 모델이 있다고 하네요."</span></blockquote>
     </div>
 
-    <div class="idea-card hl-target" data-hl-id="t8-i1">
+    <div class="idea-card">
       <div class="idea-label">✍️ 글감 각도</div>
-      <p class="idea-text">상장·자기개선 같은 굵직한 소식이 겹친 날, 「AI 업계는 지금 어디에 돈과 시간을 쏟는가」를 한 장으로 묶어 보여주는 브리핑 형식.</p>
+      <p class="idea-text"><span class="hl-sent hl-target" data-hl-id="t8-s10">상장·자기개선 같은 굵직한 소식이 겹친 날, 「AI 업계는 지금 어디에 돈과 시간을 쏟는가」를 한 장으로 묶어 보여주는 브리핑 형식.</span></p>
     </div>
 </div></section>
 
@@ -1008,7 +1019,7 @@
     </footer>
   </div>
 
-  <!-- 하단 플로팅 컨트롤 바 (항상 노출: 원터치 모드 토글 + 내 하이라이트) -->
+  <!-- 하단 플로팅 컨트롤 바 (항상 노출: 문장 단위 모드 토글 + 내 하이라이트) -->
   <div class="floating-controls">
     <button id="btn-toggle-hl-mode" class="fab-hl-toggle" type="button" title="형광펜 모드 켜기/끄기">
       <span class="hl-toggle-icon">🖍️</span>
@@ -1016,7 +1027,7 @@
       <span class="hl-toggle-badge" id="hl-mode-badge">OFF</span>
     </button>
     <button id="btn-open-highlights" class="fab-hl-list" type="button" title="내 하이라이트 모아보기">
-      <span>📑</span>
+      <span>내 메모</span>
       <span class="badge" id="hl-count-badge">0</span>
     </button>
   </div>
@@ -1038,7 +1049,7 @@
   <div class="drawer-overlay" id="drawer-overlay">
     <div class="drawer">
       <div class="drawer-header">
-        <h3 class="drawer-title">📑 오늘 내가 남긴 하이라이트</h3>
+        <h3 class="drawer-title">오늘 내가 남긴 하이라이트</h3>
         <button class="drawer-close" id="btn-close-drawer">✕</button>
       </div>
       <div class="drawer-content" id="drawer-list">
@@ -1054,7 +1065,7 @@
   <div class="archive-modal" id="archive-modal">
     <div class="archive-dialog">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-        <h3>📅 지난 브리핑 목록</h3>
+        <h3>지난 브리핑 목록</h3>
         <button class="drawer-close" id="btn-close-archive">✕</button>
       </div>
       <ul class="archive-ul">
@@ -1062,7 +1073,10 @@
     <li class="">
       <a href="20260922_에이전트코리아_일일.html" class="arch-card">
         <div class="arch-card-header">
-          <span class="arch-date">📅 2026-09-22</span>
+          <div class="arch-date-group">
+            <span class="arch-bullet"></span>
+            <span class="arch-date">2026-09-22 (화)</span>
+          </div>
           <span class="arch-badge">보기</span>
         </div>
         <ul class="arch-topic-list"><li>아스트라 토큰이 몇 번 돌리면 녹는다는 호소와 절약 팁</li><li>JEV, 어디에 쓰나: 데이터 많은 사람에게 강하고 창작…</li><li>코덱스 리셋·솔6 소문, 출처와 리커 신뢰도 논쟁</li><li>AI를 쓸수록 늘어난 일강도와 집중력 저하</li></ul>
@@ -1072,7 +1086,10 @@
     <li class="">
       <a href="20260921_에이전트코리아_일일.html" class="arch-card">
         <div class="arch-card-header">
-          <span class="arch-date">📅 2026-09-21</span>
+          <div class="arch-date-group">
+            <span class="arch-bullet"></span>
+            <span class="arch-date">2026-09-21 (월)</span>
+          </div>
           <span class="arch-badge">보기</span>
         </div>
         <ul class="arch-topic-list"><li>외주 현장: "AI로 딸깍 뽑은 기획서"가 낳는 분쟁</li><li>한도 소진과 리셋 기다림: 아스트라 소모량 하소연</li><li>JEV·ZTC: 로컬 판 공개와 성능 회의론</li><li>AI 덕에 빨라진 일, 오히려 사라진 쉬는 시간</li></ul>
@@ -1082,7 +1099,10 @@
     <li class="active">
       <a href="20260920_에이전트코리아_일일.html" class="arch-card">
         <div class="arch-card-header">
-          <span class="arch-date">📅 2026-09-20</span>
+          <div class="arch-date-group">
+            <span class="arch-bullet"></span>
+            <span class="arch-date">2026-09-20 (일)</span>
+          </div>
           <span class="arch-badge">현재 읽는 중</span>
         </div>
         <ul class="arch-topic-list"><li>JEV 화제: OCR 평가·저렴한 가격, 그리고 직접 따…</li><li>GPT 2.5 이후 이미지는 이미 충분한가 — 출판 현장…</li><li>손글씨 한글·수식 OCR: 제미나이가 틀린 답을 멋대로 …</li><li>아스트라 사용감: 한도 리셋 대기, 지시를 어기고 사과·…</li></ul>
@@ -1092,7 +1112,10 @@
     <li class="">
       <a href="20260919_에이전트코리아_일일.html" class="arch-card">
         <div class="arch-card-header">
-          <span class="arch-date">📅 2026-09-19</span>
+          <div class="arch-date-group">
+            <span class="arch-bullet"></span>
+            <span class="arch-date">2026-09-19 (토)</span>
+          </div>
           <span class="arch-badge">보기</span>
         </div>
         <ul class="arch-topic-list"><li>JEV(제브) 하루 종일 실전 테스트 총정리</li><li>구독료 소진·리셋 스트레스 밈</li><li>파이썬이 에이전트 오케스트레이션의 병목인가 논쟁</li><li>로컬 VLM 재난생존 앱 '포켓 서바이벌'</li></ul>
@@ -1102,7 +1125,10 @@
     <li class="">
       <a href="20260918_에이전트코리아_일일.html" class="arch-card">
         <div class="arch-card-header">
-          <span class="arch-date">📅 2026-09-18</span>
+          <div class="arch-date-group">
+            <span class="arch-bullet"></span>
+            <span class="arch-date">2026-09-18 (금)</span>
+          </div>
           <span class="arch-badge">보기</span>
         </div>
         <ul class="arch-topic-list"><li>Jev(System One) ENUM 판정모델 — 도입파…</li><li>제미나이4 프로 벤치마크 유출설</li><li>리셋권 사수 전쟁과 커지는 AI 구독비용 부담</li><li>AI 다루는 법 — 네거티브리스트 집착과 제미나이 환각 …</li></ul>
@@ -1112,7 +1138,10 @@
     <li class="">
       <a href="20260917_에이전트코리아_일일.html" class="arch-card">
         <div class="arch-card-header">
-          <span class="arch-date">📅 2026-09-17</span>
+          <div class="arch-date-group">
+            <span class="arch-bullet"></span>
+            <span class="arch-date">2026-09-17 (목)</span>
+          </div>
           <span class="arch-badge">보기</span>
         </div>
         <ul class="arch-topic-list"><li>GPT-6 Sol 출시설과 아스트라·루나·솔 넘버링 혼란</li><li>AI 토큰 예산과 사용량 한도 신경전</li><li>로컬 LLM 180B 자작과 오픈라우터 실측 리더보드</li><li>aside와 코덱스 브라우저 자동화 비교</li></ul>
@@ -1174,7 +1203,6 @@
 
       // DOM에 저장된 하이라이트 스타일 복원
       function applySavedHighlights() {
-        // 기존 active 초기화
         document.querySelectorAll(".user-hl-active").forEach(el => el.classList.remove("user-hl-active"));
         highlights.forEach(h => {
           if (h.id) {
@@ -1198,7 +1226,7 @@
           document.body.classList.add("hl-mode-active");
           btnToggleMode.classList.add("active");
           modeBadge.textContent = "ON";
-          showToast("🖍️ 형광펜 모드 ON: 밑줄 칠 문장을 터치하세요!");
+          showToast("🖍️ 형광펜 모드 ON: 원하는 문장을 터치하세요!");
         } else {
           document.body.classList.remove("hl-mode-active");
           btnToggleMode.classList.remove("active");
@@ -1207,7 +1235,7 @@
         }
       });
 
-      // 본문 요소 클릭 (형광펜 모드일 때 즉시 칠하기/해제)
+      // 본문 문장 클릭 (형광펜 모드일 때 문장 1개 단위 칠하기/해제)
       document.getElementById("article-content").addEventListener("click", (e) => {
         if (!hlModeActive) return;
         const target = e.target.closest(".hl-target");

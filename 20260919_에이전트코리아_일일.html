@@ -46,18 +46,51 @@
       border: 1px solid var(--line);
     }
     
-    /* 슬림 2줄 통합 네비게이션 헤더 (제안 A: 상단 건수 제거 및 슬림화) */
+    /* 상단 슬림 2줄 네비게이션 헤더 */
     .slim-header {
       border-bottom: 1px solid var(--line);
       padding-bottom: 12px;
       margin-bottom: 20px;
     }
+    /* 1줄: 상단 브랜드 및 지난 목록 */
+    .header-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .header-brand-badge {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue-primary);
+      background: var(--blue-tint);
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: -0.2px;
+    }
+    .archive-toggle-btn {
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.15s;
+    }
+    .archive-toggle-btn:hover {
+      background: var(--gray-bg);
+    }
+    /* 2줄: 날짜 네비게이션 (캘린더 이모지 제거, 순수 타이포그래피) */
     .header-nav-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
-      margin-bottom: 8px;
     }
     .header-date-title {
       font-family: var(--font-display);
@@ -83,36 +116,6 @@
       color: var(--gray-light);
       background: var(--gray-bg);
       cursor: default;
-    }
-    .header-sub-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .header-brand-badge {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--blue-primary);
-      background: var(--blue-tint);
-      padding: 3px 8px;
-      border-radius: 4px;
-    }
-    .archive-toggle-btn {
-      border: 1px solid var(--line);
-      background: var(--white);
-      color: var(--ink);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 20px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: background 0.15s;
-    }
-    .archive-toggle-btn:hover {
-      background: var(--gray-bg);
     }
 
     /* 주제별 카드 */
@@ -159,7 +162,7 @@
       margin-bottom: 14px;
       text-align: justify;
       word-break: keep-all;
-      transition: background-color 0.2s ease, border 0.2s ease;
+      line-height: 1.7;
     }
     .quote-item {
       background: var(--gray-bg);
@@ -167,7 +170,6 @@
       padding: 10px 12px;
       border-radius: 0 8px 8px 0;
       margin-bottom: 8px;
-      transition: background-color 0.2s ease, border 0.2s ease;
     }
     .quote-meta {
       font-size: 12px;
@@ -191,7 +193,6 @@
       border-radius: 8px;
       padding: 12px 14px;
       margin-top: 14px;
-      transition: background-color 0.2s ease, border 0.2s ease;
     }
     .idea-label {
       font-size: 12px;
@@ -207,20 +208,16 @@
       word-break: keep-all;
     }
 
-    /* 하이라이트 활성화 스타일 (DOM 반영) */
-    .summary-text.user-hl-active {
+    /* 문장 단위 형광펜 활성화 스타일 (디테일 선택) */
+    .hl-sent {
+      display: inline;
+      border-radius: 3px;
+      padding: 1px 2px;
+      transition: background-color 0.15s ease;
+    }
+    .hl-sent.user-hl-active {
       background-color: var(--hl-bg);
-      border-left: 3px solid var(--hl-border);
-      padding: 6px 10px;
-      border-radius: 4px;
-    }
-    .quote-item.user-hl-active {
-      background-color: #FEF9C3;
-      border-left: 4px solid var(--hl-border);
-    }
-    .idea-card.user-hl-active {
-      background-color: #FEF08A;
-      border-color: var(--hl-border);
+      border-bottom: 2px solid var(--hl-border);
     }
     mark.user-hl {
       background-color: var(--hl-bg);
@@ -231,12 +228,13 @@
     }
 
     /* 형광펜 모드 ON 일 때 타깃 스타일 */
-    body.hl-mode-active .hl-target {
+    body.hl-mode-active .hl-sent.hl-target {
       cursor: pointer;
     }
-    body.hl-mode-active .hl-target:hover {
-      outline: 2px dashed #EAB308;
-      outline-offset: 2px;
+    body.hl-mode-active .hl-sent.hl-target:hover {
+      background-color: #FEF9C3;
+      outline: 1px dashed #EAB308;
+      outline-offset: 1px;
     }
 
     /* 하단 플로팅 컨트롤 바 (항상 노출) */
@@ -436,7 +434,7 @@
       align-items: center;
       justify-content: space-between;
     }
-    .drawer-title { font-size: 17px; font-weight: 800; }
+    .drawer-title { font-size: 16.5px; font-weight: 800; color: var(--ink); }
     .drawer-close {
       background: none;
       border: none;
@@ -499,7 +497,7 @@
       cursor: pointer;
     }
 
-    /* 아카이브 목록 모달 */
+    /* 아카이브 목록 모달 (캘린더 이모지 제거, 블루 도트 적용) */
     .archive-modal {
       position: fixed;
       inset: 0;
@@ -521,9 +519,10 @@
       flex-direction: column;
     }
     .archive-dialog h3 {
-      font-size: 17px;
+      font-size: 16.5px;
       margin-bottom: 14px;
       font-weight: 800;
+      color: var(--ink);
     }
     .archive-ul {
       list-style: none;
@@ -554,6 +553,18 @@
       justify-content: space-between;
       margin-bottom: 6px;
     }
+    .arch-date-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .arch-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue-primary);
+      display: inline-block;
+    }
     .arch-date {
       font-size: 15px;
       font-weight: 700;
@@ -572,7 +583,7 @@
     }
     .arch-topic-list {
       list-style: none;
-      padding-left: 4px;
+      padding-left: 12px;
     }
     .arch-topic-list li {
       border: none !important;
@@ -618,16 +629,16 @@
 </head>
 <body>
   <div class="container">
-    <!-- 슬림 2줄 통합 네비게이션 헤더 (제안 A: 상단 건수 제거 및 슬림화) -->
+    <!-- 상단 2줄 헤더: 1줄(브랜드 + 지난 목록) / 2줄(이전 · 날짜 · 다음) -->
     <header class="slim-header">
+      <div class="header-top-row">
+        <span class="header-brand-badge">에이전트코리아 단톡방 랩업</span>
+        <button class="archive-toggle-btn" id="btn-open-archive">지난 목록 (6)</button>
+      </div>
       <div class="header-nav-row">
         <a href="20260918_에이전트코리아_일일.html" class="nav-btn" title="2026-09-18">◀ 09-18</a>
-        <h1 class="header-date-title">📅 2026-09-19 (토)</h1>
+        <h1 class="header-date-title">2026-09-19 (토)</h1>
         <a href="20260920_에이전트코리아_일일.html" class="nav-btn" title="2026-09-20">09-20 ▶</a>
-      </div>
-      <div class="header-sub-row">
-        <span class="header-brand-badge">에이전트코리아 단톡방 랩업</span>
-        <button class="archive-toggle-btn" id="btn-open-archive">📚 지난 목록 (6)</button>
       </div>
     </header>
 
@@ -639,35 +650,35 @@
     <h3 class="topic-title">JEV(제브) 하루 종일 실전 테스트 총정리</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text hl-target" data-hl-id="t1-p1">System One 계열 판별 모델 JEV를 놓고 하루 내내 테스트 후기가 이어졌다. 추론에는 안 맞고 확률 분류·오케스트레이션 라우팅에 강하다는 평가가 다수였고, 재난 대피 시뮬레이션 게임에서 부상자를 버리고 혼자 탈출하는 등 냉혹한 판단 사례도 공유됐다. 저녁에는 하루 동안의 적용 사례를 정리한 필드가이드 링크까지 올라왔다.</p>
+    <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t1-s1">System One 계열 판별 모델 JEV를 놓고 하루 내내 테스트 후기가 이어졌다.</span> <span class="hl-sent hl-target" data-hl-id="t1-s2">추론에는 안 맞고 확률 분류·오케스트레이션 라우팅에 강하다는 평가가 다수였고, 재난 대피 시뮬레이션 게임에서 부상자를 버리고 혼자 탈출하는 등 냉혹한 판단 사례도 공유됐다.</span> <span class="hl-sent hl-target" data-hl-id="t1-s3">저녁에는 하루 동안의 적용 사례를 정리한 필드가이드 링크까지 올라왔다.</span></p>
 
-    <div class="quote-item hl-target" data-hl-id="t1-q1">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P023</span>
         <span class="quote-time">09-18 14:37</span>
       </div>
-      <blockquote class="quote-text">"추론에 써서는 안될 정도긴 합디다"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t1-s4">"추론에 써서는 안될 정도긴 합디다"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t1-q2">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P048</span>
         <span class="quote-time">09-18 14:53</span>
       </div>
-      <blockquote class="quote-text">"다친사람을 데리고 나가야 한다 이런건 안 알려줫는데 판단해서 데리고 나가다가 사망판정 되니깐 버리고 혼자 빠져나가요"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t1-s5">"다친사람을 데리고 나가야 한다 이런건 안 알려줫는데 판단해서 데리고 나가다가 사망판정 되니깐 버리고 혼자 빠져나가요"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t1-q3">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P030</span>
         <span class="quote-time">09-18 23:19</span>
       </div>
-      <blockquote class="quote-text">"LLM인데, 대화하는 LLM은 아니고, 판별력을 가진 쿼리 / 스위칭보드 같은 모델이에요"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t1-s6">"LLM인데, 대화하는 LLM은 아니고, 판별력을 가진 쿼리 / 스위칭보드 같은 모델이에요"</span></blockquote>
     </div>
 
-    <div class="idea-card hl-target" data-hl-id="t1-i1">
+    <div class="idea-card">
       <div class="idea-label">✍️ 글감 각도</div>
-      <p class="idea-text">"모든 LLM이 만능 챗봇일 필요는 없다"는 관점으로, 특화 분류기가 대형 모델보다 나은 사례로 소개.</p>
+      <p class="idea-text"><span class="hl-sent hl-target" data-hl-id="t1-s7">"모든 LLM이 만능 챗봇일 필요는 없다"는 관점으로, 특화 분류기가 대형 모델보다 나은 사례로 소개.</span></p>
     </div>
 </div></section>
 
@@ -677,35 +688,35 @@
     <h3 class="topic-title">구독료 소진·리셋 스트레스 밈</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text hl-target" data-hl-id="t2-p1">GPT·클로드 사용자들이 크레딧이 줄어드는 데서 오는 초조함을 집단적으로 토로했다. "20프로 남으면 아껴야겠다"는 반응부터 클로드 토큰이 예상보다 빨리 줄었다는 의심까지, 구독 한도가 하루 감정을 좌우하는 모습이 반복됐다.</p>
+    <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t2-s1">GPT·클로드 사용자들이 크레딧이 줄어드는 데서 오는 초조함을 집단적으로 토로했다.</span> <span class="hl-sent hl-target" data-hl-id="t2-s2">"20프로 남으면 아껴야겠다"는 반응부터 클로드 토큰이 예상보다 빨리 줄었다는 의심까지, 구독 한도가 하루 감정을 좌우하는 모습이 반복됐다.</span></p>
 
-    <div class="quote-item hl-target" data-hl-id="t2-q1">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P010</span>
         <span class="quote-time">09-18 09:25</span>
       </div>
-      <blockquote class="quote-text">"20프로 정도 남으면 음...아껴야겠군.. / 10프로 이하가면 점점 불안하고 초조하고 / 크래딧이 없으니까......뭔가 무기력하고 ....뭔가 뭐를 해야할지 모르겟고... / 사람이 바꼈습니다ㅋ / 초기화가 사람을 살립니다.ㅋㅋㅋ"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t2-s3">"20프로 정도 남으면 음...아껴야겠군.. / 10프로 이하가면 점점 불안하고 초조하고 / 크래딧이 없으니까......뭔가 무기력하고 ....뭔가 뭐를 해야할지 모르겟고... / 사람이 바꼈습니다ㅋ / 초기화가 사람을 살립니다.ㅋㅋㅋ"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t2-q2">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P022</span>
         <span class="quote-time">09-18 13:15</span>
       </div>
-      <blockquote class="quote-text">"클로드 토큰 다 떨어지니 굉장히 우울하네요"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t2-s4">"클로드 토큰 다 떨어지니 굉장히 우울하네요"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t2-q3">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P023</span>
         <span class="quote-time">09-18 21:06</span>
       </div>
-      <blockquote class="quote-text">"그보다 토큰이 더 줄어든 거 같은 너낌인데.."</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t2-s5">"그보다 토큰이 더 줄어든 거 같은 너낌인데.."</span></blockquote>
     </div>
 
-    <div class="idea-card hl-target" data-hl-id="t2-i1">
+    <div class="idea-card">
       <div class="idea-label">✍️ 글감 각도</div>
-      <p class="idea-text">1인 기업 입장에서 "AI 구독료도 결국 고정비"라는 현실적 비용 관리 글로 풀 수 있음.</p>
+      <p class="idea-text"><span class="hl-sent hl-target" data-hl-id="t2-s6">1인 기업 입장에서 "AI 구독료도 결국 고정비"라는 현실적 비용 관리 글로 풀 수 있음.</span></p>
     </div>
 </div></section>
 
@@ -715,35 +726,35 @@
     <h3 class="topic-title">파이썬이 에이전트 오케스트레이션의 병목인가 논쟁</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text hl-target" data-hl-id="t3-p1">자바 출신 개발자가 파이썬 기반 에이전트 서비스의 인프라 구조를 고민하며 질문을 던지자, 여러 참가자가 "언어 자체는 병목이 아니다"며 실제 프로덕션 경험(워커풀·큐·DB 구성)을 들어 반박했다. 결론은 언어보다 아키텍처 설계가 핵심이라는 쪽으로 모였다.</p>
+    <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t3-s1">자바 출신 개발자가 파이썬 기반 에이전트 서비스의 인프라 구조를 고민하며 질문을 던지자, 여러 참가자가 "언어 자체는 병목이 아니다"며 실제 프로덕션 경험(워커풀·큐·DB 구성)을 들어 반박했다.</span> <span class="hl-sent hl-target" data-hl-id="t3-s2">결론은 언어보다 아키텍처 설계가 핵심이라는 쪽으로 모였다.</span></p>
 
-    <div class="quote-item hl-target" data-hl-id="t3-q1">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P025</span>
         <span class="quote-time">09-18 11:52</span>
       </div>
-      <blockquote class="quote-text">"그래도 결국 내부의 오케스트레이터나 플래너를 파이썬이 담당해야 하는데, 싱글스레드 구조에서는 한계가 있다보니 인프라 구조적으로 맞는지 계속 고민이 들었어요"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t3-s3">"그래도 결국 내부의 오케스트레이터나 플래너를 파이썬이 담당해야 하는데, 싱글스레드 구조에서는 한계가 있다보니 인프라 구조적으로 맞는지 계속 고민이 들었어요"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t3-q2">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P031</span>
         <span class="quote-time">09-18 12:13</span>
       </div>
-      <blockquote class="quote-text">"파이썬병목이 왜걸리는지? 저로썬 이해가 안됩니다"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t3-s4">"파이썬병목이 왜걸리는지? 저로썬 이해가 안됩니다"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t3-q3">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P030</span>
         <span class="quote-time">09-18 12:24</span>
       </div>
-      <blockquote class="quote-text">"사실, 언어가 문제는 아니에요 :) 말씀하신 것 처럼 어떤 인프라를 어떻게 구성해서 그걸 어떤 언어로 소통하게 하냐가 더 중요하죠"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t3-s5">"사실, 언어가 문제는 아니에요 :) 말씀하신 것 처럼 어떤 인프라를 어떻게 구성해서 그걸 어떤 언어로 소통하게 하냐가 더 중요하죠"</span></blockquote>
     </div>
 
-    <div class="idea-card hl-target" data-hl-id="t3-i1">
+    <div class="idea-card">
       <div class="idea-label">✍️ 글감 각도</div>
-      <p class="idea-text">비개발자 대상 강의에서 "도구 탓하기 전에 구조부터 보라"는 메시지로 재구성 가능.</p>
+      <p class="idea-text"><span class="hl-sent hl-target" data-hl-id="t3-s6">비개발자 대상 강의에서 "도구 탓하기 전에 구조부터 보라"는 메시지로 재구성 가능.</span></p>
     </div>
 </div></section>
 
@@ -753,27 +764,27 @@
     <h3 class="topic-title">로컬 VLM 재난생존 앱 '포켓 서바이벌'</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text hl-target" data-hl-id="t4-p1">한 참가자가 갤럭시 S25에서 100% 로컬로 동작하는 재난 대응 VLM 앱을 공개했다. 버섯 사진을 보여주면 독버섯 여부를 알려주고, 확신도가 낮으면 아예 모른다고 답하는 '제로토큰 확신' 기술을 자체 개발해 적용했다는 설명에 참가자들이 놀라움을 표했다.</p>
+    <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t4-s1">한 참가자가 갤럭시 S25에서 100% 로컬로 동작하는 재난 대응 VLM 앱을 공개했다.</span> <span class="hl-sent hl-target" data-hl-id="t4-s2">버섯 사진을 보여주면 독버섯 여부를 알려주고, 확신도가 낮으면 아예 모른다고 답하는 '제로토큰 확신' 기술을 자체 개발해 적용했다는 설명에 참가자들이 놀라움을 표했다.</span></p>
 
-    <div class="quote-item hl-target" data-hl-id="t4-q1">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P036</span>
         <span class="quote-time">09-18 13:54</span>
       </div>
-      <blockquote class="quote-text">"죽고사는 문제니, 확신이 떨어지면 아에 모른다고 솔직하게 답변하게 하는 VLM 제어 기술을 만들어 적용했어요"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t4-s3">"죽고사는 문제니, 확신이 떨어지면 아에 모른다고 솔직하게 답변하게 하는 VLM 제어 기술을 만들어 적용했어요"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t4-q2">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P033</span>
         <span class="quote-time">09-18 13:56</span>
       </div>
-      <blockquote class="quote-text">"위급상황때 진짜 좋겠어요"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t4-s4">"위급상황때 진짜 좋겠어요"</span></blockquote>
     </div>
 
-    <div class="idea-card hl-target" data-hl-id="t4-i1">
+    <div class="idea-card">
       <div class="idea-label">✍️ 글감 각도</div>
-      <p class="idea-text">"AI가 모른다고 말할 줄 아는 것도 기능"이라는 신뢰성 설계 사례로 SNS 소재화 가능.</p>
+      <p class="idea-text"><span class="hl-sent hl-target" data-hl-id="t4-s5">"AI가 모른다고 말할 줄 아는 것도 기능"이라는 신뢰성 설계 사례로 SNS 소재화 가능.</span></p>
     </div>
 </div></section>
 
@@ -783,35 +794,35 @@
     <h3 class="topic-title">브라우저 자동화 도구 비교 — aside vs playwright vs ego lite</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text hl-target" data-hl-id="t5-p1">에이전트가 브라우저를 조작하는 도구들의 체감 차이가 비교됐다. aside는 사람이 보기에 쾌적하고, ego lite는 AI에게 맡기기에 낫다는 평이 나왔고, playwright·CDP 대비 답답함이 덜하다는 반응이 이어졌다.</p>
+    <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t5-s1">에이전트가 브라우저를 조작하는 도구들의 체감 차이가 비교됐다.</span> <span class="hl-sent hl-target" data-hl-id="t5-s2">aside는 사람이 보기에 쾌적하고, ego lite는 AI에게 맡기기에 낫다는 평이 나왔고, playwright·CDP 대비 답답함이 덜하다는 반응이 이어졌다.</span></p>
 
-    <div class="quote-item hl-target" data-hl-id="t5-q1">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P032</span>
         <span class="quote-time">09-18 15:54</span>
       </div>
-      <blockquote class="quote-text">"어사이드는 브라우저가 안에 있고"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t5-s3">"어사이드는 브라우저가 안에 있고"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t5-q2">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P053</span>
         <span class="quote-time">09-18 15:58</span>
       </div>
-      <blockquote class="quote-text">"플레이 라이트, 브라우저 유즈 쓸때의 답답함이 좀 덜하다"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t5-s4">"플레이 라이트, 브라우저 유즈 쓸때의 답답함이 좀 덜하다"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t5-q3">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P029</span>
         <span class="quote-time">09-18 16:16</span>
       </div>
-      <blockquote class="quote-text">"제 개인적인 경험으로는 사람이 보기에는 어사이드가 낫고, AI에게 물려주기에는 ego가 좋았습니다"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t5-s5">"제 개인적인 경험으로는 사람이 보기에는 어사이드가 낫고, AI에게 물려주기에는 ego가 좋았습니다"</span></blockquote>
     </div>
 
-    <div class="idea-card hl-target" data-hl-id="t5-i1">
+    <div class="idea-card">
       <div class="idea-label">✍️ 글감 각도</div>
-      <p class="idea-text">실무 도구 비교표 형태로 "용도별 도구 선택 가이드" 콘텐츠에 활용.</p>
+      <p class="idea-text"><span class="hl-sent hl-target" data-hl-id="t5-s6">실무 도구 비교표 형태로 "용도별 도구 선택 가이드" 콘텐츠에 활용.</span></p>
     </div>
 </div></section>
 
@@ -821,35 +832,35 @@
     <h3 class="topic-title">AI로 달라진 QA·테스트 생산성 체감</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text hl-target" data-hl-id="t6-p1">모바일 앱 테스트를 여러 기기에 병렬로 돌리며 xctest 등으로 95% 이상 자동화됐다는 경험담이 공유됐다. 예전엔 사람이 붙어 있던 반복 검증 작업이 크게 줄면서 "신입을 왜 뽑냐"는 농담 섞인 반응까지 나왔다.</p>
+    <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t6-s1">모바일 앱 테스트를 여러 기기에 병렬로 돌리며 xctest 등으로 95% 이상 자동화됐다는 경험담이 공유됐다.</span> <span class="hl-sent hl-target" data-hl-id="t6-s2">예전엔 사람이 붙어 있던 반복 검증 작업이 크게 줄면서 "신입을 왜 뽑냐"는 농담 섞인 반응까지 나왔다.</span></p>
 
-    <div class="quote-item hl-target" data-hl-id="t6-q1">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P032</span>
         <span class="quote-time">09-18 15:22</span>
       </div>
-      <blockquote class="quote-text">"ㅋㅋㅋ 아 진짜 llm 나온 이후로 오퍼레이팅 하는데 들어가는 시간과 집중력이 말도 못하게 효율화 되서 너무 좋네요"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t6-s3">"ㅋㅋㅋ 아 진짜 llm 나온 이후로 오퍼레이팅 하는데 들어가는 시간과 집중력이 말도 못하게 효율화 되서 너무 좋네요"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t6-q2">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P005</span>
         <span class="quote-time">09-18 15:23</span>
       </div>
-      <blockquote class="quote-text">"심지어 xctest같은걸로 진짜 95%이상 자동화…"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t6-s4">"심지어 xctest같은걸로 진짜 95%이상 자동화…"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t6-q3">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P032</span>
         <span class="quote-time">09-18 15:26</span>
       </div>
-      <blockquote class="quote-text">"신입을 왜 뽑냐 ...."</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t6-s5">"신입을 왜 뽑냐 ...."</span></blockquote>
     </div>
 
-    <div class="idea-card hl-target" data-hl-id="t6-i1">
+    <div class="idea-card">
       <div class="idea-label">✍️ 글감 각도</div>
-      <p class="idea-text">"AI 자동화가 대체하는 건 신입이 아니라 반복 업무"라는 논지로 강의 사례화.</p>
+      <p class="idea-text"><span class="hl-sent hl-target" data-hl-id="t6-s6">"AI 자동화가 대체하는 건 신입이 아니라 반복 업무"라는 논지로 강의 사례화.</span></p>
     </div>
 </div></section>
 
@@ -859,35 +870,35 @@
     <h3 class="topic-title">업계 소식</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text hl-target" data-hl-id="t7-p1">Citi의 AI 토큰 사용량 급증 통계와 스텔스 모델 '유니온 알파', JEV 관련 기사 등 업계 뉴스 공유가 여러 건 이어졌다.</p>
+    <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t7-s1">Citi의 AI 토큰 사용량 급증 통계와 스텔스 모델 '유니온 알파', JEV 관련 기사 등 업계 뉴스 공유가 여러 건 이어졌다.</span></p>
 
-    <div class="quote-item hl-target" data-hl-id="t7-q1">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P018</span>
         <span class="quote-time">09-18 09:50</span>
       </div>
-      <blockquote class="quote-text">"Citi, 월별 AI 토큰 사용량 추이 (Monthly AI Token Usage Trend) / 월평균 복합 성장률 (MoM CAGR, 25년 1월~26년 8월): 31%"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t7-s2">"Citi, 월별 AI 토큰 사용량 추이 (Monthly AI Token Usage Trend) / 월평균 복합 성장률 (MoM CAGR, 25년 1월~26년 8월): 31%"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t7-q2">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P020</span>
         <span class="quote-time">09-18 12:53</span>
       </div>
-      <blockquote class="quote-text">"스텔스 모델 '유니온 알파' 등장..."페이블 5급 성능" < 산업일반 < AI산업 < 기사본문 - AI타임스 https://share.google/t3eVJXP1nOxuZYJUA"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t7-s3">"스텔스 모델 '유니온 알파' 등장..."페이블 5급 성능" < 산업일반 < AI산업 < 기사본문 - AI타임스 https://share.google/t3eVJXP1nOxuZYJUA"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t7-q3">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P020</span>
         <span class="quote-time">09-18 14:46</span>
       </div>
-      <blockquote class="quote-text">""환각·타입 오류 없다"...오픈AI 출신, 의사결정 특화 AI '제브' 선보여 < 산업일반 < AI산업 < 기사본문 - AI타임스 https://share.google/CJ3wLg7EhqjRkF45Q"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t7-s4">""환각·타입 오류 없다"...오픈AI 출신, 의사결정 특화 AI '제브' 선보여 < 산업일반 < AI산업 < 기사본문 - AI타임스 https://share.google/CJ3wLg7EhqjRkF45Q"</span></blockquote>
     </div>
 
-    <div class="idea-card hl-target" data-hl-id="t7-i1">
+    <div class="idea-card">
       <div class="idea-label">✍️ 글감 각도</div>
-      <p class="idea-text">토큰 사용량 성장 통계를 "AI 도입 속도" 데이터 근거로 SNS 인포그래픽 소재화.</p>
+      <p class="idea-text"><span class="hl-sent hl-target" data-hl-id="t7-s5">토큰 사용량 성장 통계를 "AI 도입 속도" 데이터 근거로 SNS 인포그래픽 소재화.</span></p>
     </div>
 </div></section>
 
@@ -897,35 +908,35 @@
     <h3 class="topic-title">아스트라로 영상 만들어 수익화 재개</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text hl-target" data-hl-id="t8-p1">한 참가자가 아스트라로 제작한 영상이 조회수 3천을 돌파했다고 알리며, 몸이 상해 쉬다가 AI 힘으로 콘텐츠 제작을 재개했다고 밝혀 축하를 받았다.</p>
+    <p class="summary-text"><span class="hl-sent hl-target" data-hl-id="t8-s1">한 참가자가 아스트라로 제작한 영상이 조회수 3천을 돌파했다고 알리며, 몸이 상해 쉬다가 AI 힘으로 콘텐츠 제작을 재개했다고 밝혀 축하를 받았다.</span></p>
 
-    <div class="quote-item hl-target" data-hl-id="t8-q1">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P020</span>
         <span class="quote-time">09-18 18:05</span>
       </div>
-      <blockquote class="quote-text">"아스트라로 만든 영상 슬슬 조회수 3천 돌파중"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t8-s2">"아스트라로 만든 영상 슬슬 조회수 3천 돌파중"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t8-q2">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P020</span>
         <span class="quote-time">09-18 18:06</span>
       </div>
-      <blockquote class="quote-text">"몸 망가져서 아스트라 힘으로 부활요 ㅋㅋㅋ"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t8-s3">"몸 망가져서 아스트라 힘으로 부활요 ㅋㅋㅋ"</span></blockquote>
     </div>
 
-    <div class="quote-item hl-target" data-hl-id="t8-q3">
+    <div class="quote-item">
       <div class="quote-meta">
         <span class="quote-author">P003</span>
         <span class="quote-time">09-18 18:06</span>
       </div>
-      <blockquote class="quote-text">"축하드립니다 시안님"</blockquote>
+      <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t8-s4">"축하드립니다 시안님"</span></blockquote>
     </div>
 
-    <div class="idea-card hl-target" data-hl-id="t8-i1">
+    <div class="idea-card">
       <div class="idea-label">✍️ 글감 각도</div>
-      <p class="idea-text">"AI가 몸 대신 일하게 해서 재기했다"는 1인 창작자 회복 스토리로 SNS 서사화.</p>
+      <p class="idea-text"><span class="hl-sent hl-target" data-hl-id="t8-s5">"AI가 몸 대신 일하게 해서 재기했다"는 1인 창작자 회복 스토리로 SNS 서사화.</span></p>
     </div>
 </div></section>
 
@@ -944,7 +955,7 @@
     </footer>
   </div>
 
-  <!-- 하단 플로팅 컨트롤 바 (항상 노출: 원터치 모드 토글 + 내 하이라이트) -->
+  <!-- 하단 플로팅 컨트롤 바 (항상 노출: 문장 단위 모드 토글 + 내 하이라이트) -->
   <div class="floating-controls">
     <button id="btn-toggle-hl-mode" class="fab-hl-toggle" type="button" title="형광펜 모드 켜기/끄기">
       <span class="hl-toggle-icon">🖍️</span>
@@ -952,7 +963,7 @@
       <span class="hl-toggle-badge" id="hl-mode-badge">OFF</span>
     </button>
     <button id="btn-open-highlights" class="fab-hl-list" type="button" title="내 하이라이트 모아보기">
-      <span>📑</span>
+      <span>내 메모</span>
       <span class="badge" id="hl-count-badge">0</span>
     </button>
   </div>
@@ -974,7 +985,7 @@
   <div class="drawer-overlay" id="drawer-overlay">
     <div class="drawer">
       <div class="drawer-header">
-        <h3 class="drawer-title">📑 오늘 내가 남긴 하이라이트</h3>
+        <h3 class="drawer-title">오늘 내가 남긴 하이라이트</h3>
         <button class="drawer-close" id="btn-close-drawer">✕</button>
       </div>
       <div class="drawer-content" id="drawer-list">
@@ -990,7 +1001,7 @@
   <div class="archive-modal" id="archive-modal">
     <div class="archive-dialog">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-        <h3>📅 지난 브리핑 목록</h3>
+        <h3>지난 브리핑 목록</h3>
         <button class="drawer-close" id="btn-close-archive">✕</button>
       </div>
       <ul class="archive-ul">
@@ -998,7 +1009,10 @@
     <li class="">
       <a href="20260922_에이전트코리아_일일.html" class="arch-card">
         <div class="arch-card-header">
-          <span class="arch-date">📅 2026-09-22</span>
+          <div class="arch-date-group">
+            <span class="arch-bullet"></span>
+            <span class="arch-date">2026-09-22 (화)</span>
+          </div>
           <span class="arch-badge">보기</span>
         </div>
         <ul class="arch-topic-list"><li>아스트라 토큰이 몇 번 돌리면 녹는다는 호소와 절약 팁</li><li>JEV, 어디에 쓰나: 데이터 많은 사람에게 강하고 창작…</li><li>코덱스 리셋·솔6 소문, 출처와 리커 신뢰도 논쟁</li><li>AI를 쓸수록 늘어난 일강도와 집중력 저하</li></ul>
@@ -1008,7 +1022,10 @@
     <li class="">
       <a href="20260921_에이전트코리아_일일.html" class="arch-card">
         <div class="arch-card-header">
-          <span class="arch-date">📅 2026-09-21</span>
+          <div class="arch-date-group">
+            <span class="arch-bullet"></span>
+            <span class="arch-date">2026-09-21 (월)</span>
+          </div>
           <span class="arch-badge">보기</span>
         </div>
         <ul class="arch-topic-list"><li>외주 현장: "AI로 딸깍 뽑은 기획서"가 낳는 분쟁</li><li>한도 소진과 리셋 기다림: 아스트라 소모량 하소연</li><li>JEV·ZTC: 로컬 판 공개와 성능 회의론</li><li>AI 덕에 빨라진 일, 오히려 사라진 쉬는 시간</li></ul>
@@ -1018,7 +1035,10 @@
     <li class="">
       <a href="20260920_에이전트코리아_일일.html" class="arch-card">
         <div class="arch-card-header">
-          <span class="arch-date">📅 2026-09-20</span>
+          <div class="arch-date-group">
+            <span class="arch-bullet"></span>
+            <span class="arch-date">2026-09-20 (일)</span>
+          </div>
           <span class="arch-badge">보기</span>
         </div>
         <ul class="arch-topic-list"><li>JEV 화제: OCR 평가·저렴한 가격, 그리고 직접 따…</li><li>GPT 2.5 이후 이미지는 이미 충분한가 — 출판 현장…</li><li>손글씨 한글·수식 OCR: 제미나이가 틀린 답을 멋대로 …</li><li>아스트라 사용감: 한도 리셋 대기, 지시를 어기고 사과·…</li></ul>
@@ -1028,7 +1048,10 @@
     <li class="active">
       <a href="20260919_에이전트코리아_일일.html" class="arch-card">
         <div class="arch-card-header">
-          <span class="arch-date">📅 2026-09-19</span>
+          <div class="arch-date-group">
+            <span class="arch-bullet"></span>
+            <span class="arch-date">2026-09-19 (토)</span>
+          </div>
           <span class="arch-badge">현재 읽는 중</span>
         </div>
         <ul class="arch-topic-list"><li>JEV(제브) 하루 종일 실전 테스트 총정리</li><li>구독료 소진·리셋 스트레스 밈</li><li>파이썬이 에이전트 오케스트레이션의 병목인가 논쟁</li><li>로컬 VLM 재난생존 앱 '포켓 서바이벌'</li></ul>
@@ -1038,7 +1061,10 @@
     <li class="">
       <a href="20260918_에이전트코리아_일일.html" class="arch-card">
         <div class="arch-card-header">
-          <span class="arch-date">📅 2026-09-18</span>
+          <div class="arch-date-group">
+            <span class="arch-bullet"></span>
+            <span class="arch-date">2026-09-18 (금)</span>
+          </div>
           <span class="arch-badge">보기</span>
         </div>
         <ul class="arch-topic-list"><li>Jev(System One) ENUM 판정모델 — 도입파…</li><li>제미나이4 프로 벤치마크 유출설</li><li>리셋권 사수 전쟁과 커지는 AI 구독비용 부담</li><li>AI 다루는 법 — 네거티브리스트 집착과 제미나이 환각 …</li></ul>
@@ -1048,7 +1074,10 @@
     <li class="">
       <a href="20260917_에이전트코리아_일일.html" class="arch-card">
         <div class="arch-card-header">
-          <span class="arch-date">📅 2026-09-17</span>
+          <div class="arch-date-group">
+            <span class="arch-bullet"></span>
+            <span class="arch-date">2026-09-17 (목)</span>
+          </div>
           <span class="arch-badge">보기</span>
         </div>
         <ul class="arch-topic-list"><li>GPT-6 Sol 출시설과 아스트라·루나·솔 넘버링 혼란</li><li>AI 토큰 예산과 사용량 한도 신경전</li><li>로컬 LLM 180B 자작과 오픈라우터 실측 리더보드</li><li>aside와 코덱스 브라우저 자동화 비교</li></ul>
@@ -1110,7 +1139,6 @@
 
       // DOM에 저장된 하이라이트 스타일 복원
       function applySavedHighlights() {
-        // 기존 active 초기화
         document.querySelectorAll(".user-hl-active").forEach(el => el.classList.remove("user-hl-active"));
         highlights.forEach(h => {
           if (h.id) {
@@ -1134,7 +1162,7 @@
           document.body.classList.add("hl-mode-active");
           btnToggleMode.classList.add("active");
           modeBadge.textContent = "ON";
-          showToast("🖍️ 형광펜 모드 ON: 밑줄 칠 문장을 터치하세요!");
+          showToast("🖍️ 형광펜 모드 ON: 원하는 문장을 터치하세요!");
         } else {
           document.body.classList.remove("hl-mode-active");
           btnToggleMode.classList.remove("active");
@@ -1143,7 +1171,7 @@
         }
       });
 
-      // 본문 요소 클릭 (형광펜 모드일 때 즉시 칠하기/해제)
+      // 본문 문장 클릭 (형광펜 모드일 때 문장 1개 단위 칠하기/해제)
       document.getElementById("article-content").addEventListener("click", (e) => {
         if (!hlModeActive) return;
         const target = e.target.closest(".hl-target");
