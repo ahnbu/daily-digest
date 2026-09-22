@@ -208,20 +208,36 @@
       word-break: keep-all;
     }
 
-    /* 문장 단위 형광펜 활성화 스타일 (디테일 선택) */
+    /* 문장 단위 형광펜 스타일 (점선 박스 및 모바일 잔상 완전 차단) */
     .hl-sent {
       display: inline;
-      border-radius: 3px;
+      border-radius: 2px;
       padding: 1px 2px;
+      outline: none !important;
+      -webkit-tap-highlight-color: transparent;
+      user-select: text;
       transition: background-color 0.15s ease;
     }
+    /* 형광펜 칠해진 상태 */
     .hl-sent.user-hl-active {
-      background-color: var(--hl-bg);
-      border-bottom: 2px solid var(--hl-border);
+      background-color: #FEF08A;
+      border-bottom: 2px solid #EAB308;
     }
+    /* 어떤 상태에서도 점선 아웃라인 원천 차단 */
+    .hl-sent,
+    .hl-sent:hover,
+    .hl-sent:focus,
+    .hl-sent:active,
+    body.hl-mode-active .hl-sent.hl-target,
+    body.hl-mode-active .hl-sent.hl-target:hover,
+    body.hl-mode-active .hl-sent.hl-target:focus,
+    body.hl-mode-active .hl-sent.hl-target:active {
+      outline: none !important;
+    }
+
     mark.user-hl {
-      background-color: var(--hl-bg);
-      border-bottom: 2px solid var(--hl-border);
+      background-color: #FEF08A;
+      border-bottom: 2px solid #EAB308;
       color: inherit;
       border-radius: 2px;
       padding: 1px 2px;
@@ -231,10 +247,12 @@
     body.hl-mode-active .hl-sent.hl-target {
       cursor: pointer;
     }
-    body.hl-mode-active .hl-sent.hl-target:hover {
-      background-color: #FEF9C3;
-      outline: 1px dashed #EAB308;
-      outline-offset: 1px;
+
+    /* PC 마우스 환경에서만 가벼운 호버 힌트 제공 (모바일 터치 기기는 hover 잔상 방지를 위해 완전 제외) */
+    @media (hover: hover) and (pointer: fine) {
+      body.hl-mode-active .hl-sent.hl-target:not(.user-hl-active):hover {
+        background-color: rgba(254, 240, 138, 0.35);
+      }
     }
 
     /* 하단 플로팅 컨트롤 바 (항상 노출) */
@@ -1169,6 +1187,10 @@
           saveHighlights();
           showToast("🖍️ 형광펜 칠하기 완료!");
         }
+
+        // 터치/클릭 후 포커스 및 잔상 즉시 해제
+        if (target.blur) target.blur();
+        window.getSelection()?.removeAllRanges();
       });
 
       // 드로어 렌더링
