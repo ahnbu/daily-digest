@@ -732,6 +732,169 @@
       word-break: keep-all;
       color: var(--gray-mid);
     }
+    /* 단톡방 공식 봇 랩업 크로스체크 섹션 */
+    .bot-summary-section {
+      margin-top: 36px;
+      padding: 18px 16px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      scroll-margin-top: 16px;
+    }
+    .bot-summary-header {
+      margin-bottom: 14px;
+    }
+    .bot-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .bot-brand-badge {
+      font-size: 11.5px;
+      font-weight: 700;
+      background: #E0E7FF;
+      color: #3730A3;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .bot-count-badge {
+      font-size: 11px;
+      font-weight: 600;
+      background: #EDF2F7;
+      color: var(--gray-mid);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .bot-section-title {
+      font-size: 16.5px;
+      font-weight: 800;
+      color: var(--ink);
+      font-family: var(--font-display);
+      margin-bottom: 4px;
+    }
+    .bot-section-subtitle {
+      font-size: 12.5px;
+      color: var(--gray-mid);
+      line-height: 1.4;
+    }
+    .bot-empty-box {
+      padding: 14px;
+      background: var(--white);
+      border-radius: 8px;
+      border: 1px dashed var(--line);
+      font-size: 13px;
+      color: var(--gray-mid);
+      text-align: center;
+    }
+    .bot-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 14px;
+    }
+    .bot-card:last-child {
+      margin-bottom: 0;
+    }
+    .bot-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .bot-card-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .bot-card-main-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .bot-card-time {
+      font-size: 11.5px;
+      color: var(--gray-light);
+    }
+    .bot-key-tag {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      white-space: nowrap;
+    }
+    .bot-actions-row {
+      margin-bottom: 14px;
+    }
+    .bot-wiki-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--blue-tint);
+      color: var(--blue-primary);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    .bot-wiki-action-btn:hover {
+      background: #BFDBFE;
+    }
+    .bot-topics-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .bot-topic-item {
+      background: #F8FAFC;
+      border-radius: 8px;
+      padding: 12px;
+      border-left: 3px solid #64748B;
+    }
+    .bot-topic-item-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .bot-topic-desc {
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 8px;
+      word-break: keep-all;
+    }
+    .bot-article-link {
+      margin-bottom: 6px;
+    }
+    .bot-article-link a {
+      font-size: 12px;
+      color: var(--blue-primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .bot-article-link a:hover {
+      text-decoration: underline;
+    }
+    .bot-quote-item {
+      font-size: 12px;
+      color: var(--gray-mid);
+      background: var(--white);
+      padding: 5px 9px;
+      border-radius: 6px;
+      margin-top: 4px;
+      line-height: 1.4;
+      border: 1px solid #E2E8F0;
+    }
   </style>
 </head>
 <body>
@@ -815,6 +978,12 @@
               </a>
             </li>
           
+          <li class="toc-item toc-item-bot">
+            <a href="#section-official-digest" class="toc-link toc-link-bot">
+              <span class="toc-item-num" style="background: #E0E7FF; color: #3730A3;">📋</span>
+              <span class="toc-item-title" style="color: #3730A3; font-weight: 700;">단톡방 공식 랩업 대조 (2건) ▾</span>
+            </a>
+          </li>
         </ol>
       </details>
     </nav>
@@ -1116,6 +1285,249 @@
     </div>
 </div></section>
 
+      
+  <section class="bot-summary-section" id="section-official-digest">
+    <div class="bot-summary-header">
+      <div class="bot-badge-group">
+        <span class="bot-brand-badge">단톡방 공식 랩업</span>
+        <span class="bot-count-badge">2건 크로스체크</span>
+      </div>
+      <h3 class="bot-section-title">📋 단톡방 공식 봇 랩업 크로스체크</h3>
+      <p class="bot-section-subtitle">단톡방 운영진 공식 봇(akwiki)의 원문 요약 및 열람 코드를 우리 브리핑과 직접 대조할 수 있습니다.</p>
+    </div>
+    <div class="bot-cards-list">
+      
+      <div class="bot-card">
+        <div class="bot-card-top">
+          <div class="bot-card-title-group">
+            <span class="bot-card-main-title">📋 에이전트코리아 오늘의 요약 (2026-09-16 05:47 ~ 17:50) · 846건 · 74명</span>
+            <span class="bot-card-time">발행: 9. 16. 오후 07:35 KST</span>
+          </div>
+          
+            <div class="bot-key-tag">
+              <span>🔑 열람 코드: <strong>7690</strong></span>
+            </div>
+          
+        </div>
+
+        <div class="bot-actions-row">
+          <a href="https://akwiki.org/rooms/agent-korea" target="_blank" rel="noopener" class="bot-wiki-action-btn">
+            📖 공식 위키(akwiki)에서 전체보기 ↗
+          </a>
+        </div>
+
+        <div class="bot-topics-container">
+          
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 AI 토큰 예산과 사용량 한도를 둘러싼 신경전</h5>
+          <p class="bot-topic-desc">2027년도 사내 AI 토큰 예산 기준(직급별 40~200달러)을 놓고 실사용 편차 논쟁이 벌어졌다. 서울대 무제한 챗GPT가 한 달 만에 크레딧 제한으로 바뀌고, 5인 스타트업이 계정 10개로도 감당 못한다는 사례가 이어졌다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-16-ai-비용-한도-crossroom" target="_blank" rel="noopener">📄 쓸수록 모자란 토큰, 세 방을 관통한 AI 비용 하루 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 카이저푸/회사원 08:53 &quot;쓰려면 한달에 1000달러도 부족하고 안 쓰려면 50달러도 남고요&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 올해는한화가우승/방산ax 10:05 &quot;올해부터 교내 챗 gpt무제한 제공한 서울대  1년치 사용량이 한달만에 동났다고함.  무제한 -&gt; 월2만크레딧 제한 -&gt; 월7000크레딧 제한으로 바뀌었고   현재기준 sol로 월 700번 대화하면 다 소모하는 수준.   Ai에 대한 젊은 세대의 수요가 얼마나 많은지 알 수 있는 부분.&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 김씨/대표/메테오시뮬레이션 10:17 &quot;저희회사 5명인데도 claude 계정 10개도 한달 감당이 안되는데.. &quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 GPT-6 출시설과 솔·아스트라·루나·테라 넘버링 혼란</h5>
+          <p class="bot-topic-desc">GPT-6 Sol 출시 임박 소식에 방이 들썩였다. 아스트라가 이미 6 sol 수준일 수 있다는 추정과 아스트라·솔·테라·루나 넘버링 서열 혼란이 겹쳤고, 저녁까지 앱에서 아스트라 표시 여부를 두고 혼란이 이어졌다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-16-astra-저가모델-crossroom" target="_blank" rel="noopener">📄 아스트라 하나를 두고, 세 방은 부르는 법도 쓰는 법도 달랐다 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 엇!!피치/개발초보 12:07 &quot;6.0sol 나온다는데 성능을 올리는건지 가성비 올리는건지 나온게있나오&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 강정석 / Schift / 대표 14:54 &quot;아마 지금 성능이 6 sol 인것 같아요&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 강정석 / Schift / 대표 14:54 &quot;astra sol terra luna 여기서 terra가 퇴역이면&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 로컬 LLM 180B 자작과 오픈라우터 실측 리더보드</h5>
+          <p class="bot-topic-desc">8GB 노트북 GPU로 1,800억 파라미터 로컬 모델을 4비트 양자화해 구동한 사례가 공유됐다. 64GB 램 미니PC 이식 계획과 오픈라우터 425개 모델 실측 리더보드 공개 소식도 함께 전해졌다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-16-로컬-llm-180b-자작과-오픈라우터-실측-리더보드" target="_blank" rel="noopener">📄 로컬 LLM 180B 자작과 오픈라우터 실측 리더보드 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 김씨/대표/메테오시뮬레이션 10:18 &quot;잉단 하드웨어는 텐토, 딥씩이, glm qwen&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 김씨/대표/메테오시뮬레이션 10:20 &quot;Claude code에서 fable을 리뷰어로 두고 서브에이전트로 glm돌리면 쓸만해요&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 다윈/AI 15:33 &quot;허깅페이스 공개 8주 만에 157만 다운로드를 기록한 POCKET 모델의 새 버전을 만들어봤습니다. 이번엔 8GB 노트북 GPU로 1,800억 파라미터입니다. Qwen3.8-Flash-Next(176.94B, MoE 512 전문가 중 10개 활성)를 제 노트북에서 로컬로 돌렸습니다. 실제로 쓴 자원 · VRAM 4.0 GB — RTX 5060 Laptop 8GB 카드의 절반 · RAM 14.4 GB — 설치 31.4GB의 46% · 모델 파일 93.3 GiB — 4비트 양자화를 직접 만들었습니다 · 생성 속도 4.17 ± 0.17 tok/s (256토큰, 반복 2회) 특별한 하드웨어가 하나도 없습니다. 그래서 의미가 있습니다. 지금은 미니PC(AMD 라이젠 / RAM 64GB)에 POCKET-QWEN3.8-FLASH-180B를 이식 중입니다. 64GB면 전문가 가중치가 대부분 RAM에 상주해 두 자릿수 tok/s를 예상합니다. 실측이 끝나는 대로 허깅페이스에 공개하겠습니다.&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 STT 정확도(CER) 개선과 화자분리 파이프라인 고민</h5>
+          <p class="bot-topic-desc">STT 오류율(CER)을 낮추는 방법을 묻는 질문에 결국 데이터가 관건이라는 답이 나왔다. CER 5% 미만 달성의 어려움과 스트리밍 화자분리를 별도 모델이 아니라 Trunk+2 Head 구조로 병렬 처리하는 방식가 함께 공유됐다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-16-stt-정확도-cer-개선과-화자분리-파이프라인-고민" target="_blank" rel="noopener">📄 STT 정확도(CER) 개선과 화자분리 파이프라인 고민 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 김위버 16:27 &quot;여기 stt 고수 계세요? cer 낮출려면 어케 해야돼요?&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 강정석 / Schift / 대표 16:28 &quot;STT CER는…. 데이터가 다죠&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 김위버 16:31 &quot;cer 5퍼미만으로 절대 안내려감..&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 코덱스와 aside 자동화 도구 비교, 멀티터미널 워크플로우</h5>
+          <p class="bot-topic-desc">코덱스와 aside 자동화 도구의 차이를 묻는 질문에, 코덱스는 컴퓨터 사용 방식이고 aside는 스크립트 기반 DOM 접근이라 더 효율적이라는 답이 나왔다. 터미널 12개를 돌리다 이제는 모델에 범위를 맡기는 방식으로 바뀌었다는 경험도 공유됐다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-16-코덱스와-aside-자동화-도구-비교-멀티터미널-워크플로우" target="_blank" rel="noopener">📄 코덱스와 aside 자동화 도구 비교, 멀티터미널 워크플로우 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 psa / 사회복지 09:35 &quot;혹시 aside는 어떻게 사용하는 건가요? 지피티나 클로드에게 물어보는게 빠를려나&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 프프피/개발 14:48 &quot;다들 일하실때 터미널 몇개 정도 키고 하시나요?&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 볼 찌 15:25 &quot;선배님들 코덱스도 웹브라우저 활용 잘하는데 Aside 요게 필요한 이유가있나요? 그리고 유료결제도 잇네요..&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 (잡담) 레거시 코드와 형상관리 zip 시절 추억담</h5>
+          <p class="bot-topic-desc">과거 개발 방식에 대한 추억담이 이어졌다. 제이쿼리 2.0이 박힌 서비스, zip도 없이 개발서버 하나로 형상관리하던 사례 등 레거시 코드 목격담이 웃음과 함께 공유됐다.</p>
+          
+          
+        <blockquote class="bot-quote-item">🔸 다몽 / 인천 / 게하준비, 포스부업 13:44 &quot;그....지같았다&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 Hue/개발자 14:11 &quot;맘편하게 에어팟 꼽고 기본적인 구조잡고 코딩하고 하는게 대부분이었고, 일주일에 3~4시간정도만 복잡도 높은거 하느라 빡집중해서 했었는데.. 이젠.. 빡집중을 멀티로 계속해야되다보니.. 바이오토큰이 모잘라요… &quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 Penda Jr. Sensitive 14:24 &quot;웹페이지에 제이쿼리 2.0이 박혀 있었습니다&quot;</blockquote>
+      
+        </div>
+      
+        </div>
+      </div>
+    
+
+      <div class="bot-card">
+        <div class="bot-card-top">
+          <div class="bot-card-title-group">
+            <span class="bot-card-main-title">📋 에이전트코리아 오늘의 요약 (17:39~05:47) · 233건 · 43명</span>
+            <span class="bot-card-time">발행: 9. 16. 오전 07:14 KST</span>
+          </div>
+          
+            <div class="bot-key-tag">
+              <span>🔑 열람 코드: <strong>0256</strong></span>
+            </div>
+          
+        </div>
+
+        <div class="bot-actions-row">
+          <a href="https://akwiki.org/rooms/agent-korea" target="_blank" rel="noopener" class="bot-wiki-action-btn">
+            📖 공식 위키(akwiki)에서 전체보기 ↗
+          </a>
+        </div>
+
+        <div class="bot-topics-container">
+          
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 어사이드 브라우저 자동화 도구 확산 · 윈도우 버전 출시</h5>
+          <p class="bot-topic-desc">어사이드 브라우저 자동화 도구가 윈도우 버전까지 공개되며 최대 화제가 됐다. 한 참가자는 크롬 자동화보다 잘 된다며 호평했고, 다른 참가자는 토큰 소비가 많아 사용량 관리가 관건이라는 우려를 나눴다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-16-crossroom-aside" target="_blank" rel="noopener">📄 어사이드, 두 방을 동시에 사로잡은 브라우저 자동화 도구 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 twojay | LLM, Prompt 18:00 &quot;백날 클로드인 크롬 가르쳐도 안되었던 자동화작업이 술술풀림&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 twojay | LLM, Prompt 18:00 &quot;3일 벌었습니다.&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 공냥이 20:16 &quot;좋은 토큰 녹이는 기계죠&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 코덱스 용량(capacity) 한계 · 토큰 소진 토로</h5>
+          <p class="bot-topic-desc">코덱스가 용량(capacity) 이슈로 잘 안 붙는다는 토로가 이어졌다. 사용자가 몰려 캐파가 부족하다는 관측과 함께, 왜 이렇게 캐파가 없냐는 답답함이 이어졌다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-16-코덱스-용량-capacity-한계-토큰-소진-토로" target="_blank" rel="noopener">📄 코덱스 용량(capacity) 한계에 발목, 캐파 부족 토로 이어졌다 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 강정석 / Schift / 대표 17:55 &quot;코덱스를 쓸수가 없네...&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 강정석 / Schift / 대표 18:24 &quot;capacity 이슈가 뜬다고 하네요;&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 강정석 / Schift / 대표 18:40 &quot;왜 캐파가 없지&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 아스트라·루나맥스 단계별 모델 분업 워크플로우</h5>
+          <p class="bot-topic-desc">고급 모델과 경량 모델을 단계별로 나눠 쓰는 분업 워크플로우가 공유됐다. 아스트라 라이트로 기획, 루나맥스로 반복 작업을 맡기고 최종 검수는 다시 고급 모델로 돌리며, 새벽에 미리 작업을 세팅해 두는 방식이 소개됐다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-16-crossroom-astra-luna" target="_blank" rel="noopener">📄 아스트라·루나, 토큰을 태우는 값과 경량 모델로 갈아타는 밤 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 율파파 @darkcommis 18:11 &quot;나머지 노가다는 루나맥스&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 율파파 @darkcommis 18:14 &quot;최종 검수도 아스트라 시킵니다&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 율파파 @darkcommis 18:15 &quot;새벽에 다 만들어놓게 하거든요&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 자동화 매크로와 약관·법적 경계</h5>
+          <p class="bot-topic-desc">바이브코딩으로 자동화를 짜다 약관을 어기기 쉽다는 경계 논의가 이어졌다. 기성 프로그램에 없는 기능을 구현했다 싶으면 대개 약관 위반이라는 경험담과, 소송 사례·robot.txt 준수 필요성이 함께 언급됐다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-16-자동화-매크로와-약관-법적-경계" target="_blank" rel="noopener">📄 바이브코딩 자동화, 약관 위반과 한 끗 차이라는 경고 나왔다 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 허동호/건축 17:42 &quot;잘 모르고 열심히 바이브코딩으로 개발하시다가 소송당하신 분도 계세요 ㅎㅎ 저도 개발자출신이 아니라 몰랐는데 소프트웨어 개발에도 윤리가 있고 저희가 평소에 읽지않고 넘기던 약관등에도 많은 내용이 내포돼 있더라구요&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 허동호/건축 17:48 &quot;&quot;기성 프로그램엔 내가 생각한 방식으로 구현한게 없네&quot; -&gt; 약관위반&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 뉴크 / IT PM 17:44 &quot;원칙적으로는 robot.txt 도 보긴해야죠…&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 (잡담) AlexAI 유튜브 예고편 · 방 근황</h5>
+          <p class="bot-topic-desc">방 참여자들이 등장하는 유튜브 영상 예고편이 공유되며 잡담이 오갔다. 보통 1시간 촬영분이 30분으로 편집된다는 이야기와 출연자가 5명이라는 근황이 전해졌다.</p>
+          
+          
+        <blockquote class="bot-quote-item">🔸 AlexAI/opencrab.sh 23:55 &quot;원래 1시간 정도 촬영하고 편집하면 30분 정도가 되는데&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 AlexAI/opencrab.sh 00:00 &quot;현재 출연자는 총 5명 ㅋㅋㅋㅋ&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 초보/dx 23:58 &quot;아는얼굴들도 보이내요 ㅋㅋㅋ&quot;</blockquote>
+      
+        </div>
+      
+        </div>
+      </div>
+    
+    </div>
+  </section>
+  
     </main>
 
     <!-- 하단 접이식 세부 로그 -->

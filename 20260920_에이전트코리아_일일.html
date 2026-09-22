@@ -732,6 +732,169 @@
       word-break: keep-all;
       color: var(--gray-mid);
     }
+    /* 단톡방 공식 봇 랩업 크로스체크 섹션 */
+    .bot-summary-section {
+      margin-top: 36px;
+      padding: 18px 16px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      scroll-margin-top: 16px;
+    }
+    .bot-summary-header {
+      margin-bottom: 14px;
+    }
+    .bot-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .bot-brand-badge {
+      font-size: 11.5px;
+      font-weight: 700;
+      background: #E0E7FF;
+      color: #3730A3;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .bot-count-badge {
+      font-size: 11px;
+      font-weight: 600;
+      background: #EDF2F7;
+      color: var(--gray-mid);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .bot-section-title {
+      font-size: 16.5px;
+      font-weight: 800;
+      color: var(--ink);
+      font-family: var(--font-display);
+      margin-bottom: 4px;
+    }
+    .bot-section-subtitle {
+      font-size: 12.5px;
+      color: var(--gray-mid);
+      line-height: 1.4;
+    }
+    .bot-empty-box {
+      padding: 14px;
+      background: var(--white);
+      border-radius: 8px;
+      border: 1px dashed var(--line);
+      font-size: 13px;
+      color: var(--gray-mid);
+      text-align: center;
+    }
+    .bot-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 14px;
+    }
+    .bot-card:last-child {
+      margin-bottom: 0;
+    }
+    .bot-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .bot-card-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .bot-card-main-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .bot-card-time {
+      font-size: 11.5px;
+      color: var(--gray-light);
+    }
+    .bot-key-tag {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      white-space: nowrap;
+    }
+    .bot-actions-row {
+      margin-bottom: 14px;
+    }
+    .bot-wiki-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--blue-tint);
+      color: var(--blue-primary);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    .bot-wiki-action-btn:hover {
+      background: #BFDBFE;
+    }
+    .bot-topics-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .bot-topic-item {
+      background: #F8FAFC;
+      border-radius: 8px;
+      padding: 12px;
+      border-left: 3px solid #64748B;
+    }
+    .bot-topic-item-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .bot-topic-desc {
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 8px;
+      word-break: keep-all;
+    }
+    .bot-article-link {
+      margin-bottom: 6px;
+    }
+    .bot-article-link a {
+      font-size: 12px;
+      color: var(--blue-primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .bot-article-link a:hover {
+      text-decoration: underline;
+    }
+    .bot-quote-item {
+      font-size: 12px;
+      color: var(--gray-mid);
+      background: var(--white);
+      padding: 5px 9px;
+      border-radius: 6px;
+      margin-top: 4px;
+      line-height: 1.4;
+      border: 1px solid #E2E8F0;
+    }
   </style>
 </head>
 <body>
@@ -815,6 +978,12 @@
               </a>
             </li>
           
+          <li class="toc-item toc-item-bot">
+            <a href="#section-official-digest" class="toc-link toc-link-bot">
+              <span class="toc-item-num" style="background: #E0E7FF; color: #3730A3;">📋</span>
+              <span class="toc-item-title" style="color: #3730A3; font-weight: 700;">단톡방 공식 랩업 대조 (0건) ▾</span>
+            </a>
+          </li>
         </ol>
       </details>
     </nav>
@@ -1180,6 +1349,20 @@
     </div>
 </div></section>
 
+      
+    <section class="bot-summary-section" id="section-official-digest">
+      <div class="bot-summary-header">
+        <div class="bot-badge-group">
+          <span class="bot-brand-badge">단톡방 공식 랩업</span>
+          <span class="bot-count-badge">0건</span>
+        </div>
+        <h3 class="bot-section-title">📋 단톡방 공식 봇 랩업 크로스체크</h3>
+      </div>
+      <div class="bot-empty-box">
+        <p class="bot-empty-text">💡 해당 일일 수집 구간(직전 24시간)에는 단톡방 공식 봇 랩업이 발행되지 않았습니다. (주말 또는 미발행 구간)</p>
+      </div>
+    </section>
+    
     </main>
 
     <!-- 하단 접이식 세부 로그 -->

@@ -732,6 +732,169 @@
       word-break: keep-all;
       color: var(--gray-mid);
     }
+    /* 단톡방 공식 봇 랩업 크로스체크 섹션 */
+    .bot-summary-section {
+      margin-top: 36px;
+      padding: 18px 16px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      scroll-margin-top: 16px;
+    }
+    .bot-summary-header {
+      margin-bottom: 14px;
+    }
+    .bot-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .bot-brand-badge {
+      font-size: 11.5px;
+      font-weight: 700;
+      background: #E0E7FF;
+      color: #3730A3;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .bot-count-badge {
+      font-size: 11px;
+      font-weight: 600;
+      background: #EDF2F7;
+      color: var(--gray-mid);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .bot-section-title {
+      font-size: 16.5px;
+      font-weight: 800;
+      color: var(--ink);
+      font-family: var(--font-display);
+      margin-bottom: 4px;
+    }
+    .bot-section-subtitle {
+      font-size: 12.5px;
+      color: var(--gray-mid);
+      line-height: 1.4;
+    }
+    .bot-empty-box {
+      padding: 14px;
+      background: var(--white);
+      border-radius: 8px;
+      border: 1px dashed var(--line);
+      font-size: 13px;
+      color: var(--gray-mid);
+      text-align: center;
+    }
+    .bot-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 14px;
+    }
+    .bot-card:last-child {
+      margin-bottom: 0;
+    }
+    .bot-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .bot-card-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .bot-card-main-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .bot-card-time {
+      font-size: 11.5px;
+      color: var(--gray-light);
+    }
+    .bot-key-tag {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      white-space: nowrap;
+    }
+    .bot-actions-row {
+      margin-bottom: 14px;
+    }
+    .bot-wiki-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--blue-tint);
+      color: var(--blue-primary);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    .bot-wiki-action-btn:hover {
+      background: #BFDBFE;
+    }
+    .bot-topics-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .bot-topic-item {
+      background: #F8FAFC;
+      border-radius: 8px;
+      padding: 12px;
+      border-left: 3px solid #64748B;
+    }
+    .bot-topic-item-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .bot-topic-desc {
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 8px;
+      word-break: keep-all;
+    }
+    .bot-article-link {
+      margin-bottom: 6px;
+    }
+    .bot-article-link a {
+      font-size: 12px;
+      color: var(--blue-primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .bot-article-link a:hover {
+      text-decoration: underline;
+    }
+    .bot-quote-item {
+      font-size: 12px;
+      color: var(--gray-mid);
+      background: var(--white);
+      padding: 5px 9px;
+      border-radius: 6px;
+      margin-top: 4px;
+      line-height: 1.4;
+      border: 1px solid #E2E8F0;
+    }
   </style>
 </head>
 <body>
@@ -815,6 +978,12 @@
               </a>
             </li>
           
+          <li class="toc-item toc-item-bot">
+            <a href="#section-official-digest" class="toc-link toc-link-bot">
+              <span class="toc-item-num" style="background: #E0E7FF; color: #3730A3;">📋</span>
+              <span class="toc-item-title" style="color: #3730A3; font-weight: 700;">단톡방 공식 랩업 대조 (1건) ▾</span>
+            </a>
+          </li>
         </ol>
       </details>
     </nav>
@@ -1132,6 +1301,173 @@
     </div>
 </div></section>
 
+      
+  <section class="bot-summary-section" id="section-official-digest">
+    <div class="bot-summary-header">
+      <div class="bot-badge-group">
+        <span class="bot-brand-badge">단톡방 공식 랩업</span>
+        <span class="bot-count-badge">1건 크로스체크</span>
+      </div>
+      <h3 class="bot-section-title">📋 단톡방 공식 봇 랩업 크로스체크</h3>
+      <p class="bot-section-subtitle">단톡방 운영진 공식 봇(akwiki)의 원문 요약 및 열람 코드를 우리 브리핑과 직접 대조할 수 있습니다.</p>
+    </div>
+    <div class="bot-cards-list">
+      
+      <div class="bot-card">
+        <div class="bot-card-top">
+          <div class="bot-card-title-group">
+            <span class="bot-card-main-title">📋 에이전트코리아 오늘의 요약 (9/20 11:24~9/21 05:43) · 439건 · 46명</span>
+            <span class="bot-card-time">발행: 9. 21. 오전 07:46 KST</span>
+          </div>
+          
+            <div class="bot-key-tag">
+              <span>🔑 열람 코드: <strong>3652</strong></span>
+            </div>
+          
+        </div>
+
+        <div class="bot-actions-row">
+          <a href="https://akwiki.org/rooms/agent-korea" target="_blank" rel="noopener" class="bot-wiki-action-btn">
+            📖 공식 위키(akwiki)에서 전체보기 ↗
+          </a>
+        </div>
+
+        <div class="bot-topics-container">
+          
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 JEV/ZTC 검증모델 허깅페이스 연속 공개와 벤치마크</h5>
+          <p class="bot-topic-desc">한 참가자가 ZTC-Judge-27B, 397B 대형 모델, JEV/ZTC/Laya 3종 비교 테스트와 플레인/JEV/ZTC 자동 시험기 gate-tetris를 허깅페이스에 연속 공개했다. 다른 참가자는 관련 블로그 글을 공유하며 화제를 이어갔다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-21-cross-jev-오픈소스-대안" target="_blank" rel="noopener">📄 API로만 열린 제브(Jev), 하루 만에 세 방이 로컬 대안을 꺼내 들었다 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 다윈/AI 17:46 &quot;https://discuss.pytorch.kr/t/jev-13/11968&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 다윈/AI 18:08 &quot;ZTC = 제로-토큰 확신도&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 다윈/AI 18:19 &quot;JEV는 API만 지원되지만, ZTC는 로컬 모델로 동작되는 버전으로 허깅페이스에 공개했어요. 필요하신 분들은 사용하세요. https://huggingface.co/FINAL-Bench/ZTC-Judge-27B&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 토큰 소모 원인 진단</h5>
+          <p class="bot-topic-desc">한 참가자가 토큰 소모 원인을 컨텍스트·캐시 관리 문제로 짚고 실제로 계정 5개의 사용량이 순식간에 소진된 사례를 공유했다. 한편 골든셋 관리법을 묻는 질문도 나왔다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-21-cross-아스트라-토큰-사용량" target="_blank" rel="noopener">📄 아스트라(Astra)가 멍청해졌다는 밤, 옆방에선 사용량이 녹아내렸다 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 헤헤헤 13:46 &quot;골든셋 만들기 너무 어렵군요&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 MeroZemory 13:55 &quot;토큰소모량 큰게 모델자체 잘못도있지만 저희가 프롬프트를 잘못쓰거나, 아니면 프롬프트 상관없이 ai가 잘못관리하는 경우도 있거든요? 컨텍스트가 길어지면서 구체적인 작업지침을 무시해서 발생하는 경우도 있고&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 MeroZemory 13:56 &quot;그래서 주기적으로 최근 작업세션들에 대해 토큰사용량 비중뿐 아니라 어디서 많이 새고 어떤이유로 많이 새는지, 합당한지 한번씩 점검돌려보시길 바랍니다&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 아스트라·페이블 등 모델별 토큰 소모 체감</h5>
+          <p class="bot-topic-desc">여러 참가자가 클로드·아스트라·페이블의 토큰 소모 속도에 대해 하소연했다. 특정 세션이 예상보다 훨씬 빨리 끝났다는 체감이 반복적으로 공유됐다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-21-cross-아스트라-토큰-사용량" target="_blank" rel="noopener">📄 아스트라(Astra)가 멍청해졌다는 밤, 옆방에선 사용량이 녹아내렸다 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 고인/건축 12:29 &quot;클로드 소진이 왜케 빠른 것같지....4일남았는데 75프로라니...&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 Ai시안|컨텐츠제작 13:37 &quot;아스트라가 소모량 너무 커요 ㅠㅠ&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 HiDDeN 18:39 &quot;솔직히.. 아스트라…. 소모량.. 너무 빡세요…..&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 클로드 vs 코덱스 자율작업 체감 비교</h5>
+          <p class="bot-topic-desc">클로드의 과도한 사용량 소모 불평이 나왔고, 밤에는 한 참가자가 코덱스로 옮겼다고, 또 다른 참가자는 sol도 잘한다고 답했다. 또 다른 참가자는 목표만 줬을 때 클로드는 쉽게 포기하는 반면 지피티는 끈질기게 탐색한다고 체감을 전했다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-21-클로드-vs-코덱스-자율작업-체감-비교" target="_blank" rel="noopener">📄 목표만 줬더니 클로드는 손을 들었다 — 밤 11시, 코덱스로 옮겼다는 말이 이어졌다 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 다몽 / 인천 / 게하준비, 포스부업 18:06 &quot;무슨대화한번에 주간 사용량 20%가 날아가냐 심지어 완성도 안하고 계속 작업하네 진짜 심각하다..&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 큐에이/개발자 23:18 &quot;전 그래서 코덱스로 옮김&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 죠르디/개발자 23:23 &quot;sol도 잘하더군요&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 구글 노코드 자동화 에이전트 서비스명 찾기(Opal)</h5>
+          <p class="bot-topic-desc">한 참가자가 구글의 노코드 자동화 에이전트 서비스 이름을 찾지 못해 묻자 여러 참가자가 후보를 제시했다. 결국 opal(오팔)로 결론이 났다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-21-구글-노코드-자동화-에이전트-서비스명-찾기-opal" target="_blank" rel="noopener">📄 a2a에서 오팔(Opal)까지, 구글 자동화 에이전트 이름 찾기가 오후에 끝났다 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 춤피치/개발자 15:33 &quot;혹시 구글쪽 완전 자동화 에이전트 이름이 기억안나는데 대충 아시는분 계신가요?&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 김위버 15:35 &quot;a2a 프로토콜?&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 Comad.J 15:42 &quot;opal?&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 AI 도입 이후 외주·기획 커뮤니케이션 스트레스</h5>
+          <p class="bot-topic-desc">여러 참가자가 클라이언트가 AI로 뚝딱 만든 기획서를 그대로 개발팀에 넘기는 상황을 성토했다. 화면을 뿅 나오게 해달라는 식의 무리한 요구와 기획자·PM 역할이 사라지는 현실도 함께 짚었다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-21-ai-도입-이후-외주-기획-커뮤니케이션-스트레스" target="_blank" rel="noopener">📄 AI로 딸깍 쓴 기획서가 그대로 개발단에 떨어졌다 — 사라지는 기획자·PM 자리 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 HiDDeN 16:34 &quot;지피티로 딸깍 기획서 쓰고 그 기획서가 제대로 결제라인 타고 올라가서 광고주까지 갔다온건지 절대적으로 의심되는 기획안&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 강정석 / Schift / 대표 16:35 &quot;???: 아 다들 보면 딸칵 하던데 기획서  그냥 개발단에서 개발할겸 해주면 안돼요? &quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 Hue/개발자 16:40 &quot;집 다지어놓고 다른 동네로 옮겨달라고 하면 어떻게 해요!!ㅋㅋ&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 (잡담) 리셋/한도 초기화 기다리는 드립</h5>
+          <p class="bot-topic-desc">여러 참가자가 하루 종일 사용량 리셋 타이밍을 기다리며 농담 섞인 호소를 이어갔다. 새벽까지도 리셋을 기원하는 드립이 계속됐다.</p>
+          
+          
+        <blockquote class="bot-quote-item">🔸 다음일연구소/역삼/PT코더 11:24 &quot;리셋만 기다리는중 ㅠㅜㅋㅋ&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 이오/바이오 14:12 &quot;리셋 언제해주나&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 율파파 @darkcommis 16:20 &quot;리셋 없나요&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 (잡담) 옛날 핸드폰과 오빠이(opal) 말장난 잡담</h5>
+          <p class="bot-topic-desc">한 참가자가 옛날 핸드폰 얘기를 꺼내자 다른 참가자가 옵티머스lte2 발열을 추억했다. 한편에서는 opal을 오빠이로 읽는 말장난이 이어졌다.</p>
+          
+          
+        <blockquote class="bot-quote-item">🔸 HiDDeN 15:44 &quot;오빠이?&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 HiDDeN 15:45 &quot;oppai &lt;&lt; opal&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 Ai시안|컨텐츠제작 16:07 &quot;옛날 핸드폰 ㅋㅋ 뚫어버림&quot;</blockquote>
+      
+        </div>
+      
+        </div>
+      </div>
+    
+    </div>
+  </section>
+  
     </main>
 
     <!-- 하단 접이식 세부 로그 -->

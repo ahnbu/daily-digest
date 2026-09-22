@@ -732,6 +732,169 @@
       word-break: keep-all;
       color: var(--gray-mid);
     }
+    /* 단톡방 공식 봇 랩업 크로스체크 섹션 */
+    .bot-summary-section {
+      margin-top: 36px;
+      padding: 18px 16px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      scroll-margin-top: 16px;
+    }
+    .bot-summary-header {
+      margin-bottom: 14px;
+    }
+    .bot-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .bot-brand-badge {
+      font-size: 11.5px;
+      font-weight: 700;
+      background: #E0E7FF;
+      color: #3730A3;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .bot-count-badge {
+      font-size: 11px;
+      font-weight: 600;
+      background: #EDF2F7;
+      color: var(--gray-mid);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .bot-section-title {
+      font-size: 16.5px;
+      font-weight: 800;
+      color: var(--ink);
+      font-family: var(--font-display);
+      margin-bottom: 4px;
+    }
+    .bot-section-subtitle {
+      font-size: 12.5px;
+      color: var(--gray-mid);
+      line-height: 1.4;
+    }
+    .bot-empty-box {
+      padding: 14px;
+      background: var(--white);
+      border-radius: 8px;
+      border: 1px dashed var(--line);
+      font-size: 13px;
+      color: var(--gray-mid);
+      text-align: center;
+    }
+    .bot-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 14px;
+    }
+    .bot-card:last-child {
+      margin-bottom: 0;
+    }
+    .bot-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .bot-card-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .bot-card-main-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .bot-card-time {
+      font-size: 11.5px;
+      color: var(--gray-light);
+    }
+    .bot-key-tag {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      white-space: nowrap;
+    }
+    .bot-actions-row {
+      margin-bottom: 14px;
+    }
+    .bot-wiki-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--blue-tint);
+      color: var(--blue-primary);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    .bot-wiki-action-btn:hover {
+      background: #BFDBFE;
+    }
+    .bot-topics-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .bot-topic-item {
+      background: #F8FAFC;
+      border-radius: 8px;
+      padding: 12px;
+      border-left: 3px solid #64748B;
+    }
+    .bot-topic-item-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .bot-topic-desc {
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 8px;
+      word-break: keep-all;
+    }
+    .bot-article-link {
+      margin-bottom: 6px;
+    }
+    .bot-article-link a {
+      font-size: 12px;
+      color: var(--blue-primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .bot-article-link a:hover {
+      text-decoration: underline;
+    }
+    .bot-quote-item {
+      font-size: 12px;
+      color: var(--gray-mid);
+      background: var(--white);
+      padding: 5px 9px;
+      border-radius: 6px;
+      margin-top: 4px;
+      line-height: 1.4;
+      border: 1px solid #E2E8F0;
+    }
   </style>
 </head>
 <body>
@@ -808,6 +971,12 @@
               </a>
             </li>
           
+          <li class="toc-item toc-item-bot">
+            <a href="#section-official-digest" class="toc-link toc-link-bot">
+              <span class="toc-item-num" style="background: #E0E7FF; color: #3730A3;">📋</span>
+              <span class="toc-item-title" style="color: #3730A3; font-weight: 700;">단톡방 공식 랩업 대조 (1건) ▾</span>
+            </a>
+          </li>
         </ol>
       </details>
     </nav>
@@ -1079,6 +1248,177 @@
     </div>
 </div></section>
 
+      
+  <section class="bot-summary-section" id="section-official-digest">
+    <div class="bot-summary-header">
+      <div class="bot-badge-group">
+        <span class="bot-brand-badge">단톡방 공식 랩업</span>
+        <span class="bot-count-badge">1건 크로스체크</span>
+      </div>
+      <h3 class="bot-section-title">📋 단톡방 공식 봇 랩업 크로스체크</h3>
+      <p class="bot-section-subtitle">단톡방 운영진 공식 봇(akwiki)의 원문 요약 및 열람 코드를 우리 브리핑과 직접 대조할 수 있습니다.</p>
+    </div>
+    <div class="bot-cards-list">
+      
+      <div class="bot-card">
+        <div class="bot-card-top">
+          <div class="bot-card-title-group">
+            <span class="bot-card-main-title">📋 에이전트코리아 오늘의 요약 (2026-09-18 00:43 ~ 2026-09-20 11:24) · 1,563건 · 108명</span>
+            <span class="bot-card-time">발행: 9. 20. 오후 01:31 KST</span>
+          </div>
+          
+            <div class="bot-key-tag">
+              <span>🔑 열람 코드: <strong>0223</strong></span>
+            </div>
+          
+        </div>
+
+        <div class="bot-actions-row">
+          <a href="https://akwiki.org/rooms/agent-korea" target="_blank" rel="noopener" class="bot-wiki-action-btn">
+            📖 공식 위키(akwiki)에서 전체보기 ↗
+          </a>
+        </div>
+
+        <div class="bot-topics-container">
+          
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 JEV(제브) 모델 활용법과 오픈소스 재현 경쟁</h5>
+          <p class="bot-topic-desc">의사결정 전용 모델 JEV(제브) 활용법과 오픈소스 재현판 비교가 이어졌다. GLM 마개조판은 0.125초로 JEV 원본 0.085초보다 느렸고, 오픈제브 정확도는 0.7로 JEV 0.94에 못 미쳤다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-20-cross-jev-제브" target="_blank" rel="noopener">📄 판정 전용 모델 JEV(제브), 사흘 만에 세 커뮤니티를 동시에 흔들다 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 짜장/기획자 14:26 &quot;지금 jev를 쓸수있는건가요?&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 twojay | LLM, Prompt 14:37 &quot;그래서 저는 추론 텍스트만 따로 뽑아주는 flash lite 붙이고 프롬프트에 주입하고 JEV 써봤어여 어제&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 김씨/대표/메테오시뮬레이션 10:32 &quot;테스트중인데 glm 마개조 해보니깐 jev 0.085초 마개조 0.125초&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 파이썬 vs 에이전트 오케스트레이션 아키텍처 논쟁</h5>
+          <p class="bot-topic-desc">파이썬 기반 에이전트 서비스의 기술스택 고민에서 언어보다 인프라 구성과 통신 방식이 더 중요하다는 반론이 이어졌다. 저수준 언어 교체가 필요한 경우는 드물다는 데 의견이 모였다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-20-파이썬-vs-에이전트-오케스트레이션-아키텍처-논쟁" target="_blank" rel="noopener">📄 에이전트 오케스트레이션 병목은 언어가 아니다 — 186건 토론이 짚은 진짜 변수 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 팝콘 먹는 춘식이/개발자 11:45 &quot;저는 저희 회사에서 챗 형태로 제공되는 에이전트 서비스를 담당하고 있는 개발자 입니다. python기반으로 서비스는 올렸는데.. 태생이 자바 출신이라.. 정말 이 언어로 가야하는지도  계속 고민이 들고, 가끔 주변 이야기 들어보면 a2a도 부정적인터라.. 어떤 기술스택이 맞는지 고민이 많이 드는데 어디에 물어볼 곳이 없어서 주저리 적게 되었어요..&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 흐물한 어피치/개발 11:49 &quot;파이썬으로 간 이유는 뭘까요 애초에&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 MeroZemory 12:14 &quot;파이썬을 c/c++나 기타 상대적인 저수준언어로 교체해야할만큼 성능이 중요한작업이 과연 에이전트 오케스트레이션 서비스에서 존재할지, 잘 모르겠습니다 (제가 모르는 어떤 특수한 분야가 있나요?)&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 AI 사용량 한도와 구독료를 둘러싼 하소연</h5>
+          <p class="bot-topic-desc">GPT 사용량 리셋과 요금제 확대를 바라는 하소연이 창 내내 이어졌다. 코덱스20 소진 스트레스와 크레딧 과다 지출 후회가 반복 등장했고, 초고가 요금제 드립까지 나왔다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-20-cross-아스트라-사용량한도" target="_blank" rel="noopener">📄 리셋권 써도 금세 바닥 — AI 사용량 한도, 세 커뮤니티를 흔들다 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 김스윽 09:11 &quot;gpt리셋이 시급한데 ㅜㅜ 요즘 아스트라 인기짱이고 막 가입도 막고 거는데…. 그래도 해줬으면 합니다 ㅜㅜ  그리고 20배보다 더 많은 요금제도 있으면 좋겠어요 ㅡㅡ;;;&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 일하는 죠르디 09:15 &quot;GPT Ultra (x50), 50만원  GPT MAX (x100), 100 만원   이런 요금제 나오면 쓰시나요 ㅋㅋ&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 나랑드 / 기획 17:08 &quot;코덱스20 뚫는법 없나요...하...스트레스&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 어사이드(aside) 브라우저 자동화 활용과 대안 비교</h5>
+          <p class="bot-topic-desc">코덱스에 어사이드를 연동하는 방법을 묻는 질문에서 플레이라이트·ego 등 대안 도구 비교 경험담이 이어졌다. OAuth·DNS 설정 자동 처리가 호평받았고, JEV 연동 가능성도 화제였다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-20-어사이드-aside-브라우저-자동화-활용과-대안-비교" target="_blank" rel="noopener">📄 브라우저 자동화 도구 어사이드, 연동법 질문에서 JEV 확장 구상까지 번지다 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 @Dalchivibes 11:55 &quot;혹시 코덱스에 어사이드 어떻게 붙여쓰나요?? 찾아봐도 어사이드 앱다운밖에 안보이는데&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 김위버 15:53 &quot;어사이드 설치했는데 플레이라이트랑 차이점이 뭘까요?&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 화성갈끄니까/AI 16:16 &quot;제 개인적인 경험으로는 사람이 보기에는 어사이드가 낫고, AI에게 물려주기에는 ego가 좋았습니다&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 로컬 재난대비 VLM 앱 &#039;포켓 서바이벌&#039; 공개</h5>
+          <p class="bot-topic-desc">갤럭시 S25에서 100% 로컬로 돌아가는 재난대비 VLM 앱 &#039;포켓 서바이벌&#039;이 공개됐다. 버섯 식별 데모와 대피소 1,255곳 데이터, 젬마4 26B 경량화 모델이 소개됐다. 자체 ZTC 기술은 로컬 전용이라 JEV와 구조가 다르다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-20-로컬-재난대비-vlm-앱-포켓-서바이벌-공개" target="_blank" rel="noopener">📄 100% 로컬 재난대비 AI &#039;포켓 서바이벌&#039; 공개…확신 없으면 침묵 택했다 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 다윈/AI 13:48 &quot;누구나 살면서 한번쯤은 조난이나 재난 상황에 쳐할수 있죠. 통신과 전기가 끊겨도 폰만 있다면 위기 돌파가 가능해야 합니다. 그래서 내 갤럭시 S25 폰에 &#039;100% 로컬&#039;로만 동작하는 말로하고 카메라로 보이는 VLM + 한국 지도 및 GPS 좌표 + 재난대피 및 대응 메뉴얼 일체를 학습시키고 내장했어요. 예제로, &quot;이 버섯 먹어도 되니&quot; 말로하고 버섯을 카메라 비추면 &quot;광대버섯이군요. 먹으면 큰일나요....&quot; 이렇게 말과 텍스트를 출력함. 조금만 더 다듬어서 무료로 플레이스토어에 올려볼까합니다.&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 왈라/유튜브 13:50 &quot; 앗 먹을수 있는 버섯이 아니었습니다. 죄송합니다&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 다윈/AI 13:56 &quot;전국 대피소 등 재난 대비 시설이 1,255곳이나 되더라구요&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 &#039;Astra for Law&#039; 출시와 주니어 일자리 불안</h5>
+          <p class="bot-topic-desc">OpenAI가 법률 리서치 특화 AI &#039;Astra for Law&#039;를 출시하자 로펌 주니어 채용 위축 우려가 이어졌다. 벤치마크 정답률 54%로 기존 38.7%를 웃돈다는 점이 공유됐다. 회계·법·개발 모두 주니어부터 안 뽑는 추세라는 반응도 나왔다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-20-astra-for-law-출시와-주니어-일자리-불안" target="_blank" rel="noopener">📄 오픈AI 법률 AI &#039;Astra for Law&#039; 출시…로펌 주니어 채용 우려 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 올해는한화가우승/방산ax 21:59 &quot;OpenAI가 세계에서 가장 저렴하고 효과적인 변호사를 방금 출시했습니다  Astra for Law라는 이름입니다.&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 왈라/유튜브 22:08 &quot;변호사들 비상이겠네요 &quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 이오/바이오 22:08 &quot;로펌에서 사다 쓰라고 만든 거&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 OCR·손글씨 문서인식 모델 비교</h5>
+          <p class="bot-topic-desc">업스테이지·미스트랄 등 OCR 모델 비교 중 한글 손글씨·수학 공식 인식률이 낮다는 고민이 나왔다. 제미니는 LaTeX 인식은 되지만 수식 변환 중 오류가 난다는 지적과 함께, 매스픽스 등 전용 도구 조합이 대안으로 제시됐다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-20-ocr-손글씨-문서인식-모델-비교" target="_blank" rel="noopener">📄 OCR 모델 비교해보니…한글 손글씨·분수 인식은 여전히 숙제 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 강정석 / Schift / 대표 09:36 &quot;일반 OCR은 평이&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 공냥이 09:47 &quot;요즘 업스테이지는어떰?&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 강정석 / Schift / 대표 09:48 &quot;오죽하면 미스트랄은 적어도&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 (잡담) XREAL AR글래스를 둘러싼 잡담</h5>
+          <p class="bot-topic-desc">XREAL AR글래스로 누워서 코딩할 수 있겠다는 기대에서 시작해 147인치 대화면과 인스타 감성 드립으로 잡담이 이어졌다. 결국 그냥 돈을 쓰고 싶은 거 아니냐는 셀프 태클로 마무리됐다.</p>
+          
+          
+        <blockquote class="bot-quote-item">🔸 HiDDeN 14:37 &quot;이거 쓰면 누워서 코딩 가능할거 같은데 &quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 라텔 / 건설 14:49 &quot;누워서 가능하긴 할텐데 바로 자고 있는 자신을 발견&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 HiDDeN 14:52 &quot;147인치 라는데 &quot;</blockquote>
+      
+        </div>
+      
+        </div>
+      </div>
+    
+    </div>
+  </section>
+  
     </main>
 
     <!-- 하단 접이식 세부 로그 -->

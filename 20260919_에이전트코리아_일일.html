@@ -732,6 +732,169 @@
       word-break: keep-all;
       color: var(--gray-mid);
     }
+    /* 단톡방 공식 봇 랩업 크로스체크 섹션 */
+    .bot-summary-section {
+      margin-top: 36px;
+      padding: 18px 16px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      scroll-margin-top: 16px;
+    }
+    .bot-summary-header {
+      margin-bottom: 14px;
+    }
+    .bot-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .bot-brand-badge {
+      font-size: 11.5px;
+      font-weight: 700;
+      background: #E0E7FF;
+      color: #3730A3;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .bot-count-badge {
+      font-size: 11px;
+      font-weight: 600;
+      background: #EDF2F7;
+      color: var(--gray-mid);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .bot-section-title {
+      font-size: 16.5px;
+      font-weight: 800;
+      color: var(--ink);
+      font-family: var(--font-display);
+      margin-bottom: 4px;
+    }
+    .bot-section-subtitle {
+      font-size: 12.5px;
+      color: var(--gray-mid);
+      line-height: 1.4;
+    }
+    .bot-empty-box {
+      padding: 14px;
+      background: var(--white);
+      border-radius: 8px;
+      border: 1px dashed var(--line);
+      font-size: 13px;
+      color: var(--gray-mid);
+      text-align: center;
+    }
+    .bot-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 14px;
+    }
+    .bot-card:last-child {
+      margin-bottom: 0;
+    }
+    .bot-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .bot-card-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .bot-card-main-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .bot-card-time {
+      font-size: 11.5px;
+      color: var(--gray-light);
+    }
+    .bot-key-tag {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      white-space: nowrap;
+    }
+    .bot-actions-row {
+      margin-bottom: 14px;
+    }
+    .bot-wiki-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--blue-tint);
+      color: var(--blue-primary);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    .bot-wiki-action-btn:hover {
+      background: #BFDBFE;
+    }
+    .bot-topics-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .bot-topic-item {
+      background: #F8FAFC;
+      border-radius: 8px;
+      padding: 12px;
+      border-left: 3px solid #64748B;
+    }
+    .bot-topic-item-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .bot-topic-desc {
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-bottom: 8px;
+      word-break: keep-all;
+    }
+    .bot-article-link {
+      margin-bottom: 6px;
+    }
+    .bot-article-link a {
+      font-size: 12px;
+      color: var(--blue-primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .bot-article-link a:hover {
+      text-decoration: underline;
+    }
+    .bot-quote-item {
+      font-size: 12px;
+      color: var(--gray-mid);
+      background: var(--white);
+      padding: 5px 9px;
+      border-radius: 6px;
+      margin-top: 4px;
+      line-height: 1.4;
+      border: 1px solid #E2E8F0;
+    }
   </style>
 </head>
 <body>
@@ -815,6 +978,12 @@
               </a>
             </li>
           
+          <li class="toc-item toc-item-bot">
+            <a href="#section-official-digest" class="toc-link toc-link-bot">
+              <span class="toc-item-num" style="background: #E0E7FF; color: #3730A3;">📋</span>
+              <span class="toc-item-title" style="color: #3730A3; font-weight: 700;">단톡방 공식 랩업 대조 (1건) ▾</span>
+            </a>
+          </li>
         </ol>
       </details>
     </nav>
@@ -1116,6 +1285,160 @@
     </div>
 </div></section>
 
+      
+  <section class="bot-summary-section" id="section-official-digest">
+    <div class="bot-summary-header">
+      <div class="bot-badge-group">
+        <span class="bot-brand-badge">단톡방 공식 랩업</span>
+        <span class="bot-count-badge">1건 크로스체크</span>
+      </div>
+      <h3 class="bot-section-title">📋 단톡방 공식 봇 랩업 크로스체크</h3>
+      <p class="bot-section-subtitle">단톡방 운영진 공식 봇(akwiki)의 원문 요약 및 열람 코드를 우리 브리핑과 직접 대조할 수 있습니다.</p>
+    </div>
+    <div class="bot-cards-list">
+      
+      <div class="bot-card">
+        <div class="bot-card-top">
+          <div class="bot-card-title-group">
+            <span class="bot-card-main-title">📋 에이전트코리아 오늘의 요약 (2026-09-17 17:54 ~ 2026-09-18 00:43) · 506건 · 41명</span>
+            <span class="bot-card-time">발행: 9. 18. 오전 09:00 KST</span>
+          </div>
+          
+            <div class="bot-key-tag">
+              <span>🔑 열람 코드: <strong>9503</strong></span>
+            </div>
+          
+        </div>
+
+        <div class="bot-actions-row">
+          <a href="https://akwiki.org/rooms/agent-korea" target="_blank" rel="noopener" class="bot-wiki-action-btn">
+            📖 공식 위키(akwiki)에서 전체보기 ↗
+          </a>
+        </div>
+
+        <div class="bot-topics-container">
+          
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 JEV(System One Model) 실전 적용·한계 검증</h5>
+          <p class="bot-topic-desc">한 참가자가 JEV를 QC 레이어·하드게이트에 넣어본 결과, 추론이 거의 없어 맥락(ICL)에 극도로 예민하지만 QC 비용 절감에는 유용하다고 평했다. RAG 전처리는 아직이고, 프롬프트로 잘 정리된 태스크에 쓰면 강력한 &#039;고인물 전용 모델&#039;이라는 진단이 나왔다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-18-jev-system-one-model-실전-적용-한계-검증" target="_blank" rel="noopener">📄 JEV를 하드게이트에 앉혀보니 — ICL에 예민한 고인물 전용 모델 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 코난쌤 한준구 20:45 &quot;오픈클로 세션(클코, 코덱스, gjc, agy 등등) 라우팅을 jev로 시켜보고 있습니다&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 twojay | LLM, Prompt 20:51 &quot;약간 그렇다면 ICL 에 굉장히 예민하겠군요&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 강정석 / Schift / 대표 20:54 &quot;빠르다 = 추론 별로 없다 = 맥락이 전부 = 맥락에 따라 답 다름&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 에이전트 하네스·라우팅 도구 비교 (에르메스·오르카·오픈클로·어사이드)</h5>
+          <p class="bot-topic-desc">헤르메스로 클로드를 연결해 쓰는지 묻는 질문에서, 에르메스는 클로드코드·코덱스·오픈클로와 견주고 오르카는 에이전트 실행을 편하게 해주는 환경이라는 역할 구분이 정리됐다. hermes·openclaw·orca·herdr·comet·aside를 짝지어 비교하는 학습표도 공유됐다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-18-에이전트-하네스-라우팅-도구-비교-에르메스-오르카-오픈클로-어사이드" target="_blank" rel="noopener">📄 에르메스·오르카·오픈클로·어사이드, 에이전트 하네스 비교표가 떴다 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 2255/건설 18:04 &quot;헤르메스로 클로드 연결해서 쓰는분 계세여?!&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 도깨비야 18:09 &quot;요즘에는 orca도 많이 쓰시는거 같은데 저랑은 안맞아서 안쓰긴 합니다&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 콜라 / 개발자 18:13 &quot;에르메스는 클로드코드나 코덱스, 오픈클로랑 비교해보는게 좋아보이구.. 오르카는 앞에 에이전트들을 돌리기 편하게 해주는 환경이랄까용&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 AI 도입 조직의 현실 — 상사의 &#039;딸깍&#039; 기대와 &#039;AI를 대하는 태도&#039;</h5>
+          <p class="bot-topic-desc">한 연구원이 &#039;딸깍하면 하루이틀에 보고서 나오냐&#039;는 상사와 C레벨의 몰이해를 토로했다. 참가자들은 검증 없이 할루시네이션 보고서를 들이대는 문제를 짚으며, AI가 주인이 되어 사람이 허드렛일을 하느냐 사람이 주인이 되느냐의 &#039;태도 차이&#039;가 핵심이라고 정리했다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-18-ai-도입-조직의-현실-상사의-딸깍-기대와-ai를-대하는-태도" target="_blank" rel="noopener">📄 &#039;딸깍하면 보고서 나오냐&#039; — AI 도입 현장서 터진 상사와의 온도차 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 뀨/연구 21:02 &quot;저희 부장님도 심지어 저보고 그거 그럼 딸깍하면 하루이틀이면 보고서나오냐고&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 이오/바이오 21:03 &quot;CAD나 엑셀같은 프로그램도 하루이틀 안에 못배우는데&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 강정석 / Schift / 대표 21:07 &quot;근데C 레벨이 굳이 AI 를 왜 배우지?&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 아스트라·페이블·오푸스5 모델 체감 비교</h5>
+          <p class="bot-topic-desc">여러 모델을 붙여본 참가자들이 아스트라는 단정적이고 페이블은 나이브하다는 성격 차이를 짚었다. 아스트라를 쓰다 내려올 때 갭이 크다는 평과 함께, 오푸스5는 한국어가 오히려 다운그레이드됐고 에러도 많다는 불만이 이어졌다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-18-아스트라-페이블-오푸스5-모델-체감-비교" target="_blank" rel="noopener">📄 아스트라·클로드(페이블·오푸스5) 체감기 — &#039;내려올 때 갭차이가 크다&#039; ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 뀨/연구 21:31 &quot;아스트라가 좀 단정적이고&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 이오/바이오 21:33 &quot;저는 아스트라 써보니 성능이 그리 좋아진지 잘 모르겠더라고요&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 twojay | LLM, Prompt 21:34 &quot;아스트라 쓸때는 모르겠는데 다쓰고 내려올때 갭차이가 너무 큽니다.&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 OpenAI 모델 오정렬 프레임워크·우로보로스 멀티에이전트 실전</h5>
+          <p class="bot-topic-desc">한 참가자가 opencode에 우로보로스를 얹어 작업을 돌린 경험과 loop을 닫는 스킬을 공유했다. OpenAI의 모델 오정렬 보고 프레임워크가 &#039;아스트라 사례가 꽤 심각하다&#039;는 참가자 소개와 함께 회람됐고, 멀티에이전트로 하네스를 구축한 오프라인 행사 발표문도 함께 돌았다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-18-openai-모델-오정렬-프레임워크-우로보로스-멀티에이전트-실전" target="_blank" rel="noopener">📄 우로보로스 멀티에이전트 실전기와 OpenAI 오정렬 프레임워크, 나란히 회람되다 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 Rlslam/개발 19:10 &quot;저 오늘 부터 opencode에 우로보로스 깔아서 작업 시키는데 이거 생각보다 많이 맛돌이네요&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 코난쌤 한준구 19:19 &quot;loop 닫는 스킬 만들어두셨으니 한번 사용해보세요  https://github.com/Q00/loop-engineering-labs&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 Hue/개발자 20:11 &quot;멀티에이전트로 하네스 구축했던 경험을 에이전트 코리아 오프라인행사에서 발표했었는데 도움이 되실까 해서 공유드립니다&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 aside 모바일 앱(askew) 공개·클로드 디자인 예찬</h5>
+          <p class="bot-topic-desc">한 참가자가 iOS/macOS용 aside 앱(askew)의 랜딩페이지를 공개하고 베타 대기명단을 열었다(아직 혼자 쓰는 클로즈테스트 MVP). 앞서 다른 참가자가 클로드 디자인이 좋아 끊을 수 없다는 예찬을 남겼는데, 이는 이 앱이 아니라 클로드 자체에 대한 감상이었다.</p>
+          
+        <div class="bot-article-link">
+          <a href="https://akwiki.org/article/2026-09-18-aside-모바일-앱-askew-공개-클로드-디자인-예찬" target="_blank" rel="noopener">📄 iOS·macOS용 aside 앱(askew) 랜딩페이지 공개 — 클로즈테스트 MVP, 베타 대기명단 개설 ↗</a>
+        </div>
+      
+          
+        <blockquote class="bot-quote-item">🔸 김위버 00:18 &quot;클로드 디자인 이거 진짜 좋은데요?&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 Dominic 00:19 &quot;https://askew.my/ko/  iOS/macOS 버전 aside를 만들어보고 있습니다. 아직 클로즈테스트 mvp단계라 혼자 쓰고있으며 곧 기능추가해서 베타오픈 예정입니다. 잠시 랜딩페이지 한번 봐주시고 관심있으시면 하단 대기명단 이메일등록 부탁드립니다~ 감사합니다@@&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 riiw / 자영업 00:34 &quot;/goal 걸어놓고 주무시죠...&quot;</blockquote>
+      
+        </div>
+      
+        <div class="bot-topic-item">
+          <h5 class="bot-topic-item-title">📌 (잡담) 간짜장 맛집·커피챗·계약 미담 잡담</h5>
+          <p class="bot-topic-desc">당산 간짜장 맛집 추천과 을지로에서의 오프라인 커피챗 제안이 오갔다. 코덱스로 시작한 지 7개월 만에 첫 계약을 성사시켜 세금계산서를 발행하게 됐다는 참가자의 미담이 축하를 받았다.</p>
+          
+          
+        <blockquote class="bot-quote-item">🔸 앵두/회사원 MD 18:22 &quot;간짜장 맛집이요&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 AlexAI/opencrab.sh 21:20 &quot;지역 가까우시면 언제 커피책 하시죠&quot;</blockquote>
+      
+        <blockquote class="bot-quote-item">🔸 행복한 춘식이 21:33 &quot;뜬금없지만 코덱스로 시작한지 7개월만에 계약성공해서 이번달에 첫 세금계산서를 발행해보네요&quot;</blockquote>
+      
+        </div>
+      
+        </div>
+      </div>
+    
+    </div>
+  </section>
+  
     </main>
 
     <!-- 하단 접이식 세부 로그 -->
