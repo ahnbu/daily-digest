@@ -87,7 +87,7 @@
     /* 헤더 */
     header {
       border-bottom: 2px solid var(--ink);
-      padding-bottom: 16px;
+      padding-bottom: 14px;
       margin-bottom: 22px;
     }
     .brand-tag {
@@ -107,16 +107,16 @@
       line-height: 1.25;
       color: var(--ink);
       word-break: keep-all;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
-    .meta-box {
+    /* 상단 초간단 1줄 메타 */
+    .compact-meta {
       font-size: 13px;
       color: var(--gray-mid);
-      background: var(--gray-bg);
-      padding: 10px 12px;
-      border-radius: 8px;
-      line-height: 1.5;
-      word-break: keep-all;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     /* 주제별 카드 */
@@ -215,36 +215,78 @@
       color: inherit;
       border-radius: 2px;
       padding: 1px 2px;
-      cursor: pointer;
     }
 
-    /* 텍스트 선택 시 팝업 툴팁 */
-    #selection-tooltip {
-      position: absolute;
-      display: none;
-      z-index: 1000;
-      background: #1F2937;
+    /* 하단 고정 액션 바 (OS 팝업과 절대 겹치지 않는 모바일 전용 바) */
+    .bottom-action-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-width: 680px;
+      margin: 0 auto;
+      background: #1E293B;
       color: white;
-      padding: 6px 10px;
-      border-radius: 8px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      padding: 12px 16px 14px;
+      border-radius: 18px 18px 0 0;
+      box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.25);
+      z-index: 1050;
+      display: none;
+      flex-direction: column;
       gap: 8px;
-      align-items: center;
-      font-size: 13px;
-      font-weight: 600;
+      animation: slideUpBar 0.2s ease-out;
     }
-    #selection-tooltip button {
+    @keyframes slideUpBar {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .bar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .bar-tag {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #94A3B8;
+      letter-spacing: 0.2px;
+    }
+    .bar-close-btn {
       background: none;
       border: none;
-      color: white;
+      color: #94A3B8;
+      font-size: 16px;
       cursor: pointer;
-      padding: 3px 6px;
-      border-radius: 4px;
+      padding: 0 4px;
+    }
+    .bar-preview {
+      font-size: 13.5px;
+      color: #F1F5F9;
+      line-height: 1.4;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 2px 0 4px;
+    }
+    .bar-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-action {
+      flex: 1;
+      border: none;
+      padding: 11px 0;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 4px;
+      justify-content: center;
+      gap: 5px;
     }
-    #selection-tooltip button:hover { background: #374151; }
+    .btn-action.hl { background: var(--hl-bg); color: #854D0E; }
+    .btn-action.note { background: #334155; color: white; border: 1px solid #475569; }
 
     /* 플로팅 모아보기 버튼 */
     .fab-hl {
@@ -330,8 +372,8 @@
       margin-bottom: 12px;
       position: relative;
     }
-    .hl-card-text { font-size: 14.5px; color: var(--ink); line-height: 1.5; margin-bottom: 6px; }
-    .hl-card-note { font-size: 13px; color: #1D4ED8; font-style: italic; margin-bottom: 4px; }
+    .hl-card-text { font-size: 14.5px; color: var(--ink); line-height: 1.5; margin-bottom: 6px; word-break: keep-all; }
+    .hl-card-note { font-size: 13px; color: #1D4ED8; font-weight: 600; margin-bottom: 4px; }
     .hl-card-del {
       position: absolute;
       top: 8px;
@@ -374,10 +416,10 @@
     .archive-dialog {
       background: white;
       width: 100%;
-      max-width: 420px;
+      max-width: 460px;
       border-radius: 16px;
       padding: 20px;
-      max-height: 70vh;
+      max-height: 75vh;
       display: flex;
       flex-direction: column;
     }
@@ -393,26 +435,87 @@
     }
     .archive-ul li {
       border-bottom: 1px solid var(--line);
+      padding: 10px 0;
     }
-    .archive-ul li.active a {
-      font-weight: 800;
-      color: var(--blue-primary);
+    .archive-ul li:last-child {
+      border-bottom: none;
     }
-    .archive-ul a {
+    .arch-card {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      padding: 6px 8px;
+      border-radius: 8px;
+      transition: background 0.15s;
+    }
+    .arch-card:hover {
+      background: var(--gray-bg);
+    }
+    .arch-card-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 6px;
-      color: var(--ink);
-      text-decoration: none;
-      font-size: 15px;
+      margin-bottom: 6px;
     }
-    .arch-tag {
-      font-size: 12px;
-      color: var(--gray-mid);
-      background: var(--gray-bg);
-      padding: 2px 8px;
+    .arch-date {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .arch-badge {
+      font-size: 11.5px;
+      color: var(--blue-primary);
+      background: var(--blue-tint);
+      padding: 2px 7px;
       border-radius: 4px;
+      font-weight: 600;
+    }
+    li.active .arch-date {
+      color: var(--blue-primary);
+    }
+    .arch-topic-list {
+      list-style: none;
+      padding-left: 4px;
+    }
+    .arch-topic-list li {
+      border: none !important;
+      padding: 2px 0 !important;
+      font-size: 12.5px;
+      color: var(--gray-mid);
+      line-height: 1.4;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .arch-topic-list li::before {
+      content: "• ";
+      color: var(--blue-primary);
+      font-weight: bold;
+    }
+
+    /* 하단 기술 세부 로그 접이식 */
+    .tech-details {
+      margin-top: 30px;
+      border-top: 1px dashed var(--line);
+      padding-top: 14px;
+      font-size: 12.5px;
+      color: var(--gray-light);
+    }
+    .tech-details summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--gray-mid);
+      outline: none;
+      padding: 4px 0;
+    }
+    .tech-details-content {
+      margin-top: 8px;
+      padding: 10px 12px;
+      background: var(--gray-bg);
+      border-radius: 6px;
+      line-height: 1.5;
+      word-break: keep-all;
+      color: var(--gray-mid);
     }
   </style>
 </head>
@@ -426,7 +529,7 @@
     <header>
       <span class="brand-tag">에이전트코리아 단톡방 랩업</span>
       <h1>일일 브리핑 2026-09-21</h1>
-      <div class="meta-box">구간 09-20 07:00 ~ 09-21 07:00 KST · 메시지 520건(전처리 441) · 참여자 55명 · 봇 요약 점검 1건 · 인용 21/22 원문 일치 · sonnet 188초 · $0.35</div>
+      <div class="compact-meta">기준: 09/20 ~ 09/21 · 520건</div>
     </header>
     <main id="article-content">
       
@@ -697,15 +800,31 @@
 </div></section>
 
     </main>
-    <footer style="margin-top: 36px; text-align: center; font-size: 12px; color: var(--gray-light); border-top: 1px solid var(--line); padding-top: 18px;">
+
+    <!-- 하단 접이식 세부 로그 -->
+    
+    <details class="tech-details">
+      <summary>⚙️ 수집·분석 상세 로그 (클릭하여 확인)</summary>
+      <div class="tech-details-content">구간 09-20 07:00 ~ 09-21 07:00 KST · 메시지 520건(전처리 441) · 참여자 55명 · 봇 요약 점검 1건 · 인용 21/22 원문 일치 · sonnet 188초 · $0.35</div>
+    </details>
+    
+
+    <footer style="margin-top: 24px; text-align: center; font-size: 12px; color: var(--gray-light); border-top: 1px solid var(--line); padding-top: 16px;">
       <p>PlanningHigh · 에이전트코리아 일일 분석 리포트</p>
     </footer>
   </div>
 
-  <!-- 선택 팝업 툴팁 -->
-  <div id="selection-tooltip">
-    <button id="btn-do-highlight">🖍️ 형광펜</button>
-    <button id="btn-do-note">💬 메모</button>
+  <!-- 하단 고정 액션 바 (OS 팝업과 절대 겹치지 않는 모바일 전용 바) -->
+  <div id="highlight-bar" class="bottom-action-bar">
+    <div class="bar-header">
+      <span class="bar-tag">선택 문장</span>
+      <button class="bar-close-btn" id="btn-cancel-bar">✕</button>
+    </div>
+    <div class="bar-preview" id="bar-preview-text">"..."</div>
+    <div class="bar-actions">
+      <button id="btn-do-highlight" class="btn-action hl">🖍️ 형광펜 칠하기</button>
+      <button id="btn-do-note" class="btn-action note">💬 메모 남기기</button>
+    </div>
   </div>
 
   <!-- 플로팅 하이라이트 모아보기 버튼 -->
@@ -738,12 +857,66 @@
         <button class="drawer-close" id="btn-close-archive">✕</button>
       </div>
       <ul class="archive-ul">
-        <li class=""><a href="20260922_에이전트코리아_일일.html"><span>📅 2026-09-22</span><span class="arch-tag">보기</span></a></li>
-<li class="active"><a href="20260921_에이전트코리아_일일.html"><span>📅 2026-09-21</span><span class="arch-tag">현재</span></a></li>
-<li class=""><a href="20260920_에이전트코리아_일일.html"><span>📅 2026-09-20</span><span class="arch-tag">보기</span></a></li>
-<li class=""><a href="20260919_에이전트코리아_일일.html"><span>📅 2026-09-19</span><span class="arch-tag">보기</span></a></li>
-<li class=""><a href="20260918_에이전트코리아_일일.html"><span>📅 2026-09-18</span><span class="arch-tag">보기</span></a></li>
-<li class=""><a href="20260917_에이전트코리아_일일.html"><span>📅 2026-09-17</span><span class="arch-tag">보기</span></a></li>
+        
+    <li class="">
+      <a href="20260922_에이전트코리아_일일.html" class="arch-card">
+        <div class="arch-card-header">
+          <span class="arch-date">📅 2026-09-22</span>
+          <span class="arch-badge">보기</span>
+        </div>
+        <ul class="arch-topic-list"><li>아스트라 토큰이 몇 번 돌리면 녹는다는…</li><li>JEV</li><li>코덱스 리셋·솔6 소문</li><li>AI를 쓸수록 늘어난 일강도와 집중력 …</li></ul>
+      </a>
+    </li>
+
+    <li class="active">
+      <a href="20260921_에이전트코리아_일일.html" class="arch-card">
+        <div class="arch-card-header">
+          <span class="arch-date">📅 2026-09-21</span>
+          <span class="arch-badge">현재 읽는 중</span>
+        </div>
+        <ul class="arch-topic-list"><li>외주 현장</li><li>한도 소진과 리셋 기다림</li><li>JEV·ZTC</li><li>AI 덕에 빨라진 일</li></ul>
+      </a>
+    </li>
+
+    <li class="">
+      <a href="20260920_에이전트코리아_일일.html" class="arch-card">
+        <div class="arch-card-header">
+          <span class="arch-date">📅 2026-09-20</span>
+          <span class="arch-badge">보기</span>
+        </div>
+        <ul class="arch-topic-list"><li>JEV 화제</li><li>GPT 2.5 이후 이미지는 이미 충분…</li><li>손글씨 한글·수식 OCR</li><li>아스트라 사용감</li></ul>
+      </a>
+    </li>
+
+    <li class="">
+      <a href="20260919_에이전트코리아_일일.html" class="arch-card">
+        <div class="arch-card-header">
+          <span class="arch-date">📅 2026-09-19</span>
+          <span class="arch-badge">보기</span>
+        </div>
+        <ul class="arch-topic-list"><li>JEV(제브) 하루 종일 실전 테스트 …</li><li>구독료 소진·리셋 스트레스 밈</li><li>파이썬이 에이전트 오케스트레이션의 병목…</li><li>로컬 VLM 재난생존 앱 '포켓 서바이…</li></ul>
+      </a>
+    </li>
+
+    <li class="">
+      <a href="20260918_에이전트코리아_일일.html" class="arch-card">
+        <div class="arch-card-header">
+          <span class="arch-date">📅 2026-09-18</span>
+          <span class="arch-badge">보기</span>
+        </div>
+        <ul class="arch-topic-list"><li>Jev(System One) ENUM …</li><li>제미나이4 프로 벤치마크 유출설</li><li>리셋권 사수 전쟁과 커지는 AI 구독비…</li><li>AI 다루는 법 — 네거티브리스트 집착…</li></ul>
+      </a>
+    </li>
+
+    <li class="">
+      <a href="20260917_에이전트코리아_일일.html" class="arch-card">
+        <div class="arch-card-header">
+          <span class="arch-date">📅 2026-09-17</span>
+          <span class="arch-badge">보기</span>
+        </div>
+        <ul class="arch-topic-list"><li>GPT-6 Sol 출시설과 아스트라·루…</li><li>AI 토큰 예산과 사용량 한도 신경전</li><li>로컬 LLM 180B 자작과 오픈라우터…</li><li>aside와 코덱스 브라우저 자동화 비교</li></ul>
+      </a>
+    </li>
       </ul>
     </div>
   </div>
@@ -753,9 +926,12 @@
       const STORAGE_KEY = "daily_digest_hl_20260921";
       let highlights = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
 
-      const tooltip = document.getElementById("selection-tooltip");
+      const hlBar = document.getElementById("highlight-bar");
+      const barPreview = document.getElementById("bar-preview-text");
+      const btnCancelBar = document.getElementById("btn-cancel-bar");
       const btnHighlight = document.getElementById("btn-do-highlight");
       const btnNote = document.getElementById("btn-do-note");
+
       const fab = document.getElementById("btn-open-highlights");
       const countBadge = document.getElementById("hl-count-badge");
       const drawerOverlay = document.getElementById("drawer-overlay");
@@ -786,7 +962,7 @@
 
       function renderDrawer() {
         if (highlights.length === 0) {
-          drawerList.innerHTML = '<p style="color: #8B8A95; text-align: center; padding: 30px 0;">아직 남긴 하이라이트가 없습니다.<br>본문 문장을 길게 터치하여 형광펜을 칠해보세요!</p>';
+          drawerList.innerHTML = '<p style="color: #8B8A95; text-align: center; padding: 30px 0;">아직 남긴 하이라이트가 없습니다.<br>본문 문장을 드래그하여 형광펜을 칠해보세요!</p>';
           return;
         }
         drawerList.innerHTML = highlights.map((h, i) => `
@@ -806,27 +982,28 @@
         });
       }
 
-      // 텍스트 선택 감지 (모바일 touchend, 데스크톱 mouseup)
+      // 텍스트 선택 감지: OS 메뉴와 겹치지 않는 화면 맨 밑바닥 고정 바 노출
       function handleSelection() {
         const sel = window.getSelection();
         const text = sel ? sel.toString().trim() : "";
         if (!text || text.length < 2) {
-          tooltip.style.display = "none";
-          currentSelectionText = "";
           return;
         }
 
         currentSelectionText = text;
-        const range = sel.getRangeAt(0);
-        const rect = range.getBoundingClientRect();
-        
-        tooltip.style.left = Math.max(10, rect.left + (rect.width / 2) - 60) + "px";
-        tooltip.style.top = (window.scrollY + rect.top - 46) + "px";
-        tooltip.style.display = "flex";
+        barPreview.textContent = '"' + (text.length > 50 ? text.slice(0, 50) + '…' : text) + '"';
+        hlBar.style.display = "flex";
       }
 
       document.addEventListener("mouseup", () => setTimeout(handleSelection, 50));
       document.addEventListener("touchend", () => setTimeout(handleSelection, 150));
+
+      // 선택 바 닫기
+      btnCancelBar.addEventListener("click", () => {
+        hlBar.style.display = "none";
+        currentSelectionText = "";
+        window.getSelection().removeAllRanges();
+      });
 
       // 형광펜 추가
       btnHighlight.addEventListener("click", (e) => {
@@ -834,7 +1011,7 @@
         if (!currentSelectionText) return;
         highlights.push({ text: currentSelectionText, note: "", time: new Date().toLocaleTimeString() });
         saveHighlights();
-        tooltip.style.display = "none";
+        hlBar.style.display = "none";
         window.getSelection().removeAllRanges();
       });
 
@@ -842,12 +1019,12 @@
       btnNote.addEventListener("click", (e) => {
         e.stopPropagation();
         if (!currentSelectionText) return;
-        const userNote = prompt("💬 이 부분에 남길 메모를 입력하세요:");
+        const userNote = prompt("💬 이 문장에 남길 메모를 입력하세요:");
         if (userNote !== null) {
           highlights.push({ text: currentSelectionText, note: userNote.trim(), time: new Date().toLocaleTimeString() });
           saveHighlights();
         }
-        tooltip.style.display = "none";
+        hlBar.style.display = "none";
         window.getSelection().removeAllRanges();
       });
 
