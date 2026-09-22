@@ -1213,7 +1213,6 @@
           highlights.splice(existingIdx, 1);
           target.classList.remove("user-hl-active");
           saveHighlights();
-          showToast("형광펜 해제됨");
         } else {
           // 새로 칠하기
           highlights.push({
@@ -1224,7 +1223,6 @@
           });
           target.classList.add("user-hl-active");
           saveHighlights();
-          showToast("🖍️ 형광펜 칠하기 완료!");
         }
 
         // 터치/클릭 후 포커스 및 잔상 즉시 해제
