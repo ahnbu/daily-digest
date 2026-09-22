@@ -34,35 +34,49 @@
       font-size: 16px;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
-      padding: 12px 10px 100px;
+      padding: 10px 10px 100px;
     }
     .container {
       max-width: 680px;
       margin: 0 auto;
       background: var(--white);
       border-radius: 16px;
-      padding: 20px 18px 30px;
+      padding: 16px 18px 28px;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
       border: 1px solid var(--line);
     }
     
-    /* 상단 아카이브 네비게이션 바 */
-    .top-nav {
+    /* 슬림 2줄 통합 네비게이션 헤더 (제안 A: 상단 건수 제거 및 슬림화) */
+    .slim-header {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    .header-nav-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 14px;
-      margin-bottom: 16px;
-      border-bottom: 1px solid var(--line);
-      font-size: 13px;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .header-date-title {
+      font-family: var(--font-display);
+      font-size: 16.5px;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.2px;
+      text-align: center;
+      flex: 1;
     }
     .nav-btn {
       color: var(--blue-primary);
       text-decoration: none;
       font-weight: 700;
-      padding: 4px 10px;
+      font-size: 12.5px;
+      padding: 4px 9px;
       border-radius: 6px;
       background: var(--blue-tint);
+      white-space: nowrap;
       transition: background 0.2s;
     }
     .nav-btn.disabled {
@@ -70,60 +84,42 @@
       background: var(--gray-bg);
       cursor: default;
     }
-    .archive-toggle-btn {
-      border: 1px solid var(--line);
-      background: var(--white);
-      color: var(--ink);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 5px 12px;
-      border-radius: 20px;
-      cursor: pointer;
-      display: inline-flex;
+    .header-sub-row {
+      display: flex;
       align-items: center;
-      gap: 5px;
+      justify-content: space-between;
     }
-
-    /* 헤더 */
-    header {
-      border-bottom: 2px solid var(--ink);
-      padding-bottom: 14px;
-      margin-bottom: 22px;
-    }
-    .brand-tag {
-      display: inline-block;
+    .header-brand-badge {
       font-size: 12px;
       font-weight: 700;
       color: var(--blue-primary);
       background: var(--blue-tint);
       padding: 3px 8px;
       border-radius: 4px;
-      margin-bottom: 8px;
     }
-    h1 {
-      font-family: var(--font-display);
-      font-size: 23px;
-      font-weight: 800;
-      line-height: 1.25;
+    .archive-toggle-btn {
+      border: 1px solid var(--line);
+      background: var(--white);
       color: var(--ink);
-      word-break: keep-all;
-      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.15s;
     }
-    /* 상단 초간단 1줄 메타 */
-    .compact-meta {
-      font-size: 13px;
-      color: var(--gray-mid);
-      font-weight: 500;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    .archive-toggle-btn:hover {
+      background: var(--gray-bg);
     }
 
     /* 주제별 카드 */
     .topic-card {
-      margin-bottom: 28px;
+      margin-bottom: 26px;
       border-bottom: 1px solid var(--line);
-      padding-bottom: 24px;
+      padding-bottom: 22px;
     }
     .topic-card:last-child {
       border-bottom: none;
@@ -151,7 +147,7 @@
     }
     .topic-title {
       font-family: var(--font-display);
-      font-size: 18px;
+      font-size: 17.5px;
       font-weight: 800;
       line-height: 1.35;
       color: var(--ink);
@@ -163,6 +159,7 @@
       margin-bottom: 14px;
       text-align: justify;
       word-break: keep-all;
+      transition: background-color 0.2s ease, border 0.2s ease;
     }
     .quote-item {
       background: var(--gray-bg);
@@ -170,6 +167,7 @@
       padding: 10px 12px;
       border-radius: 0 8px 8px 0;
       margin-bottom: 8px;
+      transition: background-color 0.2s ease, border 0.2s ease;
     }
     .quote-meta {
       font-size: 12px;
@@ -193,6 +191,7 @@
       border-radius: 8px;
       padding: 12px 14px;
       margin-top: 14px;
+      transition: background-color 0.2s ease, border 0.2s ease;
     }
     .idea-label {
       font-size: 12px;
@@ -208,7 +207,21 @@
       word-break: keep-all;
     }
 
-    /* 하이라이트 스타일 */
+    /* 하이라이트 활성화 스타일 (DOM 반영) */
+    .summary-text.user-hl-active {
+      background-color: var(--hl-bg);
+      border-left: 3px solid var(--hl-border);
+      padding: 6px 10px;
+      border-radius: 4px;
+    }
+    .quote-item.user-hl-active {
+      background-color: #FEF9C3;
+      border-left: 4px solid var(--hl-border);
+    }
+    .idea-card.user-hl-active {
+      background-color: #FEF08A;
+      border-color: var(--hl-border);
+    }
     mark.user-hl {
       background-color: var(--hl-bg);
       border-bottom: 2px solid var(--hl-border);
@@ -217,7 +230,107 @@
       padding: 1px 2px;
     }
 
-    /* 하단 고정 액션 바 (OS 팝업과 절대 겹치지 않는 모바일 전용 바) */
+    /* 형광펜 모드 ON 일 때 타깃 스타일 */
+    body.hl-mode-active .hl-target {
+      cursor: pointer;
+    }
+    body.hl-mode-active .hl-target:hover {
+      outline: 2px dashed #EAB308;
+      outline-offset: 2px;
+    }
+
+    /* 하단 플로팅 컨트롤 바 (항상 노출) */
+    .floating-controls {
+      position: fixed;
+      bottom: 18px;
+      right: 14px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .fab-hl-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--white);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      padding: 8px 13px;
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      transition: all 0.2s ease;
+    }
+    .fab-hl-toggle .hl-toggle-badge {
+      font-size: 10.5px;
+      padding: 1px 6px;
+      border-radius: 10px;
+      background: var(--gray-bg);
+      color: var(--gray-mid);
+      font-weight: 800;
+    }
+    .fab-hl-toggle.active {
+      background: var(--hl-bg);
+      border-color: var(--hl-border);
+      color: #854D0E;
+      box-shadow: 0 4px 16px rgba(234, 179, 8, 0.35);
+    }
+    .fab-hl-toggle.active .hl-toggle-badge {
+      background: #EAB308;
+      color: var(--white);
+    }
+    .fab-hl-list {
+      background: var(--blue-primary);
+      color: white;
+      border: none;
+      border-radius: 24px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(28, 96, 239, 0.3);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .fab-hl-list .badge {
+      background: white;
+      color: var(--blue-primary);
+      border-radius: 12px;
+      padding: 1px 6px;
+      font-size: 11.5px;
+      font-weight: 800;
+    }
+
+    /* 토스트 알림 */
+    .hl-toast {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: #1E293B;
+      color: #FFFFFF;
+      padding: 9px 18px;
+      border-radius: 24px;
+      font-size: 13.5px;
+      font-weight: 600;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
+    }
+    .hl-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* 하단 드래그 선택 바 (보조) */
     .bottom-action-bar {
       position: fixed;
       bottom: 0;
@@ -288,34 +401,7 @@
     .btn-action.hl { background: var(--hl-bg); color: #854D0E; }
     .btn-action.note { background: #334155; color: white; border: 1px solid #475569; }
 
-    /* 플로팅 모아보기 버튼 */
-    .fab-hl {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 990;
-      background: var(--blue-primary);
-      color: white;
-      border: none;
-      border-radius: 30px;
-      padding: 11px 18px;
-      font-size: 14px;
-      font-weight: 700;
-      box-shadow: 0 4px 16px rgba(28, 96, 239, 0.35);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .fab-hl .badge {
-      background: white;
-      color: var(--blue-primary);
-      border-radius: 12px;
-      padding: 1px 7px;
-      font-size: 12px;
-    }
-
-    /* 하이라이트 드로어 (모달 서랍) */
+    /* 하이라이트 모아보기 드로어 */
     .drawer-overlay {
       position: fixed;
       inset: 0;
@@ -373,7 +459,18 @@
       position: relative;
     }
     .hl-card-text { font-size: 14.5px; color: var(--ink); line-height: 1.5; margin-bottom: 6px; word-break: keep-all; }
-    .hl-card-note { font-size: 13px; color: #1D4ED8; font-weight: 600; margin-bottom: 4px; }
+    .hl-card-note { font-size: 13px; color: #1D4ED8; font-weight: 600; margin-bottom: 6px; }
+    .hl-card-actions { display: flex; gap: 8px; margin-top: 6px; }
+    .hl-card-btn {
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      cursor: pointer;
+      color: var(--gray-mid);
+    }
     .hl-card-del {
       position: absolute;
       top: 8px;
@@ -521,16 +618,19 @@
 </head>
 <body>
   <div class="container">
-    <nav class="top-nav">
-      <a href="20260919_에이전트코리아_일일.html" class="nav-btn">◀ 09-19</a>
-      <button class="archive-toggle-btn" id="btn-open-archive">📚 전체 날짜 (6)</button>
-      <a href="20260921_에이전트코리아_일일.html" class="nav-btn">09-21 ▶</a>
-    </nav>
-    <header>
-      <span class="brand-tag">에이전트코리아 단톡방 랩업</span>
-      <h1>일일 브리핑 2026-09-20</h1>
-      <div class="compact-meta">기준: 09/19 ~ 09/20 · 719건</div>
+    <!-- 슬림 2줄 통합 네비게이션 헤더 (제안 A: 상단 건수 제거 및 슬림화) -->
+    <header class="slim-header">
+      <div class="header-nav-row">
+        <a href="20260919_에이전트코리아_일일.html" class="nav-btn" title="2026-09-19">◀ 09-19</a>
+        <h1 class="header-date-title">📅 2026-09-20 (일)</h1>
+        <a href="20260921_에이전트코리아_일일.html" class="nav-btn" title="2026-09-21">09-21 ▶</a>
+      </div>
+      <div class="header-sub-row">
+        <span class="header-brand-badge">에이전트코리아 단톡방 랩업</span>
+        <button class="archive-toggle-btn" id="btn-open-archive">📚 지난 목록 (6)</button>
+      </div>
     </header>
+
     <main id="article-content">
       
 <section class="topic-card" id="topic-1">
@@ -539,9 +639,9 @@
     <h3 class="topic-title">JEV 화제: OCR 평가·저렴한 가격, 그리고 직접 따라 만든 재현 실험</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text">JEV(TypeSafe AI)는 초대 대기와 함께 OCR 평가가 오갔고, 표 정확도는 아쉽다는 반응이 있었다. 저렴한 가격을 두고는 따라 만들기 쉬운 모델이라서 싸게 책정했다는 추측도 나왔다. P016은 GLM·Qwen을 개조한 모델의 정답률이 96%로 JEV(94%)를 넘었다고 공유했고, JEV가 더 싸고 빠르다는 점은 함정이라고 덧붙였다. Aside에 JEV를 연동해 본 사람도 있었지만 활용법은 더 고민 중이라고 했다.</p>
+    <p class="summary-text hl-target" data-hl-id="t1-p1">JEV(TypeSafe AI)는 초대 대기와 함께 OCR 평가가 오갔고, 표 정확도는 아쉽다는 반응이 있었다. 저렴한 가격을 두고는 따라 만들기 쉬운 모델이라서 싸게 책정했다는 추측도 나왔다. P016은 GLM·Qwen을 개조한 모델의 정답률이 96%로 JEV(94%)를 넘었다고 공유했고, JEV가 더 싸고 빠르다는 점은 함정이라고 덧붙였다. Aside에 JEV를 연동해 본 사람도 있었지만 활용법은 더 고민 중이라고 했다.</p>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t1-q1">
       <div class="quote-meta">
         <span class="quote-author">P010</span>
         <span class="quote-time">09-19 09:36</span>
@@ -549,7 +649,7 @@
       <blockquote class="quote-text">"표 쪽 정확도만 살짝 아쉽고"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t1-q2">
       <div class="quote-meta">
         <span class="quote-author">P016</span>
         <span class="quote-time">09-19 10:32</span>
@@ -557,7 +657,7 @@
       <blockquote class="quote-text">"정답율은 jev 94퍼 glm 마개조 96퍼"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t1-q3">
       <div class="quote-meta">
         <span class="quote-author">P017</span>
         <span class="quote-time">09-19 10:33</span>
@@ -565,7 +665,7 @@
       <blockquote class="quote-text">"따라 만들기 쉬운 모델"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t1-q4">
       <div class="quote-meta">
         <span class="quote-author">P017</span>
         <span class="quote-time">09-19 12:32</span>
@@ -573,7 +673,7 @@
       <blockquote class="quote-text">"MCP라우터로 API 묶었어요"</blockquote>
     </div>
 
-    <div class="idea-card">
+    <div class="idea-card hl-target" data-hl-id="t1-i1">
       <div class="idea-label">✍️ 글감 각도</div>
       <p class="idea-text">화제의 신모델을 며칠 만에 직접 재현·비교해 본 사람들의 실험을 통해, 모델의 가격 정책에 담긴 의도를 읽는 관점.</p>
     </div>
@@ -585,9 +685,9 @@
     <h3 class="topic-title">GPT 2.5 이후 이미지는 이미 충분한가 — 출판 현장의 AI 슬롭과 납본 악용</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text">새 이미지 모델 루머에는 기대가 없다는 반응이 나왔고, P007은 일반인에게는 지금 수준이면 충분하다고 봤다. 이야기는 전자책 제작 도구(북포지)와 출판 비용으로 이어졌다. 이어서 AI로 책을 양산해 납본 제도를 악용하는 사례를 비판하며, 사람이 지켜야 할 선이 있다는 의견이 이어졌다. P024는 AI가 일반인 수준까지 퍼지면 윤리의식이 더 중요해질 것이라고 했다.</p>
+    <p class="summary-text hl-target" data-hl-id="t2-p1">새 이미지 모델 루머에는 기대가 없다는 반응이 나왔고, P007은 일반인에게는 지금 수준이면 충분하다고 봤다. 이야기는 전자책 제작 도구(북포지)와 출판 비용으로 이어졌다. 이어서 AI로 책을 양산해 납본 제도를 악용하는 사례를 비판하며, 사람이 지켜야 할 선이 있다는 의견이 이어졌다. P024는 AI가 일반인 수준까지 퍼지면 윤리의식이 더 중요해질 것이라고 했다.</p>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t2-q1">
       <div class="quote-meta">
         <span class="quote-author">P007</span>
         <span class="quote-time">09-19 21:46</span>
@@ -595,7 +695,7 @@
       <blockquote class="quote-text">"기대가안됨.."</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t2-q2">
       <div class="quote-meta">
         <span class="quote-author">P007</span>
         <span class="quote-time">09-19 21:47</span>
@@ -603,7 +703,7 @@
       <blockquote class="quote-text">"딱이수준이면 끝임"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t2-q3">
       <div class="quote-meta">
         <span class="quote-author">P007</span>
         <span class="quote-time">09-19 21:55</span>
@@ -611,7 +711,7 @@
       <blockquote class="quote-text">"한권찍을때 api비용으로 대충 3천원나오거든요"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t2-q4">
       <div class="quote-meta">
         <span class="quote-author">P007</span>
         <span class="quote-time">09-19 21:57</span>
@@ -619,7 +719,7 @@
       <blockquote class="quote-text">"사람이 지켜야하는 선이있는데"</blockquote>
     </div>
 
-    <div class="idea-card">
+    <div class="idea-card hl-target" data-hl-id="t2-i1">
       <div class="idea-label">✍️ 글감 각도</div>
       <p class="idea-text">책 한 권 제작비가 API 비용 3천 원대로 내려온 시대에, 「할 수 있는 것」과 「해선 안 되는 것」의 경계를 콘텐츠 제작자 관점에서 다루는 글.</p>
     </div>
@@ -631,9 +731,9 @@
     <h3 class="topic-title">손글씨 한글·수식 OCR: 제미나이가 틀린 답을 멋대로 고치는 문제</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text">P022가 손글씨 한글·분수 인식률이 낮다고 묻자, OCR보다 VQA 모델을 쓰라는 답과 손글씨 대응 도구 조합 제안이 나왔다. 제미나이가 서술형 답안의 오타나 틀린 답까지 옳게 고쳐 버린다는 불만에는, 「고치지 말고 보이는 그대로 옮겨 적어라」는 프롬프트 예시가 공유됐다. 수식은 LaTeX 변환 도구(Mathpix, Pix2Text 등)를 조합하라는 제안이 있었다.</p>
+    <p class="summary-text hl-target" data-hl-id="t3-p1">P022가 손글씨 한글·분수 인식률이 낮다고 묻자, OCR보다 VQA 모델을 쓰라는 답과 손글씨 대응 도구 조합 제안이 나왔다. 제미나이가 서술형 답안의 오타나 틀린 답까지 옳게 고쳐 버린다는 불만에는, 「고치지 말고 보이는 그대로 옮겨 적어라」는 프롬프트 예시가 공유됐다. 수식은 LaTeX 변환 도구(Mathpix, Pix2Text 등)를 조합하라는 제안이 있었다.</p>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t3-q1">
       <div class="quote-meta">
         <span class="quote-author">P010</span>
         <span class="quote-time">09-19 11:21</span>
@@ -641,7 +741,7 @@
       <blockquote class="quote-text">"손글씨는 vqa 모델들 추천드려요"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t3-q2">
       <div class="quote-meta">
         <span class="quote-author">P022</span>
         <span class="quote-time">09-19 11:35</span>
@@ -649,7 +749,7 @@
       <blockquote class="quote-text">"답변 감사합니다! 제미나이로 인식 시켜봤을 때는 서술형 답안의 오타나 틀린 답도 지가 멋대로 옳게 고쳐놓고"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t3-q3">
       <div class="quote-meta">
         <span class="quote-author">P027</span>
         <span class="quote-time">09-19 11:38</span>
@@ -657,7 +757,7 @@
       <blockquote class="quote-text">"[역할 및 원칙] / 당신은 지능형 문제 해결사가 아닌 기계적 텍스트 복사기(Verbatim Transcriber)입니다."</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t3-q4">
       <div class="quote-meta">
         <span class="quote-author">P027</span>
         <span class="quote-time">09-19 11:56</span>
@@ -665,7 +765,7 @@
       <blockquote class="quote-text">"제미니는 vlm이라 latex코드 인식은 잘되지만, 수식을 latex코드로 불러내면서 오류를 만들어내는거고"</blockquote>
     </div>
 
-    <div class="idea-card">
+    <div class="idea-card hl-target" data-hl-id="t3-i1">
       <div class="idea-label">✍️ 글감 각도</div>
       <p class="idea-text">AI가 「똑똑하게 고쳐 주는」 성질이 전사 작업에서는 오히려 결함이 되고, 프롬프트로 역할을 좁혀 해결할 수 있다는 강의용 사례.</p>
     </div>
@@ -677,9 +777,9 @@
     <h3 class="topic-title">아스트라 사용감: 한도 리셋 대기, 지시를 어기고 사과·동의만 반복</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text">사용량 리셋 시간을 기다린다는 얘기가 여러 명에게서 나왔다. P013은 크레딧을 충전했다가 질문 한 번에 소진된 경험을 전했다. 리셋 뒤에는 아스트라가 시킨 대로 하지 않고 사과와 동의만 반복한다는 불만이 나왔다. P013은 개인 지시사항으로 사과·동의 없이 수정만 하게 했고, P041은 돌아가는 안 대신 단순한 Z안을 제안하니 바로 수긍했다고 전했다. P050은 추론 수준이 low인지 최대인지 물었고, P041과 P013은 high라고 답했다.</p>
+    <p class="summary-text hl-target" data-hl-id="t4-p1">사용량 리셋 시간을 기다린다는 얘기가 여러 명에게서 나왔다. P013은 크레딧을 충전했다가 질문 한 번에 소진된 경험을 전했다. 리셋 뒤에는 아스트라가 시킨 대로 하지 않고 사과와 동의만 반복한다는 불만이 나왔다. P013은 개인 지시사항으로 사과·동의 없이 수정만 하게 했고, P041은 돌아가는 안 대신 단순한 Z안을 제안하니 바로 수긍했다고 전했다. P050은 추론 수준이 low인지 최대인지 물었고, P041과 P013은 high라고 답했다.</p>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t4-q1">
       <div class="quote-meta">
         <span class="quote-author">P013</span>
         <span class="quote-time">09-19 14:30</span>
@@ -687,7 +787,7 @@
       <blockquote class="quote-text">"질문 한방에 0%"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t4-q2">
       <div class="quote-meta">
         <span class="quote-author">P013</span>
         <span class="quote-time">09-19 20:48</span>
@@ -695,7 +795,7 @@
       <blockquote class="quote-text">"아스트라 갑자기 바보된 기분"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t4-q3">
       <div class="quote-meta">
         <span class="quote-author">P013</span>
         <span class="quote-time">09-19 20:55</span>
@@ -703,7 +803,7 @@
       <blockquote class="quote-text">"사과나 동의 하지말고 수정을 하라고"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t4-q4">
       <div class="quote-meta">
         <span class="quote-author">P041</span>
         <span class="quote-time">09-19 21:15</span>
@@ -711,7 +811,7 @@
       <blockquote class="quote-text">"ㅋㅋㅋㅋㅋㅋ 전 A안 B안 C안을 주는데 다 너무 돌아가는거길래 그냥 심플하게 Z안이면 되지않아?"</blockquote>
     </div>
 
-    <div class="idea-card">
+    <div class="idea-card hl-target" data-hl-id="t4-i1">
       <div class="idea-label">✍️ 글감 각도</div>
       <p class="idea-text">AI가 "맞습니다"만 반복할 때 사용자가 개인 지시사항으로 태도를 고치는 방법과 그 한계.</p>
     </div>
@@ -723,9 +823,9 @@
     <h3 class="topic-title">Claude Code, AGENTS.md 공식 지원 (v2.1.277)</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text">P002가 Claude Code가 AGENTS.md를 공식 지원한다고 공유했다. 기본 설정은 CLAUDE.md가 있으면 CLAUDE.md만 읽으므로, 둘 다 읽으려면 설정을 바꿔야 한다는 주의점도 함께 정리했다. 기존에 CLAUDE.md와 AGENTS.md를 같이 쓰던 사람은 구조를 확인하라는 권고가 붙었다. 반응은 지금까지 안 됐다는 놀람과, 구독 지원이 끊기니 들어온 것 같다는 추측이 나왔다.</p>
+    <p class="summary-text hl-target" data-hl-id="t5-p1">P002가 Claude Code가 AGENTS.md를 공식 지원한다고 공유했다. 기본 설정은 CLAUDE.md가 있으면 CLAUDE.md만 읽으므로, 둘 다 읽으려면 설정을 바꿔야 한다는 주의점도 함께 정리했다. 기존에 CLAUDE.md와 AGENTS.md를 같이 쓰던 사람은 구조를 확인하라는 권고가 붙었다. 반응은 지금까지 안 됐다는 놀람과, 구독 지원이 끊기니 들어온 것 같다는 추측이 나왔다.</p>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t5-q1">
       <div class="quote-meta">
         <span class="quote-author">P002</span>
         <span class="quote-time">09-19 08:08</span>
@@ -733,7 +833,7 @@
       <blockquote class="quote-text">"안녕하세요, AI영끌맨이에요 🙌 / 📢 Claude Code가 드디어 AGENTS.md를 공식 지원합니다."</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t5-q2">
       <div class="quote-meta">
         <span class="quote-author">P003</span>
         <span class="quote-time">09-19 08:16</span>
@@ -741,7 +841,7 @@
       <blockquote class="quote-text">"감사합니다. 지금까지 안 됐었다니.."</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t5-q3">
       <div class="quote-meta">
         <span class="quote-author">P002</span>
         <span class="quote-time">09-19 08:18</span>
@@ -749,7 +849,7 @@
       <blockquote class="quote-text">"ㅠ 클로드 구독지원이 끊기니 들어왓군야"</blockquote>
     </div>
 
-    <div class="idea-card">
+    <div class="idea-card hl-target" data-hl-id="t5-i1">
       <div class="idea-label">✍️ 글감 각도</div>
       <p class="idea-text">Claude Code·Codex·Cursor를 함께 쓰는 사람이 프로젝트 규칙 파일을 AGENTS.md 하나로 통일할 때 확인할 점.</p>
     </div>
@@ -761,9 +861,9 @@
     <h3 class="topic-title">OpenAI 법률 특화 서비스와 주니어 일자리 논쟁</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text">P024가 OpenAI의 법률 특화 서비스 Astra for Law 출시를 공유했다. 변호사를 대체하기보다 로펌이 사다 쓰는 보조 도구라는 반론과, 최종 책임은 사용하는 변호사 몫이라는 의견이 나왔다. P008은 상대가 쓰면 나도 안 쓸 수 없다는 경쟁 논리를 짚었다. P053은 회계·법·개발에서 주니어부터 채용이 줄고 있다고 말했다.</p>
+    <p class="summary-text hl-target" data-hl-id="t6-p1">P024가 OpenAI의 법률 특화 서비스 Astra for Law 출시를 공유했다. 변호사를 대체하기보다 로펌이 사다 쓰는 보조 도구라는 반론과, 최종 책임은 사용하는 변호사 몫이라는 의견이 나왔다. P008은 상대가 쓰면 나도 안 쓸 수 없다는 경쟁 논리를 짚었다. P053은 회계·법·개발에서 주니어부터 채용이 줄고 있다고 말했다.</p>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t6-q1">
       <div class="quote-meta">
         <span class="quote-author">P024</span>
         <span class="quote-time">09-19 21:59</span>
@@ -771,7 +871,7 @@
       <blockquote class="quote-text">"OpenAI가 세계에서 가장 저렴하고 효과적인 변호사를 방금 출시했습니다 / Astra for Law라는 이름입니다."</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t6-q2">
       <div class="quote-meta">
         <span class="quote-author">P008</span>
         <span class="quote-time">09-19 22:08</span>
@@ -779,7 +879,7 @@
       <blockquote class="quote-text">"아뇨 저건 보조도구예요"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t6-q3">
       <div class="quote-meta">
         <span class="quote-author">P053</span>
         <span class="quote-time">09-19 22:10</span>
@@ -787,7 +887,7 @@
       <blockquote class="quote-text">"변호사들이 쓰도록 만들었군요 최종 책임은 쓰는 사람 몫이니까"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t6-q4">
       <div class="quote-meta">
         <span class="quote-author">P053</span>
         <span class="quote-time">09-19 22:10</span>
@@ -795,7 +895,7 @@
       <blockquote class="quote-text">"회계, 법, 개발 전부 주니어들부터 안뽑기 시작하던데"</blockquote>
     </div>
 
-    <div class="idea-card">
+    <div class="idea-card hl-target" data-hl-id="t6-i1">
       <div class="idea-label">✍️ 글감 각도</div>
       <p class="idea-text">전문직 AI가 직업을 없애기보다 「안 쓰면 불안한」 경쟁 도구가 되는 구조와, 경력을 쌓을 자리가 줄어드는 문제를 함께 보는 시각.</p>
     </div>
@@ -807,9 +907,9 @@
     <h3 class="topic-title">맥 단축어를 MCP로 연결: 일정·메일·사진·메모를 에이전트가 바로 접근</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text">P018이 맥 단축어(Shortcuts)를 이용한 MCP를 공유했다. 에이전트가 컴퓨터 유즈 없이 일정·메일·사진·메모에 접근한다는 것이다. 메모 앱은 기존에 전체를 내보내서 옵시디언으로 옮겨야 했는데 이제 바로 접근된다고 했다. macOS 27 이상에서만 되고 iOS·iPadOS용은 별도 제작 중이다. 반응은 토큰이 덜 들겠다는 말과 MCP가 뭔지 모르겠다는 초심자 질문이 있었다.</p>
+    <p class="summary-text hl-target" data-hl-id="t7-p1">P018이 맥 단축어(Shortcuts)를 이용한 MCP를 공유했다. 에이전트가 컴퓨터 유즈 없이 일정·메일·사진·메모에 접근한다는 것이다. 메모 앱은 기존에 전체를 내보내서 옵시디언으로 옮겨야 했는데 이제 바로 접근된다고 했다. macOS 27 이상에서만 되고 iOS·iPadOS용은 별도 제작 중이다. 반응은 토큰이 덜 들겠다는 말과 MCP가 뭔지 모르겠다는 초심자 질문이 있었다.</p>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t7-q1">
       <div class="quote-meta">
         <span class="quote-author">P018</span>
         <span class="quote-time">09-19 23:32</span>
@@ -817,7 +917,7 @@
       <blockquote class="quote-text">"https://github.com/Dominic-DK/mac-shortcuts-mcp / 혼자 생각하기에 기깔난거 하나 공유드립니다."</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t7-q2">
       <div class="quote-meta">
         <span class="quote-author">P018</span>
         <span class="quote-time">09-19 23:38</span>
@@ -825,7 +925,7 @@
       <blockquote class="quote-text">"특히 메모앱같은거. / 인터페이스 열려있는 부분이 없어서 기존 메모 마이그레이션하려면 전체 익스포트해서 에이전트한테 던지고 옵시디언으로 다시 말아줘 이런걸 했었어야했는데 / 이제 그럴필요없이 바로 접근이 가능합니다"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t7-q3">
       <div class="quote-meta">
         <span class="quote-author">P053</span>
         <span class="quote-time">09-19 23:37</span>
@@ -833,7 +933,7 @@
       <blockquote class="quote-text">"오 토큰 엄청 적게쓰겠네요 감사합니다"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t7-q4">
       <div class="quote-meta">
         <span class="quote-author">P054</span>
         <span class="quote-time">09-19 23:37</span>
@@ -841,7 +941,7 @@
       <blockquote class="quote-text">"하 아직 mcp가 뭔지 모르겟어여. 써봐야 알게되는거겟져?"</blockquote>
     </div>
 
-    <div class="idea-card">
+    <div class="idea-card hl-target" data-hl-id="t7-i1">
       <div class="idea-label">✍️ 글감 각도</div>
       <p class="idea-text">MCP를 「에이전트가 내 앱 데이터에 직접 닿는 통로」로 풀어 설명하는 입문 사례.</p>
     </div>
@@ -853,9 +953,9 @@
     <h3 class="topic-title">업계 소식: 앤트로픽 IPO 추진, 구글 재귀적 자기개선, 나노바나나 2.5 루머</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text">앤트로픽이 이르면 11월 거래를 목표로 IPO를 추진한다는 뉴욕타임스 보도가 공유됐다. 기업가치는 최대 2조 달러까지 거론됐다. 구글이 AI 문제 해결에 「재귀적 자기개선」을 도입해 탐색 비용을 162배 줄였다는 기사도 올라왔다. LMArena에 나노바나나 2.5로 추정되는 모델이 보인다는 루머와 로봇 기업 Figure의 Helix 2.5 링크도 공유됐다. 반응은 대체로 「폭풍전야」 같은 짧은 코멘트였다.</p>
+    <p class="summary-text hl-target" data-hl-id="t8-p1">앤트로픽이 이르면 11월 거래를 목표로 IPO를 추진한다는 뉴욕타임스 보도가 공유됐다. 기업가치는 최대 2조 달러까지 거론됐다. 구글이 AI 문제 해결에 「재귀적 자기개선」을 도입해 탐색 비용을 162배 줄였다는 기사도 올라왔다. LMArena에 나노바나나 2.5로 추정되는 모델이 보인다는 루머와 로봇 기업 Figure의 Helix 2.5 링크도 공유됐다. 반응은 대체로 「폭풍전야」 같은 짧은 코멘트였다.</p>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t8-q1">
       <div class="quote-meta">
         <span class="quote-author">P012</span>
         <span class="quote-time">09-19 10:46</span>
@@ -863,7 +963,7 @@
       <blockquote class="quote-text">"구글, AI 문제 해결에 ‘재귀적 자기개선’ 도입...탐색 비용 162배 절감"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t8-q2">
       <div class="quote-meta">
         <span class="quote-author">P024</span>
         <span class="quote-time">09-19 11:27</span>
@@ -871,7 +971,7 @@
       <blockquote class="quote-text">"뉴욕타임스는 소식통을 인용해, 앤트로픽이 다리오 아모데이 CEO의 AI 개발 속도 조절 요구로 안전성 논쟁이 한창인 가운데서도 역대 최대 규모가 될 수 있는 IPO를 본격 추진하고 있다고 보도함"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t8-q3">
       <div class="quote-meta">
         <span class="quote-author">P012</span>
         <span class="quote-time">09-19 11:31</span>
@@ -879,7 +979,7 @@
       <blockquote class="quote-text">"폭풍전야하니까 부랑ㄴ하네요"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t8-q4">
       <div class="quote-meta">
         <span class="quote-author">P026</span>
         <span class="quote-time">09-19 21:46</span>
@@ -887,7 +987,7 @@
       <blockquote class="quote-text">"루머) Lmarena 에서 나노바나나 2.5로 추정되는 모델이 있다고 하네요."</blockquote>
     </div>
 
-    <div class="idea-card">
+    <div class="idea-card hl-target" data-hl-id="t8-i1">
       <div class="idea-label">✍️ 글감 각도</div>
       <p class="idea-text">상장·자기개선 같은 굵직한 소식이 겹친 날, 「AI 업계는 지금 어디에 돈과 시간을 쏟는가」를 한 장으로 묶어 보여주는 브리핑 형식.</p>
     </div>
@@ -908,7 +1008,20 @@
     </footer>
   </div>
 
-  <!-- 하단 고정 액션 바 (OS 팝업과 절대 겹치지 않는 모바일 전용 바) -->
+  <!-- 하단 플로팅 컨트롤 바 (항상 노출: 원터치 모드 토글 + 내 하이라이트) -->
+  <div class="floating-controls">
+    <button id="btn-toggle-hl-mode" class="fab-hl-toggle" type="button" title="형광펜 모드 켜기/끄기">
+      <span class="hl-toggle-icon">🖍️</span>
+      <span class="hl-toggle-text">형광펜</span>
+      <span class="hl-toggle-badge" id="hl-mode-badge">OFF</span>
+    </button>
+    <button id="btn-open-highlights" class="fab-hl-list" type="button" title="내 하이라이트 모아보기">
+      <span>📑</span>
+      <span class="badge" id="hl-count-badge">0</span>
+    </button>
+  </div>
+
+  <!-- 하단 드래그 선택 바 (보조) -->
   <div id="highlight-bar" class="bottom-action-bar">
     <div class="bar-header">
       <span class="bar-tag">선택 문장</span>
@@ -921,13 +1034,7 @@
     </div>
   </div>
 
-  <!-- 플로팅 하이라이트 모아보기 버튼 -->
-  <button class="fab-hl" id="btn-open-highlights">
-    <span>📑 내 하이라이트</span>
-    <span class="badge" id="hl-count-badge">0</span>
-  </button>
-
-  <!-- 하이라이트 드로어 -->
+  <!-- 하이라이트 모아보기 드로어 -->
   <div class="drawer-overlay" id="drawer-overlay">
     <div class="drawer">
       <div class="drawer-header">
@@ -958,7 +1065,7 @@
           <span class="arch-date">📅 2026-09-22</span>
           <span class="arch-badge">보기</span>
         </div>
-        <ul class="arch-topic-list"><li>아스트라 토큰이 몇 번 돌리면 녹는다는…</li><li>JEV</li><li>코덱스 리셋·솔6 소문</li><li>AI를 쓸수록 늘어난 일강도와 집중력 …</li></ul>
+        <ul class="arch-topic-list"><li>아스트라 토큰이 몇 번 돌리면 녹는다는 호소와 절약 팁</li><li>JEV, 어디에 쓰나: 데이터 많은 사람에게 강하고 창작…</li><li>코덱스 리셋·솔6 소문, 출처와 리커 신뢰도 논쟁</li><li>AI를 쓸수록 늘어난 일강도와 집중력 저하</li></ul>
       </a>
     </li>
 
@@ -968,7 +1075,7 @@
           <span class="arch-date">📅 2026-09-21</span>
           <span class="arch-badge">보기</span>
         </div>
-        <ul class="arch-topic-list"><li>외주 현장</li><li>한도 소진과 리셋 기다림</li><li>JEV·ZTC</li><li>AI 덕에 빨라진 일</li></ul>
+        <ul class="arch-topic-list"><li>외주 현장: "AI로 딸깍 뽑은 기획서"가 낳는 분쟁</li><li>한도 소진과 리셋 기다림: 아스트라 소모량 하소연</li><li>JEV·ZTC: 로컬 판 공개와 성능 회의론</li><li>AI 덕에 빨라진 일, 오히려 사라진 쉬는 시간</li></ul>
       </a>
     </li>
 
@@ -978,7 +1085,7 @@
           <span class="arch-date">📅 2026-09-20</span>
           <span class="arch-badge">현재 읽는 중</span>
         </div>
-        <ul class="arch-topic-list"><li>JEV 화제</li><li>GPT 2.5 이후 이미지는 이미 충분…</li><li>손글씨 한글·수식 OCR</li><li>아스트라 사용감</li></ul>
+        <ul class="arch-topic-list"><li>JEV 화제: OCR 평가·저렴한 가격, 그리고 직접 따…</li><li>GPT 2.5 이후 이미지는 이미 충분한가 — 출판 현장…</li><li>손글씨 한글·수식 OCR: 제미나이가 틀린 답을 멋대로 …</li><li>아스트라 사용감: 한도 리셋 대기, 지시를 어기고 사과·…</li></ul>
       </a>
     </li>
 
@@ -988,7 +1095,7 @@
           <span class="arch-date">📅 2026-09-19</span>
           <span class="arch-badge">보기</span>
         </div>
-        <ul class="arch-topic-list"><li>JEV(제브) 하루 종일 실전 테스트 …</li><li>구독료 소진·리셋 스트레스 밈</li><li>파이썬이 에이전트 오케스트레이션의 병목…</li><li>로컬 VLM 재난생존 앱 '포켓 서바이…</li></ul>
+        <ul class="arch-topic-list"><li>JEV(제브) 하루 종일 실전 테스트 총정리</li><li>구독료 소진·리셋 스트레스 밈</li><li>파이썬이 에이전트 오케스트레이션의 병목인가 논쟁</li><li>로컬 VLM 재난생존 앱 '포켓 서바이벌'</li></ul>
       </a>
     </li>
 
@@ -998,7 +1105,7 @@
           <span class="arch-date">📅 2026-09-18</span>
           <span class="arch-badge">보기</span>
         </div>
-        <ul class="arch-topic-list"><li>Jev(System One) ENUM …</li><li>제미나이4 프로 벤치마크 유출설</li><li>리셋권 사수 전쟁과 커지는 AI 구독비…</li><li>AI 다루는 법 — 네거티브리스트 집착…</li></ul>
+        <ul class="arch-topic-list"><li>Jev(System One) ENUM 판정모델 — 도입파…</li><li>제미나이4 프로 벤치마크 유출설</li><li>리셋권 사수 전쟁과 커지는 AI 구독비용 부담</li><li>AI 다루는 법 — 네거티브리스트 집착과 제미나이 환각 …</li></ul>
       </a>
     </li>
 
@@ -1008,7 +1115,7 @@
           <span class="arch-date">📅 2026-09-17</span>
           <span class="arch-badge">보기</span>
         </div>
-        <ul class="arch-topic-list"><li>GPT-6 Sol 출시설과 아스트라·루…</li><li>AI 토큰 예산과 사용량 한도 신경전</li><li>로컬 LLM 180B 자작과 오픈라우터…</li><li>aside와 코덱스 브라우저 자동화 비교</li></ul>
+        <ul class="arch-topic-list"><li>GPT-6 Sol 출시설과 아스트라·루나·솔 넘버링 혼란</li><li>AI 토큰 예산과 사용량 한도 신경전</li><li>로컬 LLM 180B 자작과 오픈라우터 실측 리더보드</li><li>aside와 코덱스 브라우저 자동화 비교</li></ul>
       </a>
     </li>
       </ul>
@@ -1019,6 +1126,12 @@
     (function() {
       const STORAGE_KEY = "daily_digest_hl_20260920";
       let highlights = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      let hlModeActive = false;
+
+      const btnToggleMode = document.getElementById("btn-toggle-hl-mode");
+      const modeBadge = document.getElementById("hl-mode-badge");
+      const fabList = document.getElementById("btn-open-highlights");
+      const countBadge = document.getElementById("hl-count-badge");
 
       const hlBar = document.getElementById("highlight-bar");
       const barPreview = document.getElementById("bar-preview-text");
@@ -1026,8 +1139,6 @@
       const btnHighlight = document.getElementById("btn-do-highlight");
       const btnNote = document.getElementById("btn-do-note");
 
-      const fab = document.getElementById("btn-open-highlights");
-      const countBadge = document.getElementById("hl-count-badge");
       const drawerOverlay = document.getElementById("drawer-overlay");
       const drawerClose = document.getElementById("btn-close-drawer");
       const drawerList = document.getElementById("drawer-list");
@@ -1039,34 +1150,124 @@
 
       let currentSelectionText = "";
 
+      // 토스트 메시지
+      function showToast(msg) {
+        let toast = document.getElementById("hl-toast");
+        if (!toast) {
+          toast = document.createElement("div");
+          toast.id = "hl-toast";
+          toast.className = "hl-toast";
+          document.body.appendChild(toast);
+        }
+        toast.textContent = msg;
+        toast.classList.add("show");
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2200);
+      }
+
+      // 배지 갱신
       function updateBadge() {
         countBadge.textContent = highlights.length;
-        if (highlights.length === 0) {
-          fab.style.display = "none";
-        } else {
-          fab.style.display = "flex";
-        }
+      }
+
+      // DOM에 저장된 하이라이트 스타일 복원
+      function applySavedHighlights() {
+        // 기존 active 초기화
+        document.querySelectorAll(".user-hl-active").forEach(el => el.classList.remove("user-hl-active"));
+        highlights.forEach(h => {
+          if (h.id) {
+            const el = document.querySelector(`[data-hl-id="${h.id}"]`);
+            if (el) el.classList.add("user-hl-active");
+          }
+        });
       }
 
       function saveHighlights() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(highlights));
         updateBadge();
+        applySavedHighlights();
         renderDrawer();
       }
 
+      // 형광펜 모드 토글
+      btnToggleMode.addEventListener("click", () => {
+        hlModeActive = !hlModeActive;
+        if (hlModeActive) {
+          document.body.classList.add("hl-mode-active");
+          btnToggleMode.classList.add("active");
+          modeBadge.textContent = "ON";
+          showToast("🖍️ 형광펜 모드 ON: 밑줄 칠 문장을 터치하세요!");
+        } else {
+          document.body.classList.remove("hl-mode-active");
+          btnToggleMode.classList.remove("active");
+          modeBadge.textContent = "OFF";
+          showToast("형광펜 모드 OFF");
+        }
+      });
+
+      // 본문 요소 클릭 (형광펜 모드일 때 즉시 칠하기/해제)
+      document.getElementById("article-content").addEventListener("click", (e) => {
+        if (!hlModeActive) return;
+        const target = e.target.closest(".hl-target");
+        if (!target) return;
+
+        const id = target.dataset.hlId;
+        const text = target.innerText.trim();
+        const existingIdx = highlights.findIndex(h => h.id === id);
+
+        if (existingIdx >= 0) {
+          // 이미 칠해져 있으면 해제
+          highlights.splice(existingIdx, 1);
+          target.classList.remove("user-hl-active");
+          saveHighlights();
+          showToast("형광펜 해제됨");
+        } else {
+          // 새로 칠하기
+          highlights.push({
+            id: id,
+            text: text,
+            note: "",
+            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+          });
+          target.classList.add("user-hl-active");
+          saveHighlights();
+          showToast("🖍️ 형광펜 칠하기 완료!");
+        }
+      });
+
+      // 드로어 렌더링
       function renderDrawer() {
         if (highlights.length === 0) {
-          drawerList.innerHTML = '<p style="color: #8B8A95; text-align: center; padding: 30px 0;">아직 남긴 하이라이트가 없습니다.<br>본문 문장을 드래그하여 형광펜을 칠해보세요!</p>';
+          drawerList.innerHTML = '<p style="color: #8B8A95; text-align: center; padding: 30px 0;">아직 남긴 하이라이트가 없습니다.<br>우하단 🖍️ <b>형광펜</b> 버튼을 켜고 문장을 터치해보세요!</p>';
           return;
         }
         drawerList.innerHTML = highlights.map((h, i) => `
           <div class="hl-card">
-            <button class="hl-card-del" data-idx="${i}">✕</button>
+            <button class="hl-card-del" data-idx="${i}" title="삭제">✕</button>
             <div class="hl-card-text">"${h.text}"</div>
             ${h.note ? `<div class="hl-card-note">💬 ${h.note}</div>` : ''}
+            <div class="hl-card-actions">
+              <button class="hl-card-btn btn-edit-note" data-idx="${i}">${h.note ? '✏️ 메모 수정' : '💬 메모 추가'}</button>
+            </div>
           </div>
         `).join("");
 
+        // 메모 추가/수정 이벤트
+        drawerList.querySelectorAll(".btn-edit-note").forEach(btn => {
+          btn.addEventListener("click", (e) => {
+            const idx = parseInt(e.target.dataset.idx, 10);
+            const currentNote = highlights[idx].note || "";
+            const userNote = prompt("💬 이 하이라이트에 남길 메모를 입력하세요:", currentNote);
+            if (userNote !== null) {
+              highlights[idx].note = userNote.trim();
+              saveHighlights();
+            }
+          });
+        });
+
+        // 삭제 이벤트
         drawerList.querySelectorAll(".hl-card-del").forEach(btn => {
           btn.addEventListener("click", (e) => {
             const idx = parseInt(e.target.dataset.idx, 10);
@@ -1076,16 +1277,15 @@
         });
       }
 
-      // 텍스트 선택 감지: OS 메뉴와 겹치지 않는 화면 맨 밑바닥 고정 바 노출
+      // 텍스트 드래그 선택 감지 (보조)
       function handleSelection() {
+        if (hlModeActive) return; // 모드 활성화 중에는 탭 우선
         const sel = window.getSelection();
         const text = sel ? sel.toString().trim() : "";
-        if (!text || text.length < 2) {
-          return;
-        }
+        if (!text || text.length < 2) return;
 
         currentSelectionText = text;
-        barPreview.textContent = '"' + (text.length > 50 ? text.slice(0, 50) + '…' : text) + '"';
+        barPreview.textContent = '"' + (text.length > 40 ? text.slice(0, 40) + '…' : text) + '"';
         hlBar.style.display = "flex";
       }
 
@@ -1099,31 +1299,43 @@
         window.getSelection().removeAllRanges();
       });
 
-      // 형광펜 추가
+      // 선택 텍스트 형광펜 추가
       btnHighlight.addEventListener("click", (e) => {
         e.stopPropagation();
         if (!currentSelectionText) return;
-        highlights.push({ text: currentSelectionText, note: "", time: new Date().toLocaleTimeString() });
+        highlights.push({
+          id: null,
+          text: currentSelectionText,
+          note: "",
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        });
         saveHighlights();
         hlBar.style.display = "none";
         window.getSelection().removeAllRanges();
+        showToast("🖍️ 형광펜 칠하기 완료!");
       });
 
-      // 메모 추가
+      // 선택 텍스트 메모 추가
       btnNote.addEventListener("click", (e) => {
         e.stopPropagation();
         if (!currentSelectionText) return;
         const userNote = prompt("💬 이 문장에 남길 메모를 입력하세요:");
         if (userNote !== null) {
-          highlights.push({ text: currentSelectionText, note: userNote.trim(), time: new Date().toLocaleTimeString() });
+          highlights.push({
+            id: null,
+            text: currentSelectionText,
+            note: userNote.trim(),
+            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+          });
           saveHighlights();
+          showToast("💬 메모 저장 완료!");
         }
         hlBar.style.display = "none";
         window.getSelection().removeAllRanges();
       });
 
       // 드로어 열기/닫기
-      fab.addEventListener("click", () => {
+      fabList.addEventListener("click", () => {
         renderDrawer();
         drawerOverlay.style.display = "block";
       });
@@ -1162,6 +1374,7 @@
 
       // 초기화
       updateBadge();
+      applySavedHighlights();
     })();
   </script>
 </body>

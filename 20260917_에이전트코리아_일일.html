@@ -34,35 +34,49 @@
       font-size: 16px;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
-      padding: 12px 10px 100px;
+      padding: 10px 10px 100px;
     }
     .container {
       max-width: 680px;
       margin: 0 auto;
       background: var(--white);
       border-radius: 16px;
-      padding: 20px 18px 30px;
+      padding: 16px 18px 28px;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
       border: 1px solid var(--line);
     }
     
-    /* 상단 아카이브 네비게이션 바 */
-    .top-nav {
+    /* 슬림 2줄 통합 네비게이션 헤더 (제안 A: 상단 건수 제거 및 슬림화) */
+    .slim-header {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    .header-nav-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 14px;
-      margin-bottom: 16px;
-      border-bottom: 1px solid var(--line);
-      font-size: 13px;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .header-date-title {
+      font-family: var(--font-display);
+      font-size: 16.5px;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.2px;
+      text-align: center;
+      flex: 1;
     }
     .nav-btn {
       color: var(--blue-primary);
       text-decoration: none;
       font-weight: 700;
-      padding: 4px 10px;
+      font-size: 12.5px;
+      padding: 4px 9px;
       border-radius: 6px;
       background: var(--blue-tint);
+      white-space: nowrap;
       transition: background 0.2s;
     }
     .nav-btn.disabled {
@@ -70,60 +84,42 @@
       background: var(--gray-bg);
       cursor: default;
     }
-    .archive-toggle-btn {
-      border: 1px solid var(--line);
-      background: var(--white);
-      color: var(--ink);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 5px 12px;
-      border-radius: 20px;
-      cursor: pointer;
-      display: inline-flex;
+    .header-sub-row {
+      display: flex;
       align-items: center;
-      gap: 5px;
+      justify-content: space-between;
     }
-
-    /* 헤더 */
-    header {
-      border-bottom: 2px solid var(--ink);
-      padding-bottom: 14px;
-      margin-bottom: 22px;
-    }
-    .brand-tag {
-      display: inline-block;
+    .header-brand-badge {
       font-size: 12px;
       font-weight: 700;
       color: var(--blue-primary);
       background: var(--blue-tint);
       padding: 3px 8px;
       border-radius: 4px;
-      margin-bottom: 8px;
     }
-    h1 {
-      font-family: var(--font-display);
-      font-size: 23px;
-      font-weight: 800;
-      line-height: 1.25;
+    .archive-toggle-btn {
+      border: 1px solid var(--line);
+      background: var(--white);
       color: var(--ink);
-      word-break: keep-all;
-      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.15s;
     }
-    /* 상단 초간단 1줄 메타 */
-    .compact-meta {
-      font-size: 13px;
-      color: var(--gray-mid);
-      font-weight: 500;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    .archive-toggle-btn:hover {
+      background: var(--gray-bg);
     }
 
     /* 주제별 카드 */
     .topic-card {
-      margin-bottom: 28px;
+      margin-bottom: 26px;
       border-bottom: 1px solid var(--line);
-      padding-bottom: 24px;
+      padding-bottom: 22px;
     }
     .topic-card:last-child {
       border-bottom: none;
@@ -151,7 +147,7 @@
     }
     .topic-title {
       font-family: var(--font-display);
-      font-size: 18px;
+      font-size: 17.5px;
       font-weight: 800;
       line-height: 1.35;
       color: var(--ink);
@@ -163,6 +159,7 @@
       margin-bottom: 14px;
       text-align: justify;
       word-break: keep-all;
+      transition: background-color 0.2s ease, border 0.2s ease;
     }
     .quote-item {
       background: var(--gray-bg);
@@ -170,6 +167,7 @@
       padding: 10px 12px;
       border-radius: 0 8px 8px 0;
       margin-bottom: 8px;
+      transition: background-color 0.2s ease, border 0.2s ease;
     }
     .quote-meta {
       font-size: 12px;
@@ -193,6 +191,7 @@
       border-radius: 8px;
       padding: 12px 14px;
       margin-top: 14px;
+      transition: background-color 0.2s ease, border 0.2s ease;
     }
     .idea-label {
       font-size: 12px;
@@ -208,7 +207,21 @@
       word-break: keep-all;
     }
 
-    /* 하이라이트 스타일 */
+    /* 하이라이트 활성화 스타일 (DOM 반영) */
+    .summary-text.user-hl-active {
+      background-color: var(--hl-bg);
+      border-left: 3px solid var(--hl-border);
+      padding: 6px 10px;
+      border-radius: 4px;
+    }
+    .quote-item.user-hl-active {
+      background-color: #FEF9C3;
+      border-left: 4px solid var(--hl-border);
+    }
+    .idea-card.user-hl-active {
+      background-color: #FEF08A;
+      border-color: var(--hl-border);
+    }
     mark.user-hl {
       background-color: var(--hl-bg);
       border-bottom: 2px solid var(--hl-border);
@@ -217,7 +230,107 @@
       padding: 1px 2px;
     }
 
-    /* 하단 고정 액션 바 (OS 팝업과 절대 겹치지 않는 모바일 전용 바) */
+    /* 형광펜 모드 ON 일 때 타깃 스타일 */
+    body.hl-mode-active .hl-target {
+      cursor: pointer;
+    }
+    body.hl-mode-active .hl-target:hover {
+      outline: 2px dashed #EAB308;
+      outline-offset: 2px;
+    }
+
+    /* 하단 플로팅 컨트롤 바 (항상 노출) */
+    .floating-controls {
+      position: fixed;
+      bottom: 18px;
+      right: 14px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .fab-hl-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--white);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      padding: 8px 13px;
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      transition: all 0.2s ease;
+    }
+    .fab-hl-toggle .hl-toggle-badge {
+      font-size: 10.5px;
+      padding: 1px 6px;
+      border-radius: 10px;
+      background: var(--gray-bg);
+      color: var(--gray-mid);
+      font-weight: 800;
+    }
+    .fab-hl-toggle.active {
+      background: var(--hl-bg);
+      border-color: var(--hl-border);
+      color: #854D0E;
+      box-shadow: 0 4px 16px rgba(234, 179, 8, 0.35);
+    }
+    .fab-hl-toggle.active .hl-toggle-badge {
+      background: #EAB308;
+      color: var(--white);
+    }
+    .fab-hl-list {
+      background: var(--blue-primary);
+      color: white;
+      border: none;
+      border-radius: 24px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(28, 96, 239, 0.3);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .fab-hl-list .badge {
+      background: white;
+      color: var(--blue-primary);
+      border-radius: 12px;
+      padding: 1px 6px;
+      font-size: 11.5px;
+      font-weight: 800;
+    }
+
+    /* 토스트 알림 */
+    .hl-toast {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: #1E293B;
+      color: #FFFFFF;
+      padding: 9px 18px;
+      border-radius: 24px;
+      font-size: 13.5px;
+      font-weight: 600;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
+    }
+    .hl-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* 하단 드래그 선택 바 (보조) */
     .bottom-action-bar {
       position: fixed;
       bottom: 0;
@@ -288,34 +401,7 @@
     .btn-action.hl { background: var(--hl-bg); color: #854D0E; }
     .btn-action.note { background: #334155; color: white; border: 1px solid #475569; }
 
-    /* 플로팅 모아보기 버튼 */
-    .fab-hl {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 990;
-      background: var(--blue-primary);
-      color: white;
-      border: none;
-      border-radius: 30px;
-      padding: 11px 18px;
-      font-size: 14px;
-      font-weight: 700;
-      box-shadow: 0 4px 16px rgba(28, 96, 239, 0.35);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .fab-hl .badge {
-      background: white;
-      color: var(--blue-primary);
-      border-radius: 12px;
-      padding: 1px 7px;
-      font-size: 12px;
-    }
-
-    /* 하이라이트 드로어 (모달 서랍) */
+    /* 하이라이트 모아보기 드로어 */
     .drawer-overlay {
       position: fixed;
       inset: 0;
@@ -373,7 +459,18 @@
       position: relative;
     }
     .hl-card-text { font-size: 14.5px; color: var(--ink); line-height: 1.5; margin-bottom: 6px; word-break: keep-all; }
-    .hl-card-note { font-size: 13px; color: #1D4ED8; font-weight: 600; margin-bottom: 4px; }
+    .hl-card-note { font-size: 13px; color: #1D4ED8; font-weight: 600; margin-bottom: 6px; }
+    .hl-card-actions { display: flex; gap: 8px; margin-top: 6px; }
+    .hl-card-btn {
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      cursor: pointer;
+      color: var(--gray-mid);
+    }
     .hl-card-del {
       position: absolute;
       top: 8px;
@@ -521,16 +618,19 @@
 </head>
 <body>
   <div class="container">
-    <nav class="top-nav">
-      <span class="nav-btn disabled">◀ 이전</span>
-      <button class="archive-toggle-btn" id="btn-open-archive">📚 전체 날짜 (6)</button>
-      <a href="20260918_에이전트코리아_일일.html" class="nav-btn">09-18 ▶</a>
-    </nav>
-    <header>
-      <span class="brand-tag">에이전트코리아 단톡방 랩업</span>
-      <h1>일일 브리핑 2026-09-17</h1>
-      <div class="compact-meta">기준: 09/16 ~ 09/17 · 1,424건</div>
+    <!-- 슬림 2줄 통합 네비게이션 헤더 (제안 A: 상단 건수 제거 및 슬림화) -->
+    <header class="slim-header">
+      <div class="header-nav-row">
+        <span class="nav-btn disabled">◀ 이전</span>
+        <h1 class="header-date-title">📅 2026-09-17 (목)</h1>
+        <a href="20260918_에이전트코리아_일일.html" class="nav-btn" title="2026-09-18">09-18 ▶</a>
+      </div>
+      <div class="header-sub-row">
+        <span class="header-brand-badge">에이전트코리아 단톡방 랩업</span>
+        <button class="archive-toggle-btn" id="btn-open-archive">📚 지난 목록 (6)</button>
+      </div>
     </header>
+
     <main id="article-content">
       
 <section class="topic-card" id="topic-1">
@@ -539,9 +639,9 @@
     <h3 class="topic-title">GPT-6 Sol 출시설과 아스트라·루나·솔 넘버링 혼란</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text">샘 올트먼이 "이번 주 큰 출시, 데브데이 후 더 큰 출시"를 암시하는 트윗을 올리며 GPT-6 Sol 출시 기대감이 하루 종일 이어졌다. 아스트라·솔·테라·루나 넘버링 서열을 두고 "아스트라가 이미 6 sol 수준 아니냐"는 추정과 "테라가 퇴역하면 순위가 이상해진다"는 혼란이 겹쳤고, 저녁엔 목요일 Sol 출시설까지 돌았다.</p>
+    <p class="summary-text hl-target" data-hl-id="t1-p1">샘 올트먼이 "이번 주 큰 출시, 데브데이 후 더 큰 출시"를 암시하는 트윗을 올리며 GPT-6 Sol 출시 기대감이 하루 종일 이어졌다. 아스트라·솔·테라·루나 넘버링 서열을 두고 "아스트라가 이미 6 sol 수준 아니냐"는 추정과 "테라가 퇴역하면 순위가 이상해진다"는 혼란이 겹쳤고, 저녁엔 목요일 Sol 출시설까지 돌았다.</p>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t1-q1">
       <div class="quote-meta">
         <span class="quote-author">P007</span>
         <span class="quote-time">09-16 12:31</span>
@@ -549,7 +649,7 @@
       <blockquote class="quote-text">"샘 올트먼, 이번 주 대형 출시 예고, GPT-6 Sol 기대감 확대"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t1-q2">
       <div class="quote-meta">
         <span class="quote-author">P025</span>
         <span class="quote-time">09-16 14:54</span>
@@ -557,7 +657,7 @@
       <blockquote class="quote-text">"astra sol terra luna 여기서 terra가 퇴역이면"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t1-q3">
       <div class="quote-meta">
         <span class="quote-author">P023</span>
         <span class="quote-time">09-16 18:33</span>
@@ -565,7 +665,7 @@
       <blockquote class="quote-text">"목요일날 Sol 출시"</blockquote>
     </div>
 
-    <div class="idea-card">
+    <div class="idea-card hl-target" data-hl-id="t1-i1">
       <div class="idea-label">✍️ 글감 각도</div>
       <p class="idea-text">모델명이 바뀔 때마다 "뭐가 더 좋은거지?" 혼란스러워하는 사용자 심리를 링크드인 AI 트렌드 글의 유머 소재로 쓸 수 있다.</p>
     </div>
@@ -577,9 +677,9 @@
     <h3 class="topic-title">AI 토큰 예산과 사용량 한도 신경전</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text">2027년 사내 AI 토큰 예산 기준(직급별 40~200달러)을 둘러싸고 "실무진이 더 많이 써야 한다"는 반박이 이어졌고, 서울대가 무제한 챗GPT를 한 달 만에 크레딧 제한으로 바꾼 사례, 5인 스타트업이 계정 10개로도 감당 못 한다는 경험담이 잇달았다. 일부는 로컬 하드웨어(텐스토렌트) 도입 ROI를 진지하게 계산하는 단계까지 갔다.</p>
+    <p class="summary-text hl-target" data-hl-id="t2-p1">2027년 사내 AI 토큰 예산 기준(직급별 40~200달러)을 둘러싸고 "실무진이 더 많이 써야 한다"는 반박이 이어졌고, 서울대가 무제한 챗GPT를 한 달 만에 크레딧 제한으로 바꾼 사례, 5인 스타트업이 계정 10개로도 감당 못 한다는 경험담이 잇달았다. 일부는 로컬 하드웨어(텐스토렌트) 도입 ROI를 진지하게 계산하는 단계까지 갔다.</p>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t2-q1">
       <div class="quote-meta">
         <span class="quote-author">P007</span>
         <span class="quote-time">09-16 08:48</span>
@@ -587,7 +687,7 @@
       <blockquote class="quote-text">"[2026~2027년 AI토큰비 예산(  / 1달 기준)]"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t2-q2">
       <div class="quote-meta">
         <span class="quote-author">P007</span>
         <span class="quote-time">09-16 10:05</span>
@@ -595,7 +695,7 @@
       <blockquote class="quote-text">"올해부터 교내 챗 gpt무제한 제공한 서울대  / 1년치 사용량이 한달만에 동났다고함."</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t2-q3">
       <div class="quote-meta">
         <span class="quote-author">P021</span>
         <span class="quote-time">09-16 10:17</span>
@@ -603,7 +703,7 @@
       <blockquote class="quote-text">"저희회사 5명인데도 claude 계정 10개도 한달 감당이 안되는데.. "</blockquote>
     </div>
 
-    <div class="idea-card">
+    <div class="idea-card hl-target" data-hl-id="t2-i1">
       <div class="idea-label">✍️ 글감 각도</div>
       <p class="idea-text">"AI 무제한 지원"이 실제론 유지 불가능한 약속이라는 점을 1인 기업 대표 관점의 비용 관리 조언 글로 풀 수 있다.</p>
     </div>
@@ -615,9 +715,9 @@
     <h3 class="topic-title">로컬 LLM 180B 자작과 오픈라우터 실측 리더보드</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text">한 참가자가 8GB 노트북 GPU로 1,800억 파라미터 Qwen 모델을 4비트 양자화해 로컬 구동한 사례를 공유하며 중국 미니PC 제조사의 이식 요청까지 받았다고 전했다. 이어 오픈라우터 등록 425개 모델을 직접 유료 API로 실측해 만든 리더보드를 허깅페이스에 공개했다.</p>
+    <p class="summary-text hl-target" data-hl-id="t3-p1">한 참가자가 8GB 노트북 GPU로 1,800억 파라미터 Qwen 모델을 4비트 양자화해 로컬 구동한 사례를 공유하며 중국 미니PC 제조사의 이식 요청까지 받았다고 전했다. 이어 오픈라우터 등록 425개 모델을 직접 유료 API로 실측해 만든 리더보드를 허깅페이스에 공개했다.</p>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t3-q1">
       <div class="quote-meta">
         <span class="quote-author">P063</span>
         <span class="quote-time">09-16 15:33</span>
@@ -625,7 +725,7 @@
       <blockquote class="quote-text">"허깅페이스 공개 8주 만에 157만 다운로드를 기록한 POCKET 모델의 새 버전을 만들어봤습니다."</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t3-q2">
       <div class="quote-meta">
         <span class="quote-author">P063</span>
         <span class="quote-time">09-16 15:42</span>
@@ -633,7 +733,7 @@
       <blockquote class="quote-text">"드디어 180B 성공! QWEN 3.8 FLASH NEXT"</blockquote>
     </div>
 
-    <div class="idea-card">
+    <div class="idea-card hl-target" data-hl-id="t3-i1">
       <div class="idea-label">✍️ 글감 각도</div>
       <p class="idea-text">"고사양 서버 없이도 초거대 모델을 돌릴 수 있다"는 사례는 비개발자 대상 AI 강의에서 로컬 AI 진입장벽이 낮아지고 있다는 근거로 쓸 만하다.</p>
     </div>
@@ -645,9 +745,9 @@
     <h3 class="topic-title">aside와 코덱스 브라우저 자동화 비교</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text">코덱스도 웹브라우저를 다루는데 유료 도구 aside가 왜 필요하냐는 질문에, 코덱스는 computer use 방식이고 aside는 스크립트 기반 DOM 접근이라 더 효율적이라는 답이 나왔다. 밤늦게는 aside 활용법(챗으로 작업 지시, 로그인 훅 저장, CLI/MCP 연동 등)이 구체적으로 공유됐다.</p>
+    <p class="summary-text hl-target" data-hl-id="t4-p1">코덱스도 웹브라우저를 다루는데 유료 도구 aside가 왜 필요하냐는 질문에, 코덱스는 computer use 방식이고 aside는 스크립트 기반 DOM 접근이라 더 효율적이라는 답이 나왔다. 밤늦게는 aside 활용법(챗으로 작업 지시, 로그인 훅 저장, CLI/MCP 연동 등)이 구체적으로 공유됐다.</p>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t4-q1">
       <div class="quote-meta">
         <span class="quote-author">P051</span>
         <span class="quote-time">09-16 15:25</span>
@@ -655,7 +755,7 @@
       <blockquote class="quote-text">"선배님들 코덱스도 웹브라우저 활용 잘하는데 Aside 요게 필요한 이유가있나요? 그리고 유료결제도 잇네요.."</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t4-q2">
       <div class="quote-meta">
         <span class="quote-author">P023</span>
         <span class="quote-time">09-16 15:26</span>
@@ -663,7 +763,7 @@
       <blockquote class="quote-text">"코덱스가 아마 computer use 를 쓴다면 aside 는 스크립트 기반 DOM 접근이라"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t4-q3">
       <div class="quote-meta">
         <span class="quote-author">P080</span>
         <span class="quote-time">09-16 23:56</span>
@@ -671,7 +771,7 @@
       <blockquote class="quote-text">"어사이드  잘쓰는 방식  / 1. 사이트에 바로가는게 아니라 챗으로 대상 사이트에서 할일을 말하는 것으로 시작"</blockquote>
     </div>
 
-    <div class="idea-card">
+    <div class="idea-card hl-target" data-hl-id="t4-i1">
       <div class="idea-label">✍️ 글감 각도</div>
       <p class="idea-text">비슷해 보이는 AI 도구도 내부 작동 방식(컴퓨터 사용 vs DOM 접근)에 따라 속도·비용이 크게 갈린다는 점을 도구 비교 콘텐츠로 쓸 수 있다.</p>
     </div>
@@ -683,9 +783,9 @@
     <h3 class="topic-title">코덱스 429 에러와 리셋 갈망</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text">코덱스가 429 에러로 계속 막힌다는 토로가 하루 종일 반복됐고, "문열어!!!!" 같은 격한 반응부터 새벽까지 리셋을 기다리는 인증글이 이어졌다. 결국 초기화권을 미리 써버린 사람도 있었다.</p>
+    <p class="summary-text hl-target" data-hl-id="t5-p1">코덱스가 429 에러로 계속 막힌다는 토로가 하루 종일 반복됐고, "문열어!!!!" 같은 격한 반응부터 새벽까지 리셋을 기다리는 인증글이 이어졌다. 결국 초기화권을 미리 써버린 사람도 있었다.</p>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t5-q1">
       <div class="quote-meta">
         <span class="quote-author">P025</span>
         <span class="quote-time">09-16 16:26</span>
@@ -693,7 +793,7 @@
       <blockquote class="quote-text">"코덱스는 429 그록은 다 써서"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t5-q2">
       <div class="quote-meta">
         <span class="quote-author">P007</span>
         <span class="quote-time">09-16 17:51</span>
@@ -701,7 +801,7 @@
       <blockquote class="quote-text">"문열어!!!!"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t5-q3">
       <div class="quote-meta">
         <span class="quote-author">P091</span>
         <span class="quote-time">09-17 01:11</span>
@@ -709,7 +809,7 @@
       <blockquote class="quote-text">"전 아직 코덱스 40% 남음.... 아스트라 더 달려!"</blockquote>
     </div>
 
-    <div class="idea-card">
+    <div class="idea-card hl-target" data-hl-id="t5-i1">
       <div class="idea-label">✍️ 글감 각도</div>
       <p class="idea-text">"AI 도구도 결국 리소스 게임"이라는 점을 업무 자동화 강의에서 사용량 관리 팁의 도입부로 쓸 수 있다.</p>
     </div>
@@ -721,9 +821,9 @@
     <h3 class="topic-title">STT 정확도(CER) 개선과 화자분리 파이프라인</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text">STT 오류율(CER)을 낮추는 방법을 묻는 질문에 결국 데이터가 관건이라는 답이 돌아왔다. 스트리밍 환경의 화자분리는 별도 모델이 아니라 공통 인식에서 Trunk+2 Head 구조로 병렬 처리하는 방식이 소개됐다.</p>
+    <p class="summary-text hl-target" data-hl-id="t6-p1">STT 오류율(CER)을 낮추는 방법을 묻는 질문에 결국 데이터가 관건이라는 답이 돌아왔다. 스트리밍 환경의 화자분리는 별도 모델이 아니라 공통 인식에서 Trunk+2 Head 구조로 병렬 처리하는 방식이 소개됐다.</p>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t6-q1">
       <div class="quote-meta">
         <span class="quote-author">P038</span>
         <span class="quote-time">09-16 16:27</span>
@@ -731,7 +831,7 @@
       <blockquote class="quote-text">"여기 stt 고수 계세요? cer 낮출려면 어케 해야돼요?"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t6-q2">
       <div class="quote-meta">
         <span class="quote-author">P025</span>
         <span class="quote-time">09-16 16:28</span>
@@ -739,7 +839,7 @@
       <blockquote class="quote-text">"STT CER는…. 데이터가 다죠"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t6-q3">
       <div class="quote-meta">
         <span class="quote-author">P025</span>
         <span class="quote-time">09-16 16:37</span>
@@ -747,7 +847,7 @@
       <blockquote class="quote-text">"Trunk + 2 Head로"</blockquote>
     </div>
 
-    <div class="idea-card">
+    <div class="idea-card hl-target" data-hl-id="t6-i1">
       <div class="idea-label">✍️ 글감 각도</div>
       <p class="idea-text">AI 정확도 문제는 결국 알고리즘보다 데이터 싸움이라는 메시지는 AI 도구 도입을 고민하는 청중에게 기대치 조정용 사례로 쓰기 좋다.</p>
     </div>
@@ -759,9 +859,9 @@
     <h3 class="topic-title">Jev — 확률 기반 AI 모델</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text">문장을 생성하는 대신 미리 정의된 255개 출력 중 가장 근접한 확률을 반환하는 신개념 모델 Jev가 소개되며 관심을 모았다. 에이전트 시스템에서 라우팅·검증처럼 닫힌 값 안에서 결정이 필요한 구간에 유용할 것이라는 기대가 나왔다.</p>
+    <p class="summary-text hl-target" data-hl-id="t7-p1">문장을 생성하는 대신 미리 정의된 255개 출력 중 가장 근접한 확률을 반환하는 신개념 모델 Jev가 소개되며 관심을 모았다. 에이전트 시스템에서 라우팅·검증처럼 닫힌 값 안에서 결정이 필요한 구간에 유용할 것이라는 기대가 나왔다.</p>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t7-q1">
       <div class="quote-meta">
         <span class="quote-author">P023</span>
         <span class="quote-time">09-16 23:22</span>
@@ -769,7 +869,7 @@
       <blockquote class="quote-text">"Jev - 문장 대신 판단과 확률을 반환하는 AI 모델 | GeekNews https://share.google/dDVBewpV1ggjWFkVW"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t7-q2">
       <div class="quote-meta">
         <span class="quote-author">P021</span>
         <span class="quote-time">09-16 23:24</span>
@@ -777,7 +877,7 @@
       <blockquote class="quote-text">"Jev 물건일듯요 정해둔 255개의 출력중 하나로 해주는데"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t7-q3">
       <div class="quote-meta">
         <span class="quote-author">P021</span>
         <span class="quote-time">09-16 23:29</span>
@@ -785,7 +885,7 @@
       <blockquote class="quote-text">"그게 아니라 질문에 출력의 종류를 정해주고 지금질문이 255개의 출력중 뭐에 가장 근접하는 확률을 찍어주는거래요"</blockquote>
     </div>
 
-    <div class="idea-card">
+    <div class="idea-card hl-target" data-hl-id="t7-i1">
       <div class="idea-label">✍️ 글감 각도</div>
       <p class="idea-text">"생성형 AI만이 답이 아니다"라는 주제로, 판단·분류가 목적이면 확률 반환 모델이 더 효율적일 수 있다는 인사이트를 강의 사례로 쓸 수 있다.</p>
     </div>
@@ -797,9 +897,9 @@
     <h3 class="topic-title">업계 소식</h3>
   </div>
   <div class="topic-body">
-    <p class="summary-text">GitHub 오늘의 트렌딩 저장소(코드리뷰 파이프라인, 로컬 MoE 엔진 등) 요약, Perplexity의 Windows용 로컬 에이전트 "Portable Computer" 정식 확대, GPT-6 캡차 게임 48단계 통과 기사 등 업계 소식이 여러 건 공유됐다.</p>
+    <p class="summary-text hl-target" data-hl-id="t8-p1">GitHub 오늘의 트렌딩 저장소(코드리뷰 파이프라인, 로컬 MoE 엔진 등) 요약, Perplexity의 Windows용 로컬 에이전트 "Portable Computer" 정식 확대, GPT-6 캡차 게임 48단계 통과 기사 등 업계 소식이 여러 건 공유됐다.</p>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t8-q1">
       <div class="quote-meta">
         <span class="quote-author">P006</span>
         <span class="quote-time">09-16 08:16</span>
@@ -807,7 +907,7 @@
       <blockquote class="quote-text">"🔥 영끌맨 GitHub 오늘의 트렌딩 / 2026.09.16 (수)"</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t8-q2">
       <div class="quote-meta">
         <span class="quote-author">P007</span>
         <span class="quote-time">09-16 08:26</span>
@@ -815,7 +915,7 @@
       <blockquote class="quote-text">"🚨 Perplexity의 Portable Computer가 Windows용으로 정식 확대됐습니다."</blockquote>
     </div>
 
-    <div class="quote-item">
+    <div class="quote-item hl-target" data-hl-id="t8-q3">
       <div class="quote-meta">
         <span class="quote-author">P039</span>
         <span class="quote-time">09-16 19:26</span>
@@ -823,7 +923,7 @@
       <blockquote class="quote-text">"* GPT-6 캡차 게임 48단계 모두 통과"</blockquote>
     </div>
 
-    <div class="idea-card">
+    <div class="idea-card hl-target" data-hl-id="t8-i1">
       <div class="idea-label">✍️ 글감 각도</div>
       <p class="idea-text">주요 AI 기업들의 동시다발적 발표는 "AI 업계 속도가 너무 빠르다"는 체감을 전하는 뉴스레터형 콘텐츠 소재로 쓸 수 있다.</p>
     </div>
@@ -844,7 +944,20 @@
     </footer>
   </div>
 
-  <!-- 하단 고정 액션 바 (OS 팝업과 절대 겹치지 않는 모바일 전용 바) -->
+  <!-- 하단 플로팅 컨트롤 바 (항상 노출: 원터치 모드 토글 + 내 하이라이트) -->
+  <div class="floating-controls">
+    <button id="btn-toggle-hl-mode" class="fab-hl-toggle" type="button" title="형광펜 모드 켜기/끄기">
+      <span class="hl-toggle-icon">🖍️</span>
+      <span class="hl-toggle-text">형광펜</span>
+      <span class="hl-toggle-badge" id="hl-mode-badge">OFF</span>
+    </button>
+    <button id="btn-open-highlights" class="fab-hl-list" type="button" title="내 하이라이트 모아보기">
+      <span>📑</span>
+      <span class="badge" id="hl-count-badge">0</span>
+    </button>
+  </div>
+
+  <!-- 하단 드래그 선택 바 (보조) -->
   <div id="highlight-bar" class="bottom-action-bar">
     <div class="bar-header">
       <span class="bar-tag">선택 문장</span>
@@ -857,13 +970,7 @@
     </div>
   </div>
 
-  <!-- 플로팅 하이라이트 모아보기 버튼 -->
-  <button class="fab-hl" id="btn-open-highlights">
-    <span>📑 내 하이라이트</span>
-    <span class="badge" id="hl-count-badge">0</span>
-  </button>
-
-  <!-- 하이라이트 드로어 -->
+  <!-- 하이라이트 모아보기 드로어 -->
   <div class="drawer-overlay" id="drawer-overlay">
     <div class="drawer">
       <div class="drawer-header">
@@ -894,7 +1001,7 @@
           <span class="arch-date">📅 2026-09-22</span>
           <span class="arch-badge">보기</span>
         </div>
-        <ul class="arch-topic-list"><li>아스트라 토큰이 몇 번 돌리면 녹는다는…</li><li>JEV</li><li>코덱스 리셋·솔6 소문</li><li>AI를 쓸수록 늘어난 일강도와 집중력 …</li></ul>
+        <ul class="arch-topic-list"><li>아스트라 토큰이 몇 번 돌리면 녹는다는 호소와 절약 팁</li><li>JEV, 어디에 쓰나: 데이터 많은 사람에게 강하고 창작…</li><li>코덱스 리셋·솔6 소문, 출처와 리커 신뢰도 논쟁</li><li>AI를 쓸수록 늘어난 일강도와 집중력 저하</li></ul>
       </a>
     </li>
 
@@ -904,7 +1011,7 @@
           <span class="arch-date">📅 2026-09-21</span>
           <span class="arch-badge">보기</span>
         </div>
-        <ul class="arch-topic-list"><li>외주 현장</li><li>한도 소진과 리셋 기다림</li><li>JEV·ZTC</li><li>AI 덕에 빨라진 일</li></ul>
+        <ul class="arch-topic-list"><li>외주 현장: "AI로 딸깍 뽑은 기획서"가 낳는 분쟁</li><li>한도 소진과 리셋 기다림: 아스트라 소모량 하소연</li><li>JEV·ZTC: 로컬 판 공개와 성능 회의론</li><li>AI 덕에 빨라진 일, 오히려 사라진 쉬는 시간</li></ul>
       </a>
     </li>
 
@@ -914,7 +1021,7 @@
           <span class="arch-date">📅 2026-09-20</span>
           <span class="arch-badge">보기</span>
         </div>
-        <ul class="arch-topic-list"><li>JEV 화제</li><li>GPT 2.5 이후 이미지는 이미 충분…</li><li>손글씨 한글·수식 OCR</li><li>아스트라 사용감</li></ul>
+        <ul class="arch-topic-list"><li>JEV 화제: OCR 평가·저렴한 가격, 그리고 직접 따…</li><li>GPT 2.5 이후 이미지는 이미 충분한가 — 출판 현장…</li><li>손글씨 한글·수식 OCR: 제미나이가 틀린 답을 멋대로 …</li><li>아스트라 사용감: 한도 리셋 대기, 지시를 어기고 사과·…</li></ul>
       </a>
     </li>
 
@@ -924,7 +1031,7 @@
           <span class="arch-date">📅 2026-09-19</span>
           <span class="arch-badge">보기</span>
         </div>
-        <ul class="arch-topic-list"><li>JEV(제브) 하루 종일 실전 테스트 …</li><li>구독료 소진·리셋 스트레스 밈</li><li>파이썬이 에이전트 오케스트레이션의 병목…</li><li>로컬 VLM 재난생존 앱 '포켓 서바이…</li></ul>
+        <ul class="arch-topic-list"><li>JEV(제브) 하루 종일 실전 테스트 총정리</li><li>구독료 소진·리셋 스트레스 밈</li><li>파이썬이 에이전트 오케스트레이션의 병목인가 논쟁</li><li>로컬 VLM 재난생존 앱 '포켓 서바이벌'</li></ul>
       </a>
     </li>
 
@@ -934,7 +1041,7 @@
           <span class="arch-date">📅 2026-09-18</span>
           <span class="arch-badge">보기</span>
         </div>
-        <ul class="arch-topic-list"><li>Jev(System One) ENUM …</li><li>제미나이4 프로 벤치마크 유출설</li><li>리셋권 사수 전쟁과 커지는 AI 구독비…</li><li>AI 다루는 법 — 네거티브리스트 집착…</li></ul>
+        <ul class="arch-topic-list"><li>Jev(System One) ENUM 판정모델 — 도입파…</li><li>제미나이4 프로 벤치마크 유출설</li><li>리셋권 사수 전쟁과 커지는 AI 구독비용 부담</li><li>AI 다루는 법 — 네거티브리스트 집착과 제미나이 환각 …</li></ul>
       </a>
     </li>
 
@@ -944,7 +1051,7 @@
           <span class="arch-date">📅 2026-09-17</span>
           <span class="arch-badge">현재 읽는 중</span>
         </div>
-        <ul class="arch-topic-list"><li>GPT-6 Sol 출시설과 아스트라·루…</li><li>AI 토큰 예산과 사용량 한도 신경전</li><li>로컬 LLM 180B 자작과 오픈라우터…</li><li>aside와 코덱스 브라우저 자동화 비교</li></ul>
+        <ul class="arch-topic-list"><li>GPT-6 Sol 출시설과 아스트라·루나·솔 넘버링 혼란</li><li>AI 토큰 예산과 사용량 한도 신경전</li><li>로컬 LLM 180B 자작과 오픈라우터 실측 리더보드</li><li>aside와 코덱스 브라우저 자동화 비교</li></ul>
       </a>
     </li>
       </ul>
@@ -955,6 +1062,12 @@
     (function() {
       const STORAGE_KEY = "daily_digest_hl_20260917";
       let highlights = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      let hlModeActive = false;
+
+      const btnToggleMode = document.getElementById("btn-toggle-hl-mode");
+      const modeBadge = document.getElementById("hl-mode-badge");
+      const fabList = document.getElementById("btn-open-highlights");
+      const countBadge = document.getElementById("hl-count-badge");
 
       const hlBar = document.getElementById("highlight-bar");
       const barPreview = document.getElementById("bar-preview-text");
@@ -962,8 +1075,6 @@
       const btnHighlight = document.getElementById("btn-do-highlight");
       const btnNote = document.getElementById("btn-do-note");
 
-      const fab = document.getElementById("btn-open-highlights");
-      const countBadge = document.getElementById("hl-count-badge");
       const drawerOverlay = document.getElementById("drawer-overlay");
       const drawerClose = document.getElementById("btn-close-drawer");
       const drawerList = document.getElementById("drawer-list");
@@ -975,34 +1086,124 @@
 
       let currentSelectionText = "";
 
+      // 토스트 메시지
+      function showToast(msg) {
+        let toast = document.getElementById("hl-toast");
+        if (!toast) {
+          toast = document.createElement("div");
+          toast.id = "hl-toast";
+          toast.className = "hl-toast";
+          document.body.appendChild(toast);
+        }
+        toast.textContent = msg;
+        toast.classList.add("show");
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2200);
+      }
+
+      // 배지 갱신
       function updateBadge() {
         countBadge.textContent = highlights.length;
-        if (highlights.length === 0) {
-          fab.style.display = "none";
-        } else {
-          fab.style.display = "flex";
-        }
+      }
+
+      // DOM에 저장된 하이라이트 스타일 복원
+      function applySavedHighlights() {
+        // 기존 active 초기화
+        document.querySelectorAll(".user-hl-active").forEach(el => el.classList.remove("user-hl-active"));
+        highlights.forEach(h => {
+          if (h.id) {
+            const el = document.querySelector(`[data-hl-id="${h.id}"]`);
+            if (el) el.classList.add("user-hl-active");
+          }
+        });
       }
 
       function saveHighlights() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(highlights));
         updateBadge();
+        applySavedHighlights();
         renderDrawer();
       }
 
+      // 형광펜 모드 토글
+      btnToggleMode.addEventListener("click", () => {
+        hlModeActive = !hlModeActive;
+        if (hlModeActive) {
+          document.body.classList.add("hl-mode-active");
+          btnToggleMode.classList.add("active");
+          modeBadge.textContent = "ON";
+          showToast("🖍️ 형광펜 모드 ON: 밑줄 칠 문장을 터치하세요!");
+        } else {
+          document.body.classList.remove("hl-mode-active");
+          btnToggleMode.classList.remove("active");
+          modeBadge.textContent = "OFF";
+          showToast("형광펜 모드 OFF");
+        }
+      });
+
+      // 본문 요소 클릭 (형광펜 모드일 때 즉시 칠하기/해제)
+      document.getElementById("article-content").addEventListener("click", (e) => {
+        if (!hlModeActive) return;
+        const target = e.target.closest(".hl-target");
+        if (!target) return;
+
+        const id = target.dataset.hlId;
+        const text = target.innerText.trim();
+        const existingIdx = highlights.findIndex(h => h.id === id);
+
+        if (existingIdx >= 0) {
+          // 이미 칠해져 있으면 해제
+          highlights.splice(existingIdx, 1);
+          target.classList.remove("user-hl-active");
+          saveHighlights();
+          showToast("형광펜 해제됨");
+        } else {
+          // 새로 칠하기
+          highlights.push({
+            id: id,
+            text: text,
+            note: "",
+            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+          });
+          target.classList.add("user-hl-active");
+          saveHighlights();
+          showToast("🖍️ 형광펜 칠하기 완료!");
+        }
+      });
+
+      // 드로어 렌더링
       function renderDrawer() {
         if (highlights.length === 0) {
-          drawerList.innerHTML = '<p style="color: #8B8A95; text-align: center; padding: 30px 0;">아직 남긴 하이라이트가 없습니다.<br>본문 문장을 드래그하여 형광펜을 칠해보세요!</p>';
+          drawerList.innerHTML = '<p style="color: #8B8A95; text-align: center; padding: 30px 0;">아직 남긴 하이라이트가 없습니다.<br>우하단 🖍️ <b>형광펜</b> 버튼을 켜고 문장을 터치해보세요!</p>';
           return;
         }
         drawerList.innerHTML = highlights.map((h, i) => `
           <div class="hl-card">
-            <button class="hl-card-del" data-idx="${i}">✕</button>
+            <button class="hl-card-del" data-idx="${i}" title="삭제">✕</button>
             <div class="hl-card-text">"${h.text}"</div>
             ${h.note ? `<div class="hl-card-note">💬 ${h.note}</div>` : ''}
+            <div class="hl-card-actions">
+              <button class="hl-card-btn btn-edit-note" data-idx="${i}">${h.note ? '✏️ 메모 수정' : '💬 메모 추가'}</button>
+            </div>
           </div>
         `).join("");
 
+        // 메모 추가/수정 이벤트
+        drawerList.querySelectorAll(".btn-edit-note").forEach(btn => {
+          btn.addEventListener("click", (e) => {
+            const idx = parseInt(e.target.dataset.idx, 10);
+            const currentNote = highlights[idx].note || "";
+            const userNote = prompt("💬 이 하이라이트에 남길 메모를 입력하세요:", currentNote);
+            if (userNote !== null) {
+              highlights[idx].note = userNote.trim();
+              saveHighlights();
+            }
+          });
+        });
+
+        // 삭제 이벤트
         drawerList.querySelectorAll(".hl-card-del").forEach(btn => {
           btn.addEventListener("click", (e) => {
             const idx = parseInt(e.target.dataset.idx, 10);
@@ -1012,16 +1213,15 @@
         });
       }
 
-      // 텍스트 선택 감지: OS 메뉴와 겹치지 않는 화면 맨 밑바닥 고정 바 노출
+      // 텍스트 드래그 선택 감지 (보조)
       function handleSelection() {
+        if (hlModeActive) return; // 모드 활성화 중에는 탭 우선
         const sel = window.getSelection();
         const text = sel ? sel.toString().trim() : "";
-        if (!text || text.length < 2) {
-          return;
-        }
+        if (!text || text.length < 2) return;
 
         currentSelectionText = text;
-        barPreview.textContent = '"' + (text.length > 50 ? text.slice(0, 50) + '…' : text) + '"';
+        barPreview.textContent = '"' + (text.length > 40 ? text.slice(0, 40) + '…' : text) + '"';
         hlBar.style.display = "flex";
       }
 
@@ -1035,31 +1235,43 @@
         window.getSelection().removeAllRanges();
       });
 
-      // 형광펜 추가
+      // 선택 텍스트 형광펜 추가
       btnHighlight.addEventListener("click", (e) => {
         e.stopPropagation();
         if (!currentSelectionText) return;
-        highlights.push({ text: currentSelectionText, note: "", time: new Date().toLocaleTimeString() });
+        highlights.push({
+          id: null,
+          text: currentSelectionText,
+          note: "",
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        });
         saveHighlights();
         hlBar.style.display = "none";
         window.getSelection().removeAllRanges();
+        showToast("🖍️ 형광펜 칠하기 완료!");
       });
 
-      // 메모 추가
+      // 선택 텍스트 메모 추가
       btnNote.addEventListener("click", (e) => {
         e.stopPropagation();
         if (!currentSelectionText) return;
         const userNote = prompt("💬 이 문장에 남길 메모를 입력하세요:");
         if (userNote !== null) {
-          highlights.push({ text: currentSelectionText, note: userNote.trim(), time: new Date().toLocaleTimeString() });
+          highlights.push({
+            id: null,
+            text: currentSelectionText,
+            note: userNote.trim(),
+            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+          });
           saveHighlights();
+          showToast("💬 메모 저장 완료!");
         }
         hlBar.style.display = "none";
         window.getSelection().removeAllRanges();
       });
 
       // 드로어 열기/닫기
-      fab.addEventListener("click", () => {
+      fabList.addEventListener("click", () => {
         renderDrawer();
         drawerOverlay.style.display = "block";
       });
@@ -1098,6 +1310,7 @@
 
       // 초기화
       updateBadge();
+      applySavedHighlights();
     })();
   </script>
 </body>
