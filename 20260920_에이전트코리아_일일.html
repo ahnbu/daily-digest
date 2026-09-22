@@ -248,13 +248,6 @@
       cursor: pointer;
     }
 
-    /* PC 마우스 환경에서만 가벼운 호버 힌트 제공 (모바일 터치 기기는 hover 잔상 방지를 위해 완전 제외) */
-    @media (hover: hover) and (pointer: fine) {
-      body.hl-mode-active .hl-sent.hl-target:not(.user-hl-active):hover {
-        background-color: rgba(254, 240, 138, 0.35);
-      }
-    }
-
     /* 하단 플로팅 컨트롤 바 (항상 노출) */
     .floating-controls {
       position: fixed;
