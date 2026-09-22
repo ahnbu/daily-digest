@@ -732,168 +732,131 @@
       word-break: keep-all;
       color: var(--gray-mid);
     }
-    /* 단톡방 공식 봇 랩업 크로스체크 섹션 */
-    .bot-summary-section {
-      margin-top: 36px;
-      padding: 18px 16px;
-      background: #F8FAFC;
-      border: 1px solid #E2E8F0;
-      border-radius: 14px;
+    /* 단톡방 공식 봇 랩업 대조 (박스 제거, 심플 타이포그래피, 부수 정보 접기) */
+    .official-digest-section {
+      margin-top: 40px;
       scroll-margin-top: 16px;
     }
-    .bot-summary-header {
+    .official-section-divider {
+      height: 1px;
+      background: var(--line);
+      margin-bottom: 22px;
+    }
+    .official-header {
       margin-bottom: 14px;
     }
-    .bot-badge-group {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 6px;
-    }
-    .bot-brand-badge {
+    .official-badge {
+      display: inline-block;
       font-size: 11.5px;
       font-weight: 700;
-      background: #E0E7FF;
       color: #3730A3;
+      background: #EEF2FF;
       padding: 2px 7px;
       border-radius: 4px;
+      margin-bottom: 6px;
     }
-    .bot-count-badge {
-      font-size: 11px;
-      font-weight: 600;
-      background: #EDF2F7;
-      color: var(--gray-mid);
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-    .bot-section-title {
-      font-size: 16.5px;
+    .official-section-title {
+      font-family: var(--font-display);
+      font-size: 17px;
       font-weight: 800;
       color: var(--ink);
-      font-family: var(--font-display);
-      margin-bottom: 4px;
     }
-    .bot-section-subtitle {
-      font-size: 12.5px;
-      color: var(--gray-mid);
-      line-height: 1.4;
-    }
-    .bot-empty-box {
-      padding: 14px;
-      background: var(--white);
-      border-radius: 8px;
-      border: 1px dashed var(--line);
+    .official-empty-note {
       font-size: 13px;
       color: var(--gray-mid);
-      text-align: center;
+      padding: 10px 0;
     }
-    .bot-card {
-      background: var(--white);
+    .official-card-wrap {
+      margin-bottom: 24px;
+    }
+    .official-meta-details {
+      background: var(--gray-bg);
       border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 14px;
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin-bottom: 16px;
+      font-size: 12.5px;
+      color: var(--gray-mid);
     }
-    .bot-card:last-child {
-      margin-bottom: 0;
+    .official-meta-details summary {
+      cursor: pointer;
+      font-weight: 600;
+      outline: none;
+      user-select: none;
     }
-    .bot-card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 10px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-    .bot-card-title-group {
+    .official-meta-content {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--line);
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 4px;
+      line-height: 1.5;
     }
-    .bot-card-main-title {
-      font-size: 13.5px;
+    .official-key-code {
+      font-family: monospace;
       font-weight: 700;
-      color: var(--ink);
-    }
-    .bot-card-time {
-      font-size: 11.5px;
-      color: var(--gray-light);
-    }
-    .bot-key-tag {
       background: #FEF3C7;
       color: #92400E;
+      padding: 1px 6px;
+      border-radius: 4px;
       border: 1px solid #FDE68A;
-      padding: 3px 9px;
-      border-radius: 6px;
-      font-size: 12.5px;
-      white-space: nowrap;
     }
-    .bot-actions-row {
-      margin-bottom: 14px;
-    }
-    .bot-wiki-action-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: var(--blue-tint);
-      color: var(--blue-primary);
-      text-decoration: none;
-      font-size: 12.5px;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 6px;
-      transition: background 0.15s;
-    }
-    .bot-wiki-action-btn:hover {
-      background: #BFDBFE;
-    }
-    .bot-topics-container {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .bot-topic-item {
-      background: #F8FAFC;
-      border-radius: 8px;
-      padding: 12px;
-      border-left: 3px solid #64748B;
-    }
-    .bot-topic-item-title {
-      font-size: 13.5px;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
-    .bot-topic-desc {
-      font-size: 13px;
-      color: var(--ink);
-      line-height: 1.5;
-      margin-bottom: 8px;
-      word-break: keep-all;
-    }
-    .bot-article-link {
-      margin-bottom: 6px;
-    }
-    .bot-article-link a {
-      font-size: 12px;
+    .official-wiki-link {
       color: var(--blue-primary);
       text-decoration: none;
       font-weight: 600;
     }
-    .bot-article-link a:hover {
+    .official-wiki-link:hover {
       text-decoration: underline;
     }
-    .bot-quote-item {
-      font-size: 12px;
-      color: var(--gray-mid);
-      background: var(--white);
-      padding: 5px 9px;
-      border-radius: 6px;
-      margin-top: 4px;
+    .official-topics-body {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .official-topic-item {
+      padding-bottom: 16px;
+      border-bottom: 1px dashed #E2E8F0;
+    }
+    .official-topic-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .official-topic-title {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 6px;
       line-height: 1.4;
-      border: 1px solid #E2E8F0;
+    }
+    .official-topic-desc {
+      font-size: 13.5px;
+      color: var(--ink);
+      line-height: 1.6;
+      margin-bottom: 6px;
+      word-break: keep-all;
+    }
+    .official-article-link {
+      margin-bottom: 6px;
+    }
+    .official-article-link a {
+      font-size: 12.5px;
+      color: var(--blue-primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .official-article-link a:hover {
+      text-decoration: underline;
+    }
+    .official-quote-item {
+      font-size: 12.5px;
+      color: var(--gray-mid);
+      line-height: 1.45;
+      padding: 4px 8px;
+      border-left: 2px solid #CBD5E1;
+      margin-top: 4px;
+      word-break: keep-all;
     }
   </style>
 </head>
@@ -1287,154 +1250,149 @@
 </div></section>
 
       
-  <section class="bot-summary-section" id="section-official-digest">
-    <div class="bot-summary-header">
-      <div class="bot-badge-group">
-        <span class="bot-brand-badge">단톡방 공식 랩업</span>
-        <span class="bot-count-badge">1건 크로스체크</span>
-      </div>
-      <h3 class="bot-section-title">📋 단톡방 공식 봇 랩업 크로스체크</h3>
-      <p class="bot-section-subtitle">단톡방 운영진 공식 봇(akwiki)의 원문 요약 및 열람 코드를 우리 브리핑과 직접 대조할 수 있습니다.</p>
+  <section class="official-digest-section" id="section-official-digest">
+    <div class="official-section-divider"></div>
+    <div class="official-header">
+      <span class="official-badge">단톡방 공식 랩업 대조</span>
+      <h4 class="official-section-title">📋 단톡방 공식 요약 메시지</h4>
     </div>
-    <div class="bot-cards-list">
+    <div class="official-list">
       
-      <div class="bot-card">
-        <div class="bot-card-top">
-          <div class="bot-card-title-group">
-            <span class="bot-card-main-title">📋 에이전트코리아 오늘의 요약 (2026-09-16 17:50 ~ 2026-09-17 17:54) · 1,048건 · 79명</span>
-            <span class="bot-card-time">발행: 9. 17. 오후 08:33 KST</span>
+      <div class="official-card-wrap">
+        <details class="official-meta-details">
+          <summary>⚙️ 열람 코드 및 수집 정보 (클릭하여 확인)</summary>
+          <div class="official-meta-content">
+            <p><strong>발행 시각:</strong> 9. 17. 오후 08:33 KST</p>
+            <p><strong>수집 구간:</strong> 📋 에이전트코리아 오늘의 요약 (2026-09-16 17:50 ~ 2026-09-17 17:54) · 1,048건 · 79명</p>
+            <p><strong>🔑 열람 코드:</strong> <span class="official-key-code">5562</span></p>
+            <p><a href="https://akwiki.org/rooms/agent-korea" target="_blank" rel="noopener" class="official-wiki-link">📖 공식 위키(akwiki) 전체보기 ↗</a></p>
           </div>
-          
-            <div class="bot-key-tag">
-              <span>🔑 열람 코드: <strong>5562</strong></span>
-            </div>
-          
-        </div>
+        </details>
 
-        <div class="bot-actions-row">
-          <a href="https://akwiki.org/rooms/agent-korea" target="_blank" rel="noopener" class="bot-wiki-action-btn">
-            📖 공식 위키(akwiki)에서 전체보기 ↗
-          </a>
-        </div>
-
-        <div class="bot-topics-container">
+        <div class="official-topics-body">
           
-        <div class="bot-topic-item">
-          <h5 class="bot-topic-item-title">📌 Jev·System One — ENUM 판정 모델이 하루 종일 화제</h5>
-          <p class="bot-topic-desc">System One 계열의 새 판정 모델 Jev가 종일 화제였다. ENUM 방식이라 추론이 거의 즉시고 비용도 크게 줄어, 실제 파이프라인에 도입하겠다는 이야기까지 나왔다.</p>
+        <div class="official-topic-item">
+          <h5 class="official-topic-title">📌 Jev·System One — ENUM 판정 모델이 하루 종일 화제</h5>
+          <p class="official-topic-desc">System One 계열의 새 판정 모델 Jev가 종일 화제였다. ENUM 방식이라 추론이 거의 즉시고 비용도 크게 줄어, 실제 파이프라인에 도입하겠다는 이야기까지 나왔다.</p>
           
-        <div class="bot-article-link">
+        <div class="official-article-link">
           <a href="https://akwiki.org/article/2026-09-17-jev-system-one-enum-판정-모델이-하루-종일-화제" target="_blank" rel="noopener">📄 Jev·System One — ENUM 판정 모델이 하루 종일 화제 ↗</a>
         </div>
       
           
-        <blockquote class="bot-quote-item">🔸 공냥이 2026-09-17 14:28:53 &quot;https://typesafe.ai/blog/introducing-system-one-models-and-jev&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 공냥이 2026-09-17 14:28:53 &quot;https://typesafe.ai/blog/introducing-system-one-models-and-jev&quot;</blockquote>
       
-        <blockquote class="bot-quote-item">🔸 코난쌤 한준구 2026-09-17 14:40:25 &quot;llm이 아닙니다ㅋㅋ&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 코난쌤 한준구 2026-09-17 14:40:25 &quot;llm이 아닙니다ㅋㅋ&quot;</blockquote>
       
-        <blockquote class="bot-quote-item">🔸 Hue/개발자 2026-09-17 14:40:41 &quot;추론이 제로에 가까운 속도에요 ㅋㅋㅋㅋ&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 Hue/개발자 2026-09-17 14:40:41 &quot;추론이 제로에 가까운 속도에요 ㅋㅋㅋㅋ&quot;</blockquote>
       
         </div>
       
-        <div class="bot-topic-item">
-          <h5 class="bot-topic-item-title">📌 제미나이4 프로 루머 — 페이블·아스트라 자리다툼</h5>
-          <p class="bot-topic-desc">LMArena에 제미나이4 프로로 추정되는 모델이 등장하며 클로드(페이블) 진영이 밀린다는 논쟁이 붙었다. 실사용 후기와 순위 하락을 향한 밈 반응까지 저녁 내내 이어졌다.</p>
+
+        <div class="official-topic-item">
+          <h5 class="official-topic-title">📌 제미나이4 프로 루머 — 페이블·아스트라 자리다툼</h5>
+          <p class="official-topic-desc">LMArena에 제미나이4 프로로 추정되는 모델이 등장하며 클로드(페이블) 진영이 밀린다는 논쟁이 붙었다. 실사용 후기와 순위 하락을 향한 밈 반응까지 저녁 내내 이어졌다.</p>
           
-        <div class="bot-article-link">
+        <div class="official-article-link">
           <a href="https://akwiki.org/article/2026-09-17-제미나이4-프로-루머-페이블-아스트라-자리다툼" target="_blank" rel="noopener">📄 제미나이4 프로 루머 — 페이블·아스트라 자리다툼 ↗</a>
         </div>
       
           
-        <blockquote class="bot-quote-item">🔸 twojay | LLM, Prompt 2026-09-17 14:49:48 &quot;LMArena에 gemini 4 pro로 추측되는 모델 발견 - 출력토큰이 256K&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 twojay | LLM, Prompt 2026-09-17 14:49:48 &quot;LMArena에 gemini 4 pro로 추측되는 모델 발견 - 출력토큰이 256K&quot;</blockquote>
       
-        <blockquote class="bot-quote-item">🔸 강정석 / Schift / 대표 2026-09-17 14:59:08 &quot;벤치상으로 이제 페이블은 범부가 되었군요&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 강정석 / Schift / 대표 2026-09-17 14:59:08 &quot;벤치상으로 이제 페이블은 범부가 되었군요&quot;</blockquote>
       
-        <blockquote class="bot-quote-item">🔸 자동화공장장 2026-09-17 15:08:14 &quot;제미나이에게 작업 80%넘겼는데 이제 클로드 완전히 버려도 될 듯&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 자동화공장장 2026-09-17 15:08:14 &quot;제미나이에게 작업 80%넘겼는데 이제 클로드 완전히 버려도 될 듯&quot;</blockquote>
       
         </div>
       
-        <div class="bot-topic-item">
-          <h5 class="bot-topic-item-title">📌 리셋권 사수 전쟁과 커지는 AI 구독비용 부담</h5>
-          <p class="bot-topic-desc">429 에러로 발목 잡힌 사용량 이야기로 시작해 주간 한도 초기화 시점과 구독 갱신이 안 맞는다는 하소연이 쏟아졌다. 개인 구독비만 클로드·코덱스에 월 1000달러라는 고백도 나왔다.</p>
+
+        <div class="official-topic-item">
+          <h5 class="official-topic-title">📌 리셋권 사수 전쟁과 커지는 AI 구독비용 부담</h5>
+          <p class="official-topic-desc">429 에러로 발목 잡힌 사용량 이야기로 시작해 주간 한도 초기화 시점과 구독 갱신이 안 맞는다는 하소연이 쏟아졌다. 개인 구독비만 클로드·코덱스에 월 1000달러라는 고백도 나왔다.</p>
           
-        <div class="bot-article-link">
+        <div class="official-article-link">
           <a href="https://akwiki.org/article/2026-09-17-리셋권-사수-전쟁과-커지는-ai-구독비용-부담" target="_blank" rel="noopener">📄 리셋권 사수 전쟁과 커지는 AI 구독비용 부담 ↗</a>
         </div>
       
           
-        <blockquote class="bot-quote-item">🔸 강정석 / Schift / 대표 2026-09-16 17:51:32 &quot;429 ㅠㅠ&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 강정석 / Schift / 대표 2026-09-16 17:51:32 &quot;429 ㅠㅠ&quot;</blockquote>
       
-        <blockquote class="bot-quote-item">🔸 올해는한화가우승/방산ax 2026-09-16 21:01:10 &quot;결국 썼다,,&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 올해는한화가우승/방산ax 2026-09-16 21:01:10 &quot;결국 썼다,,&quot;</blockquote>
       
-        <blockquote class="bot-quote-item">🔸 텅빈금고 / 교통 2026-09-16 21:51:39 &quot;gpt 주간한도 질문 이씀다 ㅁ-ㅁ 주간한도 초기화가 3일 남았는데 구독이 오늘 끝납니다...... 자동결제 되면 돈내고 3일간 기다려야 하는지 알고 싶슴다....&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 텅빈금고 / 교통 2026-09-16 21:51:39 &quot;gpt 주간한도 질문 이씀다 ㅁ-ㅁ 주간한도 초기화가 3일 남았는데 구독이 오늘 끝납니다...... 자동결제 되면 돈내고 3일간 기다려야 하는지 알고 싶슴다....&quot;</blockquote>
       
         </div>
       
-        <div class="bot-topic-item">
-          <h5 class="bot-topic-item-title">📌 AI 다루는 법과 반복되는 환각 논쟁</h5>
-          <p class="bot-topic-desc">AI에게 네거티브리스트나 금지 규칙만 주면 오히려 집착하며 길을 잃는다는 경험담이 나왔다. 클로드·코덱스·제미니 세 모델 중에서는 제미니의 환각이 가장 심하다는 지적이 이어졌다.</p>
+
+        <div class="official-topic-item">
+          <h5 class="official-topic-title">📌 AI 다루는 법과 반복되는 환각 논쟁</h5>
+          <p class="official-topic-desc">AI에게 네거티브리스트나 금지 규칙만 주면 오히려 집착하며 길을 잃는다는 경험담이 나왔다. 클로드·코덱스·제미니 세 모델 중에서는 제미니의 환각이 가장 심하다는 지적이 이어졌다.</p>
           
-        <div class="bot-article-link">
+        <div class="official-article-link">
           <a href="https://akwiki.org/article/2026-09-17-ai-다루는-법과-반복되는-환각-논쟁" target="_blank" rel="noopener">📄 AI 다루는 법과 반복되는 환각 논쟁 ↗</a>
         </div>
       
           
-        <blockquote class="bot-quote-item">🔸 최은우/연구원 2026-09-17 10:37:31 &quot;강화학습의 폐해이려나요&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 최은우/연구원 2026-09-17 10:37:31 &quot;강화학습의 폐해이려나요&quot;</blockquote>
       
-        <blockquote class="bot-quote-item">🔸 Sophie/Founder 2026-09-17 10:37:34 &quot;AI들한테 네거티브리스트를 주거나 금지를 주면 그걸 안틀리는데 너무 집착하느라 자꾸 길을 잃더라고요&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 Sophie/Founder 2026-09-17 10:37:34 &quot;AI들한테 네거티브리스트를 주거나 금지를 주면 그걸 안틀리는데 너무 집착하느라 자꾸 길을 잃더라고요&quot;</blockquote>
       
-        <blockquote class="bot-quote-item">🔸 Sophie/Founder 2026-09-17 10:38:24 &quot;사람이랑 비슷한 거 같아요 - 그래서 상위 목표를 잘 설계하고 거기 잘 닿는 경로 몇 가지 예시를 들고 맡기는게 - 좋은 모델들한텐 마이크로매니징보다 더 좋은 것 같았어요&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 Sophie/Founder 2026-09-17 10:38:24 &quot;사람이랑 비슷한 거 같아요 - 그래서 상위 목표를 잘 설계하고 거기 잘 닿는 경로 몇 가지 예시를 들고 맡기는게 - 좋은 모델들한텐 마이크로매니징보다 더 좋은 것 같았어요&quot;</blockquote>
       
         </div>
       
-        <div class="bot-topic-item">
-          <h5 class="bot-topic-item-title">📌 하네스 엔지니어링, 멀티에이전트 판정 노동의 무게</h5>
-          <p class="bot-topic-desc">여러 에이전트가 토론해도 수렴 안 되는 걸 사람이 판정해야 하는 노동 부담이 화두였다. 자율주행차 비유로, 하네스는 규칙을 수만 번 고치고 테스트해야 하는 시스템이라는 설명이 나왔다.</p>
+
+        <div class="official-topic-item">
+          <h5 class="official-topic-title">📌 하네스 엔지니어링, 멀티에이전트 판정 노동의 무게</h5>
+          <p class="official-topic-desc">여러 에이전트가 토론해도 수렴 안 되는 걸 사람이 판정해야 하는 노동 부담이 화두였다. 자율주행차 비유로, 하네스는 규칙을 수만 번 고치고 테스트해야 하는 시스템이라는 설명이 나왔다.</p>
           
-        <div class="bot-article-link">
+        <div class="official-article-link">
           <a href="https://akwiki.org/article/2026-09-17-하네스-엔지니어링-멀티에이전트-판정-노동의-무게" target="_blank" rel="noopener">📄 하네스 엔지니어링, 멀티에이전트 판정 노동의 무게 ↗</a>
         </div>
       
           
-        <blockquote class="bot-quote-item">🔸 뀨/연구 2026-09-16 22:26:41 &quot;토론하고 자기들끼리 수렴안되는거 판정하는것도 엄청난 노동력..&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 뀨/연구 2026-09-16 22:26:41 &quot;토론하고 자기들끼리 수렴안되는거 판정하는것도 엄청난 노동력..&quot;</blockquote>
       
-        <blockquote class="bot-quote-item">🔸 Hue/개발자 2026-09-16 22:29:02 &quot;https://hugh-kim.space/dynamic-workflows-harness.html&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 Hue/개발자 2026-09-16 22:29:02 &quot;https://hugh-kim.space/dynamic-workflows-harness.html&quot;</blockquote>
       
-        <blockquote class="bot-quote-item">🔸 Hue/개발자 2026-09-16 22:31:08 &quot;오늘 새로오신 분이랑 나눈 이야기인데  뉴 : 하네스 한테 다 해달라고 하면 되지 않아요? 나 : 그 하네스한테 수만 가지 규칙을 정의하고 구조를 만들고 테스트 해야하니까요, 자율주행차는 목적지만 입력하면 되지만 우리는 자율주행 시스템을 만들어야하니 수만번 고치고 테스트해야죠&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 Hue/개발자 2026-09-16 22:31:08 &quot;오늘 새로오신 분이랑 나눈 이야기인데  뉴 : 하네스 한테 다 해달라고 하면 되지 않아요? 나 : 그 하네스한테 수만 가지 규칙을 정의하고 구조를 만들고 테스트 해야하니까요, 자율주행차는 목적지만 입력하면 되지만 우리는 자율주행 시스템을 만들어야하니 수만번 고치고 테스트해야죠&quot;</blockquote>
       
         </div>
       
-        <div class="bot-topic-item">
-          <h5 class="bot-topic-item-title">📌 Aside 브라우저 에이전트 활용법과 에이전트 친화적 웹</h5>
-          <p class="bot-topic-desc">브라우저 에이전트 Aside를 Playwright와 구분해 잘 쓰는 6가지 방식 정리가 화제였다. 에이전트 친화적 웹 설계는 결국 SEO 최적화로 충분하다는 의견도 나왔다.</p>
+
+        <div class="official-topic-item">
+          <h5 class="official-topic-title">📌 Aside 브라우저 에이전트 활용법과 에이전트 친화적 웹</h5>
+          <p class="official-topic-desc">브라우저 에이전트 Aside를 Playwright와 구분해 잘 쓰는 6가지 방식 정리가 화제였다. 에이전트 친화적 웹 설계는 결국 SEO 최적화로 충분하다는 의견도 나왔다.</p>
           
-        <div class="bot-article-link">
+        <div class="official-article-link">
           <a href="https://akwiki.org/article/2026-09-17-aside-브라우저-에이전트-활용법과-에이전트-친화적-웹" target="_blank" rel="noopener">📄 Aside 브라우저 에이전트 활용법과 에이전트 친화적 웹 ↗</a>
         </div>
       
           
-        <blockquote class="bot-quote-item">🔸 에코/ai 2026-09-16 23:32:21 &quot;aside가 저는 playwright?였나 이놈 대신 실제 개발 바이브코딩할때 참고하는 브라우저 용도로 쓰는데  ai한테 aside이용해서 프론트 개발하라하는데 이렇게 쓰는거맞나요? &quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 에코/ai 2026-09-16 23:32:21 &quot;aside가 저는 playwright?였나 이놈 대신 실제 개발 바이브코딩할때 참고하는 브라우저 용도로 쓰는데  ai한테 aside이용해서 프론트 개발하라하는데 이렇게 쓰는거맞나요? &quot;</blockquote>
       
-        <blockquote class="bot-quote-item">🔸 AlexAI/opencrab.sh 2026-09-16 23:34:40 &quot;플레이라이트는 브라우저를 제어하는 프에임워크고 aside는 브라우저 그 잡채 에요&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 AlexAI/opencrab.sh 2026-09-16 23:34:40 &quot;플레이라이트는 브라우저를 제어하는 프에임워크고 aside는 브라우저 그 잡채 에요&quot;</blockquote>
       
-        <blockquote class="bot-quote-item">🔸 AlexAI/opencrab.sh 2026-09-16 23:56:28 &quot;어사이드  잘쓰는 방식   1. 사이트에 바로가는게 아니라 챗으로 대상 사이트에서 할일을 말하는 것으로 시작  2. 로그인 훅 저장으로 모든 내 사이트 스스로 입출 가능  3. 자동화 루틴 적용 가능  4. CLI MCP써서 코덱스 클코로 호출가능  5. 웹에사 돌아가는 영상분석  6. 로컬파일 로컬MCP CLI와 연동 가능&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 AlexAI/opencrab.sh 2026-09-16 23:56:28 &quot;어사이드  잘쓰는 방식   1. 사이트에 바로가는게 아니라 챗으로 대상 사이트에서 할일을 말하는 것으로 시작  2. 로그인 훅 저장으로 모든 내 사이트 스스로 입출 가능  3. 자동화 루틴 적용 가능  4. CLI MCP써서 코덱스 클코로 호출가능  5. 웹에사 돌아가는 영상분석  6. 로컬파일 로컬MCP CLI와 연동 가능&quot;</blockquote>
       
         </div>
       
-        <div class="bot-topic-item">
-          <h5 class="bot-topic-item-title">📌 AI 업계 소식 — 알트만 만찬부터 데이터센터 법안까지</h5>
-          <p class="bot-topic-desc">GPT-6가 캡차 48단계를 전부 통과했다는 기사와 알트만의 미중 만찬 참석 소식이 공유됐다. 기업 AI 점유율은 자산이 아니라 월세라는 지표 분석도 함께 나왔다.</p><p class="bot-topic-desc">(이 밖에 1개 주제가 더 있습니다 — 아래 링크에서 전부 보실 수 있어요)</p>
+
+        <div class="official-topic-item">
+          <h5 class="official-topic-title">📌 AI 업계 소식 — 알트만 만찬부터 데이터센터 법안까지</h5>
+          <p class="official-topic-desc">GPT-6가 캡차 48단계를 전부 통과했다는 기사와 알트만의 미중 만찬 참석 소식이 공유됐다. 기업 AI 점유율은 자산이 아니라 월세라는 지표 분석도 함께 나왔다.</p><p class="official-topic-desc">(이 밖에 1개 주제가 더 있습니다 — 아래 링크에서 전부 보실 수 있어요)</p>
           
-        <div class="bot-article-link">
+        <div class="official-article-link">
           <a href="https://akwiki.org/article/2026-09-17-ai-업계-소식-알트만-만찬부터-데이터센터-법안까지" target="_blank" rel="noopener">📄 AI 업계 소식 — 알트만 만찬부터 데이터센터 법안까지 ↗</a>
         </div>
       
           
-        <blockquote class="bot-quote-item">🔸 아라방구 / AI Engineer 2026-09-16 19:26:49 &quot;* GPT-6 캡차 게임 48단계 모두 통과 * 일부 문제는 사람도 틀릴 만큼의 난이도 * 기존 로봇 차단 기술 전면 재설계 지적 * 새 평가체계 지능지표 순위 공동 1위  https://www.chosun.com/economy/tech_it/2026/09/09/CGRIDOL4DZHLPK7ZPH4UJC7G6U/&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 아라방구 / AI Engineer 2026-09-16 19:26:49 &quot;* GPT-6 캡차 게임 48단계 모두 통과 * 일부 문제는 사람도 틀릴 만큼의 난이도 * 기존 로봇 차단 기술 전면 재설계 지적 * 새 평가체계 지능지표 순위 공동 1위  https://www.chosun.com/economy/tech_it/2026/09/09/CGRIDOL4DZHLPK7ZPH4UJC7G6U/&quot;</blockquote>
       
-        <blockquote class="bot-quote-item">🔸 twojay | LLM, Prompt 2026-09-16 19:27:16 &quot;사람의 영역이 아니지않은게 아닌가 싶네요&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 twojay | LLM, Prompt 2026-09-16 19:27:16 &quot;사람의 영역이 아니지않은게 아닌가 싶네요&quot;</blockquote>
       
-        <blockquote class="bot-quote-item">🔸 올해는한화가우승/방산ax 2026-09-17 10:28:50 &quot;받) OpenAI의 샘 알트만 CEO가 트럼프 미국 대통령과 시진핑 중국 주석과의 만찬에 참석할 예정&quot;</blockquote>
+        <blockquote class="official-quote-item">🔸 올해는한화가우승/방산ax 2026-09-17 10:28:50 &quot;받) OpenAI의 샘 알트만 CEO가 트럼프 미국 대통령과 시진핑 중국 주석과의 만찬에 참석할 예정&quot;</blockquote>
       
         </div>
       
