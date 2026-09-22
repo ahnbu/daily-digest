@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>에이전트코리아 일일요약 2026-09-22</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/subsets/Paperlogy-dynamic-subset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css">
@@ -20,11 +20,13 @@
       --gray-light: #8B8A95;
       --line: #E0E0E5;
       --gray-bg: #F5F5F7;
+      --hl-bg: #FEF08A;
+      --hl-border: #EAB308;
       --font-display: "Paperlogy", "Pretendard", sans-serif;
       --font-body: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
       --font-quote: "Noto Serif KR", serif;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body {
       background-color: #F8F9FA;
       color: var(--ink);
@@ -32,21 +34,61 @@
       font-size: 16px;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
-      padding: 16px 12px 60px;
+      padding: 12px 10px 100px;
     }
     .container {
       max-width: 680px;
       margin: 0 auto;
       background: var(--white);
       border-radius: 16px;
-      padding: 24px 20px;
+      padding: 20px 18px 30px;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
       border: 1px solid var(--line);
     }
+    
+    /* 상단 아카이브 네비게이션 바 */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+    }
+    .nav-btn {
+      color: var(--blue-primary);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--blue-tint);
+      transition: background 0.2s;
+    }
+    .nav-btn.disabled {
+      color: var(--gray-light);
+      background: var(--gray-bg);
+      cursor: default;
+    }
+    .archive-toggle-btn {
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* 헤더 */
     header {
       border-bottom: 2px solid var(--ink);
       padding-bottom: 16px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
     .brand-tag {
       display: inline-block;
@@ -57,11 +99,10 @@
       padding: 3px 8px;
       border-radius: 4px;
       margin-bottom: 8px;
-      letter-spacing: -0.2px;
     }
     h1 {
       font-family: var(--font-display);
-      font-size: 24px;
+      font-size: 23px;
       font-weight: 800;
       line-height: 1.25;
       color: var(--ink);
@@ -72,11 +113,13 @@
       font-size: 13px;
       color: var(--gray-mid);
       background: var(--gray-bg);
-      padding: 10px 14px;
+      padding: 10px 12px;
       border-radius: 8px;
       line-height: 1.5;
       word-break: keep-all;
     }
+
+    /* 주제별 카드 */
     .topic-card {
       margin-bottom: 28px;
       border-bottom: 1px solid var(--line);
@@ -124,7 +167,7 @@
     .quote-item {
       background: var(--gray-bg);
       border-left: 3px solid var(--blue-primary);
-      padding: 10px 14px;
+      padding: 10px 12px;
       border-radius: 0 8px 8px 0;
       margin-bottom: 8px;
     }
@@ -134,12 +177,8 @@
       margin-bottom: 4px;
       font-weight: 600;
     }
-    .quote-author {
-      color: var(--blue-dark);
-    }
-    .quote-time {
-      margin-left: 6px;
-    }
+    .quote-author { color: var(--blue-dark); }
+    .quote-time { margin-left: 6px; }
     .quote-text {
       font-family: var(--font-quote);
       font-size: 14.5px;
@@ -160,7 +199,6 @@
       font-weight: 700;
       color: var(--coral);
       margin-bottom: 4px;
-      letter-spacing: -0.2px;
     }
     .idea-text {
       font-size: 14.5px;
@@ -169,26 +207,230 @@
       line-height: 1.45;
       word-break: keep-all;
     }
-    footer {
-      margin-top: 36px;
-      text-align: center;
+
+    /* 하이라이트 스타일 */
+    mark.user-hl {
+      background-color: var(--hl-bg);
+      border-bottom: 2px solid var(--hl-border);
+      color: inherit;
+      border-radius: 2px;
+      padding: 1px 2px;
+      cursor: pointer;
+    }
+
+    /* 텍스트 선택 시 팝업 툴팁 */
+    #selection-tooltip {
+      position: absolute;
+      display: none;
+      z-index: 1000;
+      background: #1F2937;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      gap: 8px;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    #selection-tooltip button {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 3px 6px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    #selection-tooltip button:hover { background: #374151; }
+
+    /* 플로팅 모아보기 버튼 */
+    .fab-hl {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 990;
+      background: var(--blue-primary);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 11px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(28, 96, 239, 0.35);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .fab-hl .badge {
+      background: white;
+      color: var(--blue-primary);
+      border-radius: 12px;
+      padding: 1px 7px;
       font-size: 12px;
+    }
+
+    /* 하이라이트 드로어 (모달 서랍) */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1100;
+      display: none;
+      backdrop-filter: blur(2px);
+    }
+    .drawer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-width: 680px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px 20px 0 0;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+      animation: slideUp 0.25s ease-out;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .drawer-header {
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .drawer-title { font-size: 17px; font-weight: 800; }
+    .drawer-close {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
       color: var(--gray-light);
+      padding: 4px;
+    }
+    .drawer-content {
+      padding: 16px 20px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .hl-card {
+      background: var(--gray-bg);
+      border-left: 3px solid var(--hl-border);
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .hl-card-text { font-size: 14.5px; color: var(--ink); line-height: 1.5; margin-bottom: 6px; }
+    .hl-card-note { font-size: 13px; color: #1D4ED8; font-style: italic; margin-bottom: 4px; }
+    .hl-card-del {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: none;
+      border: none;
+      color: var(--gray-light);
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .drawer-footer {
+      padding: 14px 20px;
       border-top: 1px solid var(--line);
-      padding-top: 18px;
+      display: flex;
+      gap: 10px;
+    }
+    .btn-copy-all {
+      flex: 1;
+      background: var(--blue-primary);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    /* 아카이브 목록 모달 */
+    .archive-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .archive-dialog {
+      background: white;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 16px;
+      padding: 20px;
+      max-height: 70vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .archive-dialog h3 {
+      font-size: 17px;
+      margin-bottom: 14px;
+      font-weight: 800;
+    }
+    .archive-ul {
+      list-style: none;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .archive-ul li {
+      border-bottom: 1px solid var(--line);
+    }
+    .archive-ul li.active a {
+      font-weight: 800;
+      color: var(--blue-primary);
+    }
+    .archive-ul a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 6px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 15px;
+    }
+    .arch-tag {
+      font-size: 12px;
+      color: var(--gray-mid);
+      background: var(--gray-bg);
+      padding: 2px 8px;
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <nav class="top-nav">
+      <a href="20260921_에이전트코리아_일일.html" class="nav-btn">◀ 09-21</a>
+      <button class="archive-toggle-btn" id="btn-open-archive">📚 전체 날짜 (6)</button>
+      <span class="nav-btn disabled">다음 ▶</span>
+    </nav>
     <header>
       <span class="brand-tag">에이전트코리아 단톡방 랩업</span>
       <h1>일일 브리핑 2026-09-22</h1>
       <div class="meta-box">구간 09-21 07:00 ~ 09-22 07:00 KST · 메시지 1503건(전처리 1304) · 참여자 85명 · 봇 요약 점검 1건 · 인용 25/25 원문 일치 · sonnet 179초 · $1.36</div>
     </header>
-    <main>
+    <main id="article-content">
       
-<section class="topic-card">
+<section class="topic-card" id="topic-1">
   <div class="topic-header">
     <span class="topic-num">1</span>
     <h3 class="topic-title">아스트라 토큰이 몇 번 돌리면 녹는다는 호소와 절약 팁</h3>
@@ -226,7 +468,7 @@
     </div>
 </div></section>
 
-<section class="topic-card">
+<section class="topic-card" id="topic-2">
   <div class="topic-header">
     <span class="topic-num">2</span>
     <h3 class="topic-title">JEV, 어디에 쓰나: 데이터 많은 사람에게 강하고 창작·복잡 추론엔 약하다</h3>
@@ -264,7 +506,7 @@
     </div>
 </div></section>
 
-<section class="topic-card">
+<section class="topic-card" id="topic-3">
   <div class="topic-header">
     <span class="topic-num">3</span>
     <h3 class="topic-title">코덱스 리셋·솔6 소문, 출처와 리커 신뢰도 논쟁</h3>
@@ -302,7 +544,7 @@
     </div>
 </div></section>
 
-<section class="topic-card">
+<section class="topic-card" id="topic-4">
   <div class="topic-header">
     <span class="topic-num">4</span>
     <h3 class="topic-title">AI를 쓸수록 늘어난 일강도와 집중력 저하</h3>
@@ -340,7 +582,7 @@
     </div>
 </div></section>
 
-<section class="topic-card">
+<section class="topic-card" id="topic-5">
   <div class="topic-header">
     <span class="topic-num">5</span>
     <h3 class="topic-title">AI 격차의 양극화, 그리고 사람에게 남는 몫(슬롭 판별·암묵지)</h3>
@@ -378,7 +620,7 @@
     </div>
 </div></section>
 
-<section class="topic-card">
+<section class="topic-card" id="topic-6">
   <div class="topic-header">
     <span class="topic-num">6</span>
     <h3 class="topic-title">클로드 vs GPT(아스트라) 선택 조언과 모델 성격 체감</h3>
@@ -424,7 +666,7 @@
     </div>
 </div></section>
 
-<section class="topic-card">
+<section class="topic-card" id="topic-7">
   <div class="topic-header">
     <span class="topic-num">7</span>
     <h3 class="topic-title">JEV로 비트코인 롱숏을 돌려 본 실험담</h3>
@@ -462,7 +704,7 @@
     </div>
 </div></section>
 
-<section class="topic-card">
+<section class="topic-card" id="topic-8">
   <div class="topic-header">
     <span class="topic-num">8</span>
     <h3 class="topic-title">업계 소식: 앤스로픽 IPO 연기 보도, 연구 AI 지침, 신약 챌린지, 오픈모델</h3>
@@ -501,9 +743,201 @@
 </div></section>
 
     </main>
-    <footer>
-      <p>PlanningHigh · 에이전트코리아 단톡방 일일 분석 리포트</p>
+    <footer style="margin-top: 36px; text-align: center; font-size: 12px; color: var(--gray-light); border-top: 1px solid var(--line); padding-top: 18px;">
+      <p>PlanningHigh · 에이전트코리아 일일 분석 리포트</p>
     </footer>
   </div>
+
+  <!-- 선택 팝업 툴팁 -->
+  <div id="selection-tooltip">
+    <button id="btn-do-highlight">🖍️ 형광펜</button>
+    <button id="btn-do-note">💬 메모</button>
+  </div>
+
+  <!-- 플로팅 하이라이트 모아보기 버튼 -->
+  <button class="fab-hl" id="btn-open-highlights">
+    <span>📑 내 하이라이트</span>
+    <span class="badge" id="hl-count-badge">0</span>
+  </button>
+
+  <!-- 하이라이트 드로어 -->
+  <div class="drawer-overlay" id="drawer-overlay">
+    <div class="drawer">
+      <div class="drawer-header">
+        <h3 class="drawer-title">📑 오늘 내가 남긴 하이라이트</h3>
+        <button class="drawer-close" id="btn-close-drawer">✕</button>
+      </div>
+      <div class="drawer-content" id="drawer-list">
+        <!-- 하이라이트 카드 동적 삽입 -->
+      </div>
+      <div class="drawer-footer">
+        <button class="btn-copy-all" id="btn-copy-highlights">📋 전체 복사 (SNS 글감용)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 아카이브 모달 -->
+  <div class="archive-modal" id="archive-modal">
+    <div class="archive-dialog">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h3>📅 지난 브리핑 목록</h3>
+        <button class="drawer-close" id="btn-close-archive">✕</button>
+      </div>
+      <ul class="archive-ul">
+        <li class="active"><a href="20260922_에이전트코리아_일일.html"><span>📅 2026-09-22</span><span class="arch-tag">현재</span></a></li>
+<li class=""><a href="20260921_에이전트코리아_일일.html"><span>📅 2026-09-21</span><span class="arch-tag">보기</span></a></li>
+<li class=""><a href="20260920_에이전트코리아_일일.html"><span>📅 2026-09-20</span><span class="arch-tag">보기</span></a></li>
+<li class=""><a href="20260919_에이전트코리아_일일.html"><span>📅 2026-09-19</span><span class="arch-tag">보기</span></a></li>
+<li class=""><a href="20260918_에이전트코리아_일일.html"><span>📅 2026-09-18</span><span class="arch-tag">보기</span></a></li>
+<li class=""><a href="20260917_에이전트코리아_일일.html"><span>📅 2026-09-17</span><span class="arch-tag">보기</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const STORAGE_KEY = "daily_digest_hl_20260922";
+      let highlights = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+
+      const tooltip = document.getElementById("selection-tooltip");
+      const btnHighlight = document.getElementById("btn-do-highlight");
+      const btnNote = document.getElementById("btn-do-note");
+      const fab = document.getElementById("btn-open-highlights");
+      const countBadge = document.getElementById("hl-count-badge");
+      const drawerOverlay = document.getElementById("drawer-overlay");
+      const drawerClose = document.getElementById("btn-close-drawer");
+      const drawerList = document.getElementById("drawer-list");
+      const btnCopy = document.getElementById("btn-copy-highlights");
+
+      const archiveModal = document.getElementById("archive-modal");
+      const btnOpenArchive = document.getElementById("btn-open-archive");
+      const btnCloseArchive = document.getElementById("btn-close-archive");
+
+      let currentSelectionText = "";
+
+      function updateBadge() {
+        countBadge.textContent = highlights.length;
+        if (highlights.length === 0) {
+          fab.style.display = "none";
+        } else {
+          fab.style.display = "flex";
+        }
+      }
+
+      function saveHighlights() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(highlights));
+        updateBadge();
+        renderDrawer();
+      }
+
+      function renderDrawer() {
+        if (highlights.length === 0) {
+          drawerList.innerHTML = '<p style="color: #8B8A95; text-align: center; padding: 30px 0;">아직 남긴 하이라이트가 없습니다.<br>본문 문장을 길게 터치하여 형광펜을 칠해보세요!</p>';
+          return;
+        }
+        drawerList.innerHTML = highlights.map((h, i) => `
+          <div class="hl-card">
+            <button class="hl-card-del" data-idx="${i}">✕</button>
+            <div class="hl-card-text">"${h.text}"</div>
+            ${h.note ? `<div class="hl-card-note">💬 ${h.note}</div>` : ''}
+          </div>
+        `).join("");
+
+        drawerList.querySelectorAll(".hl-card-del").forEach(btn => {
+          btn.addEventListener("click", (e) => {
+            const idx = parseInt(e.target.dataset.idx, 10);
+            highlights.splice(idx, 1);
+            saveHighlights();
+          });
+        });
+      }
+
+      // 텍스트 선택 감지 (모바일 touchend, 데스크톱 mouseup)
+      function handleSelection() {
+        const sel = window.getSelection();
+        const text = sel ? sel.toString().trim() : "";
+        if (!text || text.length < 2) {
+          tooltip.style.display = "none";
+          currentSelectionText = "";
+          return;
+        }
+
+        currentSelectionText = text;
+        const range = sel.getRangeAt(0);
+        const rect = range.getBoundingClientRect();
+        
+        tooltip.style.left = Math.max(10, rect.left + (rect.width / 2) - 60) + "px";
+        tooltip.style.top = (window.scrollY + rect.top - 46) + "px";
+        tooltip.style.display = "flex";
+      }
+
+      document.addEventListener("mouseup", () => setTimeout(handleSelection, 50));
+      document.addEventListener("touchend", () => setTimeout(handleSelection, 150));
+
+      // 형광펜 추가
+      btnHighlight.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (!currentSelectionText) return;
+        highlights.push({ text: currentSelectionText, note: "", time: new Date().toLocaleTimeString() });
+        saveHighlights();
+        tooltip.style.display = "none";
+        window.getSelection().removeAllRanges();
+      });
+
+      // 메모 추가
+      btnNote.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (!currentSelectionText) return;
+        const userNote = prompt("💬 이 부분에 남길 메모를 입력하세요:");
+        if (userNote !== null) {
+          highlights.push({ text: currentSelectionText, note: userNote.trim(), time: new Date().toLocaleTimeString() });
+          saveHighlights();
+        }
+        tooltip.style.display = "none";
+        window.getSelection().removeAllRanges();
+      });
+
+      // 드로어 열기/닫기
+      fab.addEventListener("click", () => {
+        renderDrawer();
+        drawerOverlay.style.display = "block";
+      });
+      drawerClose.addEventListener("click", () => { drawerOverlay.style.display = "none"; });
+      drawerOverlay.addEventListener("click", (e) => {
+        if (e.target === drawerOverlay) drawerOverlay.style.display = "none";
+      });
+
+      // 전체 복사 (SNS 글감용)
+      btnCopy.addEventListener("click", () => {
+        if (highlights.length === 0) return;
+        const copyText = [
+          "📌 에이전트코리아 일일요약 (2026-09-22) 스터디 메모",
+          "",
+          ...highlights.map((h, i) => {
+            let item = `${i + 1}. "${h.text}"`;
+            if (h.note) item += `\n   👉 내 메모: ${h.note}`;
+            return item;
+          }),
+          "",
+          "원문 링크: " + window.location.href
+        ].join("\n");
+
+        navigator.clipboard.writeText(copyText).then(() => {
+          btnCopy.textContent = "✔ 복사 완료!";
+          setTimeout(() => { btnCopy.textContent = "📋 전체 복사 (SNS 글감용)"; }, 2000);
+        });
+      });
+
+      // 아카이브 모달 열기/닫기
+      btnOpenArchive.addEventListener("click", () => { archiveModal.style.display = "flex"; });
+      btnCloseArchive.addEventListener("click", () => { archiveModal.style.display = "none"; });
+      archiveModal.addEventListener("click", (e) => {
+        if (e.target === archiveModal) archiveModal.style.display = "none";
+      });
+
+      // 초기화
+      updateBadge();
+    })();
+  </script>
 </body>
 </html>
