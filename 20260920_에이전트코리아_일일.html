@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <title>에이전트코리아 일일요약 2026-09-20</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/subsets/Paperlogy-dynamic-subset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css">
@@ -843,9 +844,128 @@
       margin-top: 4px;
       word-break: keep-all;
     }
+    /* 비공개 인증 잠금 오버레이 */
+    body.auth-locked .container,
+    body.auth-locked .floating-controls,
+    body.auth-locked #highlight-bar,
+    body.auth-locked #highlights-drawer,
+    body.auth-locked #archive-modal {
+      display: none !important;
+    }
+    .auth-overlay {
+      display: none;
+      min-height: 100vh;
+      padding: 40px 20px;
+      align-items: center;
+      justify-content: center;
+      background: #F8FAFC;
+      box-sizing: border-box;
+    }
+    body.auth-locked .auth-overlay {
+      display: flex !important;
+    }
+    .auth-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 18px;
+      padding: 36px 24px;
+      max-width: 360px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
+    .auth-lock-icon {
+      font-size: 40px;
+      margin-bottom: 14px;
+    }
+    .auth-title {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 800;
+      color: #1E293B;
+      margin-bottom: 8px;
+    }
+    .auth-desc {
+      font-size: 13px;
+      color: #64748B;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      word-break: keep-all;
+    }
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .auth-input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px 16px;
+      font-size: 17px;
+      text-align: center;
+      letter-spacing: 3px;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .auth-input:focus {
+      border-color: #2563EB;
+    }
+    .auth-submit-btn {
+      background: #2563EB;
+      color: #FFFFFF;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .auth-submit-btn:hover {
+      background: #1D4ED8;
+    }
+    .auth-error {
+      font-size: 12.5px;
+      color: #DC2626;
+      margin-top: 4px;
+    }
   </style>
 </head>
-<body>
+<body class="auth-locked">
+  <script>
+    (function() {
+      var AUTH_KEY = "ph2026";
+      var p = new URLSearchParams(window.location.search);
+      var k = p.get("k");
+      if (k === AUTH_KEY) {
+        try { localStorage.setItem("digest_auth_key", AUTH_KEY); } catch(e){}
+      }
+      var ok = false;
+      try {
+        ok = (localStorage.getItem("digest_auth_key") === AUTH_KEY) || (k === AUTH_KEY);
+      } catch(e) {
+        ok = (k === AUTH_KEY);
+      }
+      if (ok) {
+        document.body.classList.remove("auth-locked");
+      }
+    })();
+  </script>
+
+  <div id="auth-overlay" class="auth-overlay">
+    <div class="auth-card">
+      <div class="auth-lock-icon">🔒</div>
+      <h2 class="auth-title">비공개 일일 브리핑</h2>
+      <p class="auth-desc">에이전트코리아 단톡방 랩업 리포트입니다.<br>열람 코드를 입력해주세요.</p>
+      <form class="auth-form" onsubmit="handleAuthSubmit(event)">
+        <input type="password" id="auth-input-pin" class="auth-input" placeholder="열람 코드 입력" autocomplete="current-password" inputmode="numeric">
+        <button type="submit" class="auth-submit-btn">열람하기</button>
+        <p id="auth-error-msg" class="auth-error" style="display:none;">열람 코드가 일치하지 않습니다.</p>
+      </form>
+    </div>
+  </div>
   <div class="container">
     <!-- 상단 2줄 헤더: 1줄(브랜드 + 지난 목록) / 2줄(이전 · 날짜 · 다음) -->
     <header class="slim-header">
@@ -947,7 +1067,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P010</span>
+        <span class="quote-author">강정석 / Schift / 대표</span>
         <span class="quote-time">09-19 09:36</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t1-s5">"표 쪽 정확도만 살짝 아쉽고"</span></blockquote>
@@ -955,7 +1075,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P016</span>
+        <span class="quote-author">김씨/대표/메테오시뮬레이션</span>
         <span class="quote-time">09-19 10:32</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t1-s6">"정답율은 jev 94퍼 glm 마개조 96퍼"</span></blockquote>
@@ -963,7 +1083,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P017</span>
+        <span class="quote-author">AlexAI/opencrab.sh</span>
         <span class="quote-time">09-19 10:33</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t1-s7">"따라 만들기 쉬운 모델"</span></blockquote>
@@ -971,7 +1091,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P017</span>
+        <span class="quote-author">AlexAI/opencrab.sh</span>
         <span class="quote-time">09-19 12:32</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t1-s8">"MCP라우터로 API 묶었어요"</span></blockquote>
@@ -993,7 +1113,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P007</span>
+        <span class="quote-author">공냥이</span>
         <span class="quote-time">09-19 21:46</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t2-s5">"기대가안됨.."</span></blockquote>
@@ -1001,7 +1121,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P007</span>
+        <span class="quote-author">공냥이</span>
         <span class="quote-time">09-19 21:47</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t2-s6">"딱이수준이면 끝임"</span></blockquote>
@@ -1009,7 +1129,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P007</span>
+        <span class="quote-author">공냥이</span>
         <span class="quote-time">09-19 21:55</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t2-s7">"한권찍을때 api비용으로 대충 3천원나오거든요"</span></blockquote>
@@ -1017,7 +1137,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P007</span>
+        <span class="quote-author">공냥이</span>
         <span class="quote-time">09-19 21:57</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t2-s8">"사람이 지켜야하는 선이있는데"</span></blockquote>
@@ -1039,7 +1159,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P010</span>
+        <span class="quote-author">강정석 / Schift / 대표</span>
         <span class="quote-time">09-19 11:21</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t3-s4">"손글씨는 vqa 모델들 추천드려요"</span></blockquote>
@@ -1047,7 +1167,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P022</span>
+        <span class="quote-author">옹ㅅ/교사</span>
         <span class="quote-time">09-19 11:35</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t3-s5">"답변 감사합니다! 제미나이로 인식 시켜봤을 때는 서술형 답안의 오타나 틀린 답도 지가 멋대로 옳게 고쳐놓고"</span></blockquote>
@@ -1055,7 +1175,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P027</span>
+        <span class="quote-author">시온/잡도리</span>
         <span class="quote-time">09-19 11:38</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t3-s6">"[역할 및 원칙] / 당신은 지능형 문제 해결사가 아닌 기계적 텍스트 복사기(Verbatim Transcriber)입니다."</span></blockquote>
@@ -1063,7 +1183,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P027</span>
+        <span class="quote-author">시온/잡도리</span>
         <span class="quote-time">09-19 11:56</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t3-s7">"제미니는 vlm이라 latex코드 인식은 잘되지만, 수식을 latex코드로 불러내면서 오류를 만들어내는거고"</span></blockquote>
@@ -1085,7 +1205,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P013</span>
+        <span class="quote-author">Ai시안|컨텐츠제작</span>
         <span class="quote-time">09-19 14:30</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t4-s6">"질문 한방에 0%"</span></blockquote>
@@ -1093,7 +1213,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P013</span>
+        <span class="quote-author">Ai시안|컨텐츠제작</span>
         <span class="quote-time">09-19 20:48</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t4-s7">"아스트라 갑자기 바보된 기분"</span></blockquote>
@@ -1101,7 +1221,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P013</span>
+        <span class="quote-author">Ai시안|컨텐츠제작</span>
         <span class="quote-time">09-19 20:55</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t4-s8">"사과나 동의 하지말고 수정을 하라고"</span></blockquote>
@@ -1109,7 +1229,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P041</span>
+        <span class="quote-author">뀨/연구</span>
         <span class="quote-time">09-19 21:15</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t4-s9">"ㅋㅋㅋㅋㅋㅋ 전 A안 B안 C안을 주는데 다 너무 돌아가는거길래 그냥 심플하게 Z안이면 되지않아?"</span></blockquote>
@@ -1131,7 +1251,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P002</span>
+        <span class="quote-author">AI영끌맨</span>
         <span class="quote-time">09-19 08:08</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t5-s5">"안녕하세요, AI영끌맨이에요 🙌 / 📢 Claude Code가 드디어 AGENTS.md를 공식 지원합니다."</span></blockquote>
@@ -1139,7 +1259,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P003</span>
+        <span class="quote-author">자동화공장장</span>
         <span class="quote-time">09-19 08:16</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t5-s6">"감사합니다. 지금까지 안 됐었다니.."</span></blockquote>
@@ -1147,7 +1267,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P002</span>
+        <span class="quote-author">AI영끌맨</span>
         <span class="quote-time">09-19 08:18</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t5-s7">"ㅠ 클로드 구독지원이 끊기니 들어왓군야"</span></blockquote>
@@ -1169,7 +1289,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P024</span>
+        <span class="quote-author">올해는한화가우승/방산ax</span>
         <span class="quote-time">09-19 21:59</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t6-s5">"OpenAI가 세계에서 가장 저렴하고 효과적인 변호사를 방금 출시했습니다 / Astra for Law라는 이름입니다."</span></blockquote>
@@ -1177,7 +1297,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P008</span>
+        <span class="quote-author">이오/바이오</span>
         <span class="quote-time">09-19 22:08</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t6-s6">"아뇨 저건 보조도구예요"</span></blockquote>
@@ -1185,7 +1305,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P053</span>
+        <span class="quote-author">왈라/유튜브</span>
         <span class="quote-time">09-19 22:10</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t6-s7">"변호사들이 쓰도록 만들었군요 최종 책임은 쓰는 사람 몫이니까"</span></blockquote>
@@ -1193,7 +1313,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P053</span>
+        <span class="quote-author">왈라/유튜브</span>
         <span class="quote-time">09-19 22:10</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t6-s8">"회계, 법, 개발 전부 주니어들부터 안뽑기 시작하던데"</span></blockquote>
@@ -1215,7 +1335,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P018</span>
+        <span class="quote-author">Dominic</span>
         <span class="quote-time">09-19 23:32</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t7-s6">"https://github.com/Dominic-DK/mac-shortcuts-mcp / 혼자 생각하기에 기깔난거 하나 공유드립니다."</span></blockquote>
@@ -1223,7 +1343,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P018</span>
+        <span class="quote-author">Dominic</span>
         <span class="quote-time">09-19 23:38</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t7-s7">"특히 메모앱같은거. / 인터페이스 열려있는 부분이 없어서 기존 메모 마이그레이션하려면 전체 익스포트해서 에이전트한테 던지고 옵시디언으로 다시 말아줘 이런걸 했었어야했는데 / 이제 그럴필요없이 바로 접근이 가능합니다"</span></blockquote>
@@ -1231,7 +1351,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P053</span>
+        <span class="quote-author">왈라/유튜브</span>
         <span class="quote-time">09-19 23:37</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t7-s8">"오 토큰 엄청 적게쓰겠네요 감사합니다"</span></blockquote>
@@ -1239,7 +1359,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P054</span>
+        <span class="quote-author">초보/dx</span>
         <span class="quote-time">09-19 23:37</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t7-s9">"하 아직 mcp가 뭔지 모르겟어여. 써봐야 알게되는거겟져?"</span></blockquote>
@@ -1261,7 +1381,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P012</span>
+        <span class="quote-author">codexable5</span>
         <span class="quote-time">09-19 10:46</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t8-s6">"구글, AI 문제 해결에 ‘재귀적 자기개선’ 도입...탐색 비용 162배 절감"</span></blockquote>
@@ -1269,7 +1389,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P024</span>
+        <span class="quote-author">올해는한화가우승/방산ax</span>
         <span class="quote-time">09-19 11:27</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t8-s7">"뉴욕타임스는 소식통을 인용해, 앤트로픽이 다리오 아모데이 CEO의 AI 개발 속도 조절 요구로 안전성 논쟁이 한창인 가운데서도 역대 최대 규모가 될 수 있는 IPO를 본격 추진하고 있다고 보도함"</span></blockquote>
@@ -1277,7 +1397,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P012</span>
+        <span class="quote-author">codexable5</span>
         <span class="quote-time">09-19 11:31</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t8-s8">"폭풍전야하니까 부랑ㄴ하네요"</span></blockquote>
@@ -1285,7 +1405,7 @@
 
     <div class="quote-item">
       <div class="quote-meta">
-        <span class="quote-author">P026</span>
+        <span class="quote-author">twojay | LLM, Prompt</span>
         <span class="quote-time">09-19 21:46</span>
       </div>
       <blockquote class="quote-text"><span class="hl-sent hl-target" data-hl-id="t8-s9">"루머) Lmarena 에서 나노바나나 2.5로 추정되는 모델이 있다고 하네요."</span></blockquote>
@@ -1707,6 +1827,20 @@
       updateBadge();
       applySavedHighlights();
     })();
+
+    function handleAuthSubmit(e) {
+      if (e) e.preventDefault();
+      var pinInput = document.getElementById("auth-input-pin");
+      var val = (pinInput ? pinInput.value : "").trim();
+      if (val === "ph2026" || val === "2026") {
+        try { localStorage.setItem("digest_auth_key", "ph2026"); } catch(e){}
+        document.body.classList.remove("auth-locked");
+      } else {
+        var err = document.getElementById("auth-error-msg");
+        if (err) err.style.display = "block";
+      }
+    }
+    window.handleAuthSubmit = handleAuthSubmit;
   </script>
 </body>
 </html>
